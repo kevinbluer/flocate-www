@@ -21,13 +21,13 @@ app.configure(function(){
 
 // environment configuration
 app.configure('development', function(){
-  mongoose.connect('mongodb://localhost/test');
+  mongoose.connect('mongodb://blueradmin:blueradm1n@kahana.mongohq.com:10015/bluer-api');
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 
 });
 
 app.configure('production', function(){
-  mongoose.connect('mongodb://flocate:fl0cat3@staff.mongohq.com:10043/flocate');
+  mongoose.connect('mongodb://blueradmin:blueradm1n@kahana.mongohq.com:10015/bluer-api');
     app.use(express.errorHandler());
 
 });
@@ -38,9 +38,11 @@ app.configure('production', function(){
 
 app.get('/', function(req, res) {
 	
-  Entity.find({type: "entity"}, function(err, items) {
+  Entity.find().exec(function(err, items) {
 
-  	res.render('index.ejs', { 
+    console.log(items);
+
+  	res.render('map.ejs', { 
       layout: true,
       items: items
     });
@@ -57,11 +59,11 @@ app.get('/upload', function(req, res) {
   
 })
 
-app.get('/map', function(req, res) {
+app.get('/list', function(req, res) {
 
   Entity.find({type: "entity"}, function(err, items) {
 
-    res.render('map.ejs', { 
+    res.render('list.ejs', { 
       layout: true,
       items: items
     });
