@@ -39,9 +39,7 @@ app.configure('production', function(){
 app.get('/', function(req, res) {
 	
   Entity.find().sort({date: -1}).exec(function(err, items) {
-
-    console.log(items);
-
+    
   	res.render('map.ejs', { 
       layout: true,
       items: items

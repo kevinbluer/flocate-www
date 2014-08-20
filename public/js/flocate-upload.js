@@ -2,10 +2,6 @@ $(function() {
 
 	$(document).ready(function() {
 
-		$("#when").val(new Date());
-
-		loadmap();
-
 	});
 
 	$("#submit").click(function() {
@@ -34,28 +30,5 @@ $(function() {
 		});
 
 	});
-
-	function loadmap() {
-		
-		//check if the geolocation object is supported, if so get position
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(
-				displayLocation,
-				displayError
-			);
-		}
-		else {
-			displayError(null);
-		}
-	}
-
-	function displayLocation(position) {
-		$("#lat").val(position.coords.latitude);
-		$("#lng").val(position.coords.longitude);
-	}
-
-	function displayError() {
-		window.alert("Damn, it not work.");
-	}
 
 });
