@@ -38,7 +38,7 @@ app.configure('production', function(){
 
 app.get('/', function(req, res) {
 	
-  Entity.find().exec(function(err, items) {
+  Entity.find().sort({date: -1}).exec(function(err, items) {
 
     console.log(items);
 

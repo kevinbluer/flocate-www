@@ -1,0 +1,18 @@
+body {
+	background-color: #e0e0e0;
+}
+
+.tile {
+	position: absolute;
+	bottom: 40px;
+	right: 20px;
+	width: 260px;
+	height: 140px;
+	z-index: 1000;
+	background-color: rgba(0,0,0,0.5);
+	padding: 28px;
+	color: #fff;
+	font-family: "HelveticaNeue-Light", helvetica;
+	border-radius: 10px;
+	border: solid 1px #000;
+}
