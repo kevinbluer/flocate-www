@@ -8,7 +8,7 @@ ObjectId = Schema.ObjectId;
 
 checkinSchema = new Schema({
   message: String,
-  description: String,
+  doing: String,
   location: {type: [], index: '2d'},
   date: { type: Date, default: Date.now }
 },

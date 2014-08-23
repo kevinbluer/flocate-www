@@ -1,10 +1,15 @@
+<div class="logo">
+  <h1>Flocate</h1>
+</div>
+
+<div class="tile">
+    <h2><%- items[0].message %></h2>
+    <p><%- items[0].doing %><p>
+    <small>Arrived at <%- Date(items[0].date) %>.</small>
+</div>
+
 <div style="position: relative">
   <div id="map_canvas" style="width:100%; height: 100%; border: solid 1px #959595;"></div>
-  <div class="tile">
-    <h2><%- items[0].message %></h2>
-    <small>Arrived at <%- Date(items[0].date) %>.</small>
-    <p></p>
-  </div>
 </div>
 
 <script>
@@ -12,7 +17,13 @@
         var myOptions = {
             center: new google.maps.LatLng(<%- items[0].location[0] %>, <%- items[0].location[1] %>),
             zoom: 15,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            panControl: false,
+            zoomControl: false,
+            mapTypeControl: false,
+            scaleControl: false,
+            streetViewControl: false,
+            overviewMapControl: false
         };
         
         var mapElement = $("#map_canvas");
@@ -21,7 +32,7 @@
           {
             stylers: [
               { hue: "#2742AE" },
-              { saturation: 30 }
+              { saturation: 80 }
             ]
           },{
             featureType: "road",
@@ -35,6 +46,7 @@
             elementType: "labels",
             stylers: [
               { visibility: "off" }
+
             ]
           }
         ];
@@ -44,7 +56,7 @@
         var map = new google.maps.Map(mapElement[0], myOptions);
         map.setOptions({styles: styles});
 
-        var myIcon = new google.maps.MarkerImage("/img/940-pin-selected@2x.png", null, null, null, new google.maps.Size(11,26));
+        var myIcon = new google.maps.MarkerImage("/img/940-pin-selected@2x-glow.png", null, null, null, new google.maps.Size(20,40));
 
         <% for (item in items) { %>
             var marker = new google.maps.Marker({
