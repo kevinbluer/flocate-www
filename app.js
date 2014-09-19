@@ -52,25 +52,74 @@ app.get('/', function(req, res) {
 
 });
 
-app.get('/1/kevinbluer/latest', function(req, res) {
+app.get('/1/:username/all', function(req, res) {
 
   res.header('Access-Control-Allow-Origin', 'http://api.bluer.com');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
 
-  var Checkin = Parse.Object.extend("Checkin");
-  var query = new Parse.Query(Checkin);
-  query.get("C09oYmGlav", {
-    success: function(checkin) {
-      // The object was retrieved successfully.
-      res.send(checkin);
+  var query = new Parse.Query(Parse.User);
+  query.equalTo("username", req.params.username);  // find all the women
+  query.find({
+    success: function(user) {
+      
+      var Checkin = Parse.Object.extend("Checkin");
+      var query = new Parse.Query(Checkin);
+      query.equalTo("User", user[0]);
+      query.find({
+        success: function(checkin) {
+          // The object was retrieved successfully.
+          res.send(checkin);
+        },
+        error: function(object, error) {
+
+          console.log(object)
+          // The object was not retrieved successfully.
+          // error is a Parse.Error with an error code and message.
+        }
+      });
+
     },
-    error: function(object, error) {
-      // The object was not retrieved successfully.
-      // error is a Parse.Error with an error code and message.
+    error: function(err) {
+      // handle this
     }
   });
+});
 
+app.get('/1/:username/latest', function(req, res) {
+
+  res.header('Access-Control-Allow-Origin', 'http://api.bluer.com');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+  var query = new Parse.Query(Parse.User);
+  query.equalTo("username", req.params.username);  // find all the women
+  query.find({
+    success: function(user) {
+      
+      var Checkin = Parse.Object.extend("Checkin");
+      var query = new Parse.Query(Checkin);
+      query.equalTo("User", user[0]);
+      query.descending("createdAt");
+      query.find({
+        success: function(checkin) {
+
+          // The object was retrieved successfully.
+          res.send(checkin[0]);
+        },
+        error: function(object, error) {
+
+          console.log(object)
+          // The object was not retrieved successfully.
+          // error is a Parse.Error with an error code and message.
+        }
+      });
+
+    },
+    error: function(err) {
+      // handle this
+    }
+  });
 });
 
 var port = process.env.PORT || 3000;
