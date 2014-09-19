@@ -54,6 +54,10 @@ app.get('/', function(req, res) {
 
 app.get('/1/kevinbluer/latest', function(req, res) {
 
+  res.header('Access-Control-Allow-Origin', 'api.bluer.com');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+
   var Checkin = Parse.Object.extend("Checkin");
   var query = new Parse.Query(Checkin);
   query.get("C09oYmGlav", {
