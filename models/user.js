@@ -7,12 +7,13 @@ Schema = mongoose.Schema;
 ObjectId = Schema.ObjectId;
 
 checkinSchema = new Schema({
-	userId: [Schema.Types.ObjectId],
-	message: String,
-	doing: String,
-	location: {type: [], index: '2d'},
+	firstname: String,
+	lastname: String,
+	email: String,
+	password: String,
+	friends: Array,
 	date: { type: Date, default: Date.now }
 },
-{collection: "checkin"});
+{collection: "users"});
 
-module.exports = mongoose.model('Checkin', checkinSchema);
+module.exports = mongoose.model('User', checkinSchema);

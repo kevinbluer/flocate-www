@@ -1,6 +1,11 @@
 // for express
 var express = require('express');
 var mongoose = require('mongoose');
+var Parse = require('parse').Parse;
+
+var Parse = require('parse').Parse;
+ 
+Parse.initialize("VVbJ2YjOdDJrY7sZw8fF4R1v2Wolgf3toi4o5SW0", "4zEOZdifrLJxr2exozJMGsE8SB7zmnienaMMsjTF");
 
 // create the express instance
 var app = module.exports = express.createServer();
@@ -32,78 +37,35 @@ app.configure('production', function(){
 
 });
 
-// ******************
-// register endpoints
-// ******************
+// **********************
+// register web endpoints
+// **********************
 
 app.get('/', function(req, res) {
 	
   Entity.find().sort({date: -1}).exec(function(err, items) {
-
   	res.render('map.ejs', { 
       layout: true,
       items: items
     });
-  	
-  });
-
-})
-
-app.get('/upload', function(req, res) {
-  
-  res.render('upload.ejs', { 
-    layout: true,
-  });
-  
-})
-
-app.get('/list', function(req, res) {
-
-  Entity.find({type: "entity"}, function(err, items) {
-
-    res.render('list.ejs', { 
-      layout: true,
-      items: items
-    });
-    
   });
 
 });
 
-app.post('/api/entity/add', function(req, res) {
+app.get('/1/kevinbluer/latest', function(req, res) {
 
-    var what = req.body.what;
-    var detail = req.body.detail;
-    var resources = req.body.resources;
-    var where = req.body.where;
-    var when = req.body.when;
-    var who = req.body.createdby;
-
-    var entity = new Entity({
-
-      what: what,
-      detail: detail,
-      resources: resources,
-      where: where,
-      when: when,
-      who: who,
-      created: { type: Date, default: Date.now }
-
-    });
-
-    entity.save(function(err, new_entity) {
-
-      if (err) {
-        console.log(err);
-        res.send({"saved": "nope"});
-      }
-      else {
-        console.log(new_entity);
-        res.send({"saved": "yep"});  
-      }
-      
-
-    });
+  var Checkin = Parse.Object.extend("Checkin");
+  var query = new Parse.Query(Checkin);
+  query.get("C09oYmGlav", {
+    success: function(checkin) {
+      // The object was retrieved successfully.
+      res.send(checkin);
+    },
+    error: function(object, error) {
+      // The object was not retrieved successfully.
+      // error is a Parse.Error with an error code and message.
+    }
+  });
 
 });
 
