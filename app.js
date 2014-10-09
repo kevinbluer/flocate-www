@@ -42,14 +42,44 @@ app.configure('production', function(){
 // **********************
 
 app.get('/', function(req, res) {
-	
-  Entity.find().sort({date: -1}).exec(function(err, items) {
-  	res.render('map.ejs', { 
-      layout: true,
-      items: items
-    });
+
+  res.render('index.ejs', {
+
   });
 
+});
+
+app.get('/:username', function(req, res) {
+	
+console.log("oh");
+
+var query = new Parse.Query(Parse.User);
+  query.equalTo("username", req.params.username);  // find all the women
+  query.find({
+    success: function(user) {
+      
+      var Checkin = Parse.Object.extend("Checkin");
+      var query = new Parse.Query(Checkin);
+      query.equalTo("User", user[0]);
+      query.find({
+        success: function(items) {
+          res.render('map.ejs', { 
+            layout: true,
+            items: items
+          });
+        },
+        error: function(object, error) {
+
+          console.log(object)
+          
+        }
+      });
+
+    },
+    error: function(err) {
+      // handle this
+    }
+  });
 });
 
 app.get('/1/:username/all', function(req, res) {

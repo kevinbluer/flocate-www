@@ -3,9 +3,9 @@
 </div>
 
 <div class="tile">
-    <h2><%- items[0].message %></h2>
-    <p><%- items[0].doing %><p>
-    <small>Arrived at <%- Date(items[0].date) %>.</small>
+    <h2><%- items[0].get("Note") %></h2>
+    <p><%- items[0].get("Doing") %><p>
+    <small>Arrived at <%- Date(items[0].createdAt) %>.</small>
 </div>
 
 <div style="position: relative">
@@ -15,7 +15,7 @@
 <script>
 
         var myOptions = {
-            center: new google.maps.LatLng(<%- items[0].location[0] %>, <%- items[0].location[1] %>),
+            center: new google.maps.LatLng(<%- items[0].get("Location").latitude %>, <%- items[0].get("Location").longitude %>),
             zoom: 15,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             panControl: false,
@@ -60,7 +60,7 @@
 
         <% for (item in items) { %>
             var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(<%- items[item].location[0] %>, <%- items[item].location[1] %>),
+                position: new google.maps.LatLng(<%- items[item].get("Location").latitude %>, <%- items[item].get("Location").longitude %>),
                 map: map,            
                 icon: myIcon
             });
