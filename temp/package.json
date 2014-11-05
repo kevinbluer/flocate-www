@@ -1,0 +1,18 @@
+{
+  "author": "Kevin Bluer <kevin@bluer.com> (http://www.bluer.com)",
+  "name": "Name",
+  "description": "Description",
+  "version": "0.0.1",
+  "homepage": "domain.com",
+  "repository": {
+    "url": ""
+  },
+  "main": "app.js",
+  "engines": {
+    "node": "~0.6.5"
+  },
+  "dependencies": {
+    "express": "2.5.11"
+  },
+  "devDependencies": {}
+}
