@@ -5,7 +5,7 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/flocatewww-dev'
+    uri: 'mongodb://localhost/flocate-dev'
   },
 
   seedDB: true

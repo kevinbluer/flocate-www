@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('flocateWwwApp', [
+angular.module('flocateApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',

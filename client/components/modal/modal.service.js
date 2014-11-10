@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('flocateWwwApp')
+angular.module('flocateApp')
   .factory('Modal', function ($rootScope, $modal) {
     /**
      * Opens a modal

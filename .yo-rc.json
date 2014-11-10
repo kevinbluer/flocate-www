@@ -11,11 +11,36 @@
     "socketsNeedle": "// Insert sockets below",
     "filters": {
       "js": true,
-      "jade": true,
-      "less": true,
+      "html": true,
+      "css": true,
       "uirouter": true,
       "bootstrap": true,
       "uibootstrap": true
     }
+  },
+  "generator-ng-component": {
+    "routeDirectory": "client/app/",
+    "directiveDirectory": "client/app/",
+    "filterDirectory": "client/app/",
+    "serviceDirectory": "client/app/",
+    "basePath": "client",
+    "moduleName": "",
+    "filters": [
+      "uirouter"
+    ],
+    "extensions": [
+      "js",
+      "html",
+      "css"
+    ],
+    "directiveSimpleTemplates": "",
+    "directiveComplexTemplates": "",
+    "filterTemplates": "",
+    "serviceTemplates": "",
+    "factoryTemplates": "",
+    "controllerTemplates": "",
+    "decoratorTemplates": "",
+    "providerTemplates": "",
+    "routeTemplates": ""
   }
 }

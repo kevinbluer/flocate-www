@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('flocateWwwApp')
+angular.module('flocateApp')
   .controller('MainCtrl', function ($scope, $http) {
     $scope.awesomeThings = [];
 

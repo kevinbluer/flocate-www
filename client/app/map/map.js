@@ -3,9 +3,9 @@
 angular.module('flocateApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('main', {
-        url: '/',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
+      .state('map', {
+        url: '/map',
+        templateUrl: 'app/map/map.html',
+        controller: 'MapCtrl'
       });
   });
