@@ -1,5 +1,5 @@
 .map-canvas { 
-	height: 400px; 
-	width: 400px; 
-	border: solid 1px red;
+	height: 800px; 
+	width: 100%; 
+	border: solid 1px #E0E0E0;
 }
