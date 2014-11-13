@@ -9,7 +9,15 @@ angular.module('flocateApp')
     {
       'title': 'Map',
       'link': '/map'
-    }];
+    },
+    {
+      'title': 'Featured',
+      'link': '/featured'
+     },
+     {
+      'title': 'Users',
+      'link': '/user/'
+     }];
 
     $scope.isCollapsed = true;
 
