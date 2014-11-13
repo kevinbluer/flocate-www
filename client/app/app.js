@@ -6,6 +6,7 @@ angular.module('flocateApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
+  'ui.map'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider
@@ -14,4 +15,4 @@ angular.module('flocateApp', [
     $locationProvider.html5Mode(true);
   });
 
-  var myAppModule = angular.module('app.ui-map', ['ui.map']);  
+ // var myAppModule = angular.module('app.ui-map', ['ui.map']);  
