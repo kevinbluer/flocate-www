@@ -11,6 +11,8 @@ angular.module('flocateApp')
 
     var infowindow;
 
+	
+
     // var map = $scope.myMap;
 
     // var map = new google.maps.Map(mapElement[0], myOptions);
