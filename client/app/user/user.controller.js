@@ -26,9 +26,8 @@ angular.module('flocateApp')
 
   	$scope.initMap = function() {
 
-	    // if (!$scope.mapLoaded)
-	    //     $scope.getLocation();
-	    // $scope.mapLoaded = true;
+  		// load the pins from parse
+
 	    $scope.newMarker = new google.maps.Marker({
 	        map : $scope.myMap,
 	        position : new google.maps.LatLng(22.32532675380104, 114.169360706689)
