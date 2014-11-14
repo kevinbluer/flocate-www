@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('UserCtrl', function ($scope) {
+  .controller('UserCtrl', function ($scope, $http) {
 
     $scope.mapOptions = {
       center: new google.maps.LatLng(22.32532675380104, 114.169360706689),
-      zoom: 5,
+      zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
@@ -29,6 +29,28 @@ angular.module('flocateApp')
   	$scope.initMap = function() {
 
   		// load the pins from parse
+  		$http.get('/api/locations').
+		  success(function(data, status, headers, config) {
+
+		  	var checkins = JSON.parse(data);
+
+		  	angular.forEach(checkins, function(value, key) {
+			  console.log();
+			  	$scope.newMarker = new google.maps.Marker({
+			        map : $scope.myMap,
+			        position : new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"])
+			    });
+
+			});
+
+		    // this callback will be called asynchronously
+		    // when the response is available
+		  }).
+		  error(function(data, status, headers, config) {
+		  	console.log(data);
+		    // called asynchronously if an error occurs
+		    // or server returns response with an error status.
+		  });
 
 	    $scope.newMarker = new google.maps.Marker({
 	        map : $scope.myMap,
