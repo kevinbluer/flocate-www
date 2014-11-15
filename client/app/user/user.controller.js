@@ -35,11 +35,22 @@ angular.module('flocateApp')
 		  	var checkins = JSON.parse(data);
 
 		  	angular.forEach(checkins, function(value, key) {
-			  console.log();
-			  	$scope.newMarker = new google.maps.Marker({
+			  	// console.log();
+			  	// $scope.newMarker = new google.maps.Marker({
+			   	//      map : $scope.myMap,
+			   	//      position : 
+			   	//  });
+
+			    var marker = new google.maps.Marker({
 			        map : $scope.myMap,
 			        position : new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"])
 			    });
+
+		    	google.maps.event.addListener(marker, 'click', function() {
+				    alert('yo');
+				});
+
+			    $scope.newMarker = marker;
 
 			});
 
@@ -59,10 +70,23 @@ angular.module('flocateApp')
 	};
 
     $scope.addMarker = function($event, $params) {
-	    $scope.newMarker = new google.maps.Marker({
+
+    	debugger;
+
+    	var marker = new google.maps.Marker({
 	        map : $scope.myMap,
 	        position : $params[0].latLng
 	    });
+
+    	google.maps.event.addListener(marker, 'click', function() {
+		    alert('yo');
+		});
+
+	    $scope.newMarker = marker;
+	};
+
+	$scope.markerClick = function($event, $params) {
+		alert("yo");
 	};
 
   });

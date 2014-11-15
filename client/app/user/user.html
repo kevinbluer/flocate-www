@@ -1,9 +1,12 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="col-md-12">
+<div class="col-md-10">
 	<section id="map">
 	  <div ui-map="myMap" ui-options="mapOptions" class="map-canvas" ui-event="{'map-tilesloaded': 'initMap()'}"></div>
 	  <!-- 'map-click': 'addMarker($event, $params)'} -->
 	  <div ui-map-marker="newMarker" ui-event="{'map-click': 'openMarkerInfo(newMarker)'}"></div>
 	</section>
+</div>
+<div class="col-md-2">
+ Pin Details
 </div>
