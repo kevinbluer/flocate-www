@@ -6,7 +6,8 @@ angular.module('flocateApp', [
   'ngSanitize',
   'ui.router',
   'ui.bootstrap',
-  'ui.map'
+  'ui.map',
+  'angularMoment'
 ])
 .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider

@@ -5,7 +5,7 @@ angular.module('flocateApp')
 
     $scope.mapOptions = {
       center: new google.maps.LatLng(22.32532675380104, 114.169360706689),
-      zoom: 10,
+      zoom: 11,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
@@ -35,11 +35,6 @@ angular.module('flocateApp')
 		  	var checkins = JSON.parse(data);
 
 		  	angular.forEach(checkins, function(value, key) {
-			  	// console.log();
-			  	// $scope.newMarker = new google.maps.Marker({
-			   	//      map : $scope.myMap,
-			   	//      position : 
-			   	//  });
 
 			    var marker = new google.maps.Marker({
 			        map : $scope.myMap,
@@ -47,7 +42,11 @@ angular.module('flocateApp')
 			    });
 
 		    	google.maps.event.addListener(marker, 'click', function() {
-				    alert('yo');
+				    
+				    $("#pinTitle").html(value["Doing"]);
+				    $("#pinDesc").html(value["Note"]);
+				    console.log(value);
+				    $scope.pinDate = value["RecordedAt"]["iso"];
 				});
 
 			    $scope.newMarker = marker;
