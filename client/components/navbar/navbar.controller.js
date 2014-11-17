@@ -17,7 +17,12 @@ angular.module('flocateApp')
      {
       'title': 'Users',
       'link': '/user/'
-     }];
+     },
+     {
+      'title': 'Add',
+      'link': '/add'
+     }
+     ];
 
     $scope.isCollapsed = true;
 
