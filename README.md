@@ -8,3 +8,8 @@ Wish You Were Here!
 - https://github.com/angular-ui/ui-map
 - http://angular-ui.github.io/bootstrap/
 - https://github.com/urish/angular-moment
+
+## Reference
+
+- yo angular-fullstack:endpoint message
+- yo angular-fullstack:route myroute

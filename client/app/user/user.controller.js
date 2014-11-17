@@ -11,21 +11,6 @@ angular.module('flocateApp')
 
     var infowindow;
 
-	
-
-    // var map = $scope.myMap;
-
-    // var map = new google.maps.Map(mapElement[0], myOptions);
-    // map.setOptions({styles: styles});
-
-    // var myIcon = new google.maps.MarkerImage("/assets/images/940-pin@2x.png", null, null, null, new google.maps.Size(20,40));
-
-    // var marker = new google.maps.Marker({
-    //     position: new google.maps.LatLng(22.32532675380104, 114.169360706689),
-    //     map: map,
-    //     icon: myIcon
-    // });
-
   	$scope.initMap = function() {
 
   		// load the pins from parse

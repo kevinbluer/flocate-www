@@ -1,5 +1,21 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="col-md-12">
-This is the add view.
+	<input ng-model="what" type="text" class="form-control" placeholder="What">
+	<br>
+	<input ng-model="where" type="text" class="form-control" placeholder="Where">
+
+	<br>
+	<div>
+		<div style="display:inline-block; min-height:290px;">
+	        <datepicker ng-model="dt" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
+	    </div>
+    </div>
+
+    <input ng-model="lat" type="text" class="form-control" placeholder="Lat">
+    <br>
+    <input ng-model="lng" type="text" class="form-control" placeholder="Lng">
+    <br>
+
+    <button ng-click="yo()" class="btn btn-default">Add Location</button>
 </div>

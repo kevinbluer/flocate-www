@@ -21,8 +21,7 @@ angular.module('flocateApp')
      {
       'title': 'Add',
       'link': '/add'
-     }
-     ];
+     }];
 
     $scope.isCollapsed = true;
 
