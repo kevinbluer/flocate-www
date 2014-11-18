@@ -18,7 +18,10 @@ exports.index = function(req, res) {
   name : 'Record Your Journey',
   info : 'Build process packs up your templates as a single JavaScript payload, minifies your scripts/css/images, and rewrites asset names for caching.'
   },{
-  name : 'Discover Inspiration Trips',
+  name : 'Discover Inspirational Trips',
+  info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
+  },{
+  name : 'Look Back Through History',
   info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
   }
   ]);
