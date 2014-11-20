@@ -15,5 +15,3 @@ angular.module('flocateApp', [
 
   $locationProvider.html5Mode(true);
 });
-
- // var myAppModule = angular.module('app.ui-map', ['ui.map']);  
