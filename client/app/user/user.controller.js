@@ -10,6 +10,8 @@ angular.module('flocateApp')
     };
 
     var infowindow;
+    var checkins;
+    var currentLocation = 0;
 
   	$scope.initMap = function() {
 
@@ -17,7 +19,10 @@ angular.module('flocateApp')
   		$http.get('/api/locations').
 		  success(function(data, status, headers, config) {
 
-		  	var checkins = JSON.parse(data);
+		  	checkins = JSON.parse(data);
+
+		  	// set the latest one
+
 
 		  	angular.forEach(checkins, function(value, key) {
 
@@ -25,6 +30,12 @@ angular.module('flocateApp')
 			        map : $scope.myMap,
 			        position : new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"])
 			    });
+
+			    if (currentLocation == 0) {
+			    	$("#pinTitle").html(value["Doing"])
+			    }
+
+			    currentLocation += 1;
 
 		    	google.maps.event.addListener(marker, 'click', function() {
 				    
@@ -63,14 +74,14 @@ angular.module('flocateApp')
 	    });
 
     	google.maps.event.addListener(marker, 'click', function() {
-		    alert('yo');
+		    // alert('yo');
 		});
 
 	    $scope.newMarker = marker;
 	};
 
 	$scope.markerClick = function($event, $params) {
-		alert("yo");
+		// alert("yo");
 	};
 
   });

@@ -18,6 +18,7 @@ exports.index = function(req, res) {
 	    var Checkin = Parse.Object.extend("Checkin");
 		var query = new Parse.Query(Checkin);
 		query.equalTo("User", user[0]);
+		query.descending("RecordedAt");
 		query.find({
 		 	success: function(results) {
 		  		res.json(JSON.stringify(results));
