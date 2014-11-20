@@ -22,9 +22,6 @@ angular.module('flocateApp')
 
 		  	checkins = JSON.parse(data);
 
-		  	// set the latest one
-
-
 		  	angular.forEach(checkins, function(value, key) {
 
 			    var marker = new google.maps.Marker({
