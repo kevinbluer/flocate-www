@@ -7,6 +7,10 @@
     margin-top: -20px;
 }
 
+.hero-unit > .container > span {
+    font-size: 3em;
+}
+
 #banner h1 {
     font-size: 60px;
     line-height: 1;

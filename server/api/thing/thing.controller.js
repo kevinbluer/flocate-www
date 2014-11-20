@@ -15,14 +15,14 @@ var _ = require('lodash');
 exports.index = function(req, res) {
   res.json([
   {
-  name : 'Record Your Journey',
-  info : 'Build process packs up your templates as a single JavaScript payload, minifies your scripts/css/images, and rewrites asset names for caching.'
+  name : 'Record and Plan Your Journeys',
+  info : ''
   },{
   name : 'Discover Inspirational Trips',
-  info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
+  info : ''
   },{
   name : 'Look Back Through History',
-  info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
+  info : ''
   }
   ]);
 };

@@ -5,10 +5,6 @@ angular.module('flocateApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
-    }, 
-    {
-      'title': 'Map',
-      'link': '/map'
     },
     {
       'title': 'Featured',
@@ -17,10 +13,6 @@ angular.module('flocateApp')
      {
       'title': 'Users',
       'link': '/user/'
-     },
-     {
-      'title': 'Add',
-      'link': '/add'
      }];
 
     $scope.isCollapsed = true;
