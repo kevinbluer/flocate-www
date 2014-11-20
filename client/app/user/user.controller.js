@@ -5,13 +5,14 @@ angular.module('flocateApp')
 
     $scope.mapOptions = {
       center: new google.maps.LatLng(22.32532675380104, 114.169360706689),
-      zoom: 11,
+      zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
     var infowindow;
     var checkins;
     var currentLocation = 0;
+    var position = 1;
 
   	$scope.initMap = function() {
 
@@ -32,7 +33,9 @@ angular.module('flocateApp')
 			    });
 
 			    if (currentLocation == 0) {
-			    	$("#pinTitle").html(value["Doing"])
+			    	$("#pinTitle").html(value["Doing"]);
+			    	$("#pinDesc").html(value["Note"]);
+			    	$scope.pinDate = value["RecordedAt"]["iso"];
 			    }
 
 			    currentLocation += 1;
@@ -41,7 +44,6 @@ angular.module('flocateApp')
 				    
 				    $("#pinTitle").html(value["Doing"]);
 				    $("#pinDesc").html(value["Note"]);
-				    console.log(value);
 				    $scope.pinDate = value["RecordedAt"]["iso"];
 				});
 
@@ -64,9 +66,24 @@ angular.module('flocateApp')
 	    });
 	};
 
-    $scope.addMarker = function($event, $params) {
+	$scope.previous = function() {
 
-    	debugger;
+		// temp position handling
+
+		$("#pinTitle").html(checkins[position]["Doing"]);
+		$("#pinDesc").html(checkins[position]["Note"]);
+		$scope.pinDate = checkins[position]["RecordedAt"]["iso"];
+
+		$scope.myMap.setCenter(new google.maps.LatLng(checkins[position]["Location"]["latitude"], checkins[position]["Location"]["longitude"]));
+
+		position += 1;
+	};
+
+	$scope.next = function() {
+		alert("next");
+	};
+
+    $scope.addMarker = function($event, $params) {
 
     	var marker = new google.maps.Marker({
 	        map : $scope.myMap,
