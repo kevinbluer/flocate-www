@@ -11,7 +11,7 @@ exports.index = function(req, res) {
 	Parse.User.logIn(req.body.username, req.body.password, {
 	  success: function(user) {
 	    
-	  	res.json(user);
+	  	res.send(user);
 
 	  },
 	  error: function(user, error) {
