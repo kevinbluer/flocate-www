@@ -14,4 +14,7 @@ angular.module('flocateApp', [
     .otherwise('/');
 
   $locationProvider.html5Mode(true);
+})
+.run(function($rootScope) {
+  // you can inject any instance here
 });
