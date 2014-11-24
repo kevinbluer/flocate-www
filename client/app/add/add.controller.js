@@ -20,7 +20,9 @@ angular.module('flocateApp')
 
 	$scope.add = function() {
 
-		$http.post('/api/checkin', {user: $scope.user, what: $scope.what}).
+		debugger;
+
+		$http.post('/api/checkin', {user: $scope.user, what: $scope.what, where: $scope.where, lat: $scope.lat, lng: $scope.lng, dt: $scope.dt}).
     		success(function(data, status, headers, config) {
 
     			// TODO redirect to place page

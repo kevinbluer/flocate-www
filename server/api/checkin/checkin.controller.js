@@ -18,12 +18,14 @@ exports.index = function(req, res) {
 		var relation = checkin.relation("User");
 		relation.add(user);
 
-		checkin.set("Note", "Taking Pictures");
-		checkin.set("Doing", "Angkor Wat");
+		// TODO - Do a lookup base on the Google Maps API
+
+		checkin.set("Note", req.body.what);
+		checkin.set("Doing", req.body.where);
 		checkin.set("City", "Angkor Wat");
 		checkin.set("Country", "Cambodia");
 		checkin.set("Address", "Angkor Wat, Cambodia");
-		checkin.set("Location", new Parse.GeoPoint(13.4125, 103.8667));
+		checkin.set("Location", new Parse.GeoPoint(parseFloat(req.body.lat), parseFloat(req.body.lng)));
 		checkin.set("Visbility", "Friends");
 		checkin.set("RecordedAt", new Date());
 
