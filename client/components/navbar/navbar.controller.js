@@ -22,6 +22,11 @@ angular.module('flocateApp')
         'link': '/add'
        }];
 
+       $scope.signin = {
+        'title': "Sign Out",
+        'link': '/signout'
+       };
+
     } else {
       
       $scope.menu = [{
@@ -36,6 +41,11 @@ angular.module('flocateApp')
         'title': 'Users',
         'link': '/user/'
        }];
+
+       $scope.signin = {
+        'title': "Sign In",
+        'link': '/signin'
+       };
 
     }
 
