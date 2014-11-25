@@ -18,7 +18,7 @@ exports.index = function(req, res) {
 		var relation = checkin.relation("User");
 		relation.add(user);
 
-		// TODO - Do a lookup base on the Google Maps API
+		// TODO - Lookup onGoogle Maps API
 
 		checkin.set("Note", req.body.what);
 		checkin.set("Doing", req.body.where);
