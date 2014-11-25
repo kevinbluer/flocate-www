@@ -27,7 +27,7 @@ exports.index = function(req, res) {
 		checkin.set("Address", "Angkor Wat, Cambodia");
 		checkin.set("Location", new Parse.GeoPoint(parseFloat(req.body.lat), parseFloat(req.body.lng)));
 		checkin.set("Visbility", "Friends");
-		checkin.set("RecordedAt", new Date());
+		checkin.set("RecordedAt", new Date(req.body.dt));
 
 		checkin.save(null, {
 		  success: function(checkin) {
