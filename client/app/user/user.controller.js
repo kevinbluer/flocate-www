@@ -1,7 +1,10 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('UserCtrl', function ($scope, $http) {
+  .controller('UserCtrl', function ($scope, $http, $stateParams) {
+
+  	console.log($stateParams);
+  	// TODO - if empty show a different template (otherwise pass the appropriate parameter up to the API)
 
     $scope.mapOptions = {
       center: new google.maps.LatLng(22.32532675380104, 114.169360706689),
