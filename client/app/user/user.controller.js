@@ -6,6 +6,8 @@ angular.module('flocateApp')
   	console.log($stateParams);
   	// TODO - if empty show a different template (otherwise pass the appropriate parameter up to the API)
 
+
+  	// TODO set the center to the last recorded spot?
     $scope.mapOptions = {
       center: new google.maps.LatLng(22.32532675380104, 114.169360706689),
       zoom: 15,

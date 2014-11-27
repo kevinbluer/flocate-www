@@ -3,6 +3,12 @@
 angular.module('flocateApp')
   .controller('AddCtrl', function ($scope, $location, $rootScope, $http) {
 
+    $scope.mapOptions = {
+      center: new google.maps.LatLng(22.32532675380104, 114.169360706689),
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
   	if (!$rootScope.user) {
   		$location.path('/signin');
   	}
@@ -18,9 +24,28 @@ angular.module('flocateApp')
 	    $scope.dt = new Date();
 	};
 
-	$scope.add = function() {
+    $scope.addMarker = function($event, $params) {
 
-		debugger;
+      // TODO - remove all the other markers
+
+      debugger;
+
+      $scope.lat = $params[0].latLng.k;
+      $scope.lng = $params[0].latLng.B;
+
+      var marker = new google.maps.Marker({
+          map : $scope.myMap,
+          position : $params[0].latLng
+      });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        // alert('yo');
+    });
+
+      $scope.newMarker = marker;
+  };
+
+	$scope.add = function() {
 
 		$http.post('/api/checkin', {user: $scope.user, what: $scope.what, where: $scope.where, lat: $scope.lat, lng: $scope.lng, dt: $scope.dt}).
     		success(function(data, status, headers, config) {

@@ -5,6 +5,8 @@
 		<div class="col-md-6">
 			<h2>Where?</h2>
 			<input ng-model="search" type="text" class="form-control" placeholder="Search">
+	  		<div ui-map="myMap" ui-options="mapOptions" class="map-canvas-add" ui-event="{'map-tilesloaded': 'initMap()', 'map-click': 'addMarker($event, $params)'}"></div>
+
 		</div>
 		<div class="col-md-6">
 			<h2>Add a Location</h2>
