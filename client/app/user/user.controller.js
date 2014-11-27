@@ -38,6 +38,7 @@ angular.module('flocateApp')
 			    	$("#pinTitle").html(value["Doing"]);
 			    	$("#pinDesc").html(value["Note"]);
 			    	$scope.pinDate = value["RecordedAt"]["iso"];
+			    	$scope.checkinId = value.objectId;
 			    	$scope.myMap.setCenter(new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"]));
 			    }
 
@@ -47,6 +48,7 @@ angular.module('flocateApp')
 				    
 				    $("#pinTitle").html(value["Doing"]);
 				    $("#pinDesc").html(value["Note"]);
+				    $scope.checkinId = value.objectId;
 				    $scope.pinDate = value["RecordedAt"]["iso"];
 				});
 
