@@ -10,6 +10,7 @@ module.exports = function(app) {
 
   // Insert routes below
   app.use('/api/checkin', require('./api/checkin'));
+  app.use('/api/checkin/checkinById', require('./api/checkin'));
   app.use('/api/auth', require('./api/auth'));
   app.use('/api/locations', require('./api/locations'));
   app.use('/api/things', require('./api/thing'));

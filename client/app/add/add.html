@@ -5,7 +5,7 @@
 		<div class="col-md-6">
 			<h2>Where?</h2>
 			<input ng-model="search" type="text" class="form-control" placeholder="Search">
-	  		<div ui-map="myMap" ui-options="mapOptions" class="map-canvas-add" ui-event="{'map-tilesloaded': 'initMap()', 'map-click': 'addMarker($event, $params)'}"></div>
+	  		<div ui-map="myMap" ui-options="mapOptions" class="map-canvas-add" ui-event="{'map-click': 'addMarker($event, $params)'}"></div>
 
 		</div>
 		<div class="col-md-6">
@@ -25,6 +25,8 @@
 		    <br>
 		    <input ng-model="lng" type="text" class="form-control" placeholder="Lng">
 		    <br>
+
+		    <!-- <ion-google-place placeholder="Enter an address, Apt# and ZIP" ng-model="location" /> -->
 
 		    <button ng-click="add()" class="btn btn-default">Add Location</button>
 		</div>

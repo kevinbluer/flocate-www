@@ -2,11 +2,12 @@
 
 var _ = require('lodash');
 
-// Get list of checkins
-exports.index = function(req, res) {
+var Parse = require('parse').Parse;
+Parse.initialize("VVbJ2YjOdDJrY7sZw8fF4R1v2Wolgf3toi4o5SW0", "4zEOZdifrLJxr2exozJMGsE8SB7zmnienaMMsjTF");
 
-	var Parse = require('parse').Parse;
-	Parse.initialize("VVbJ2YjOdDJrY7sZw8fF4R1v2Wolgf3toi4o5SW0", "4zEOZdifrLJxr2exozJMGsE8SB7zmnienaMMsjTF");
+// Get list of checkins for a given user
+
+exports.index = function(req, res) {
 
 	var userQuery = new Parse.Query(Parse.User);
 	var user = userQuery.get(req.body.user.objectId)
@@ -18,7 +19,7 @@ exports.index = function(req, res) {
 		var relation = checkin.relation("User");
 		relation.add(user);
 
-		// TODO - Lookup onGoogle Maps API
+		// TODO - Lookup onGoogle Maps API (note that this should be passed via the front-end)
 
 		checkin.set("Note", req.body.what);
 		checkin.set("Doing", req.body.where);
@@ -46,4 +47,22 @@ exports.index = function(req, res) {
 		});
 
 	});
+};
+
+// Get a single checkin by checkin Id
+
+exports.checkinById = function(req, res) {
+
+	// TODO add auth
+
+	var Checkin = Parse.Object.extend("Checkin");
+	var checkinQuery = new Parse.Query(Checkin);
+
+	var checkin = checkinQuery.get(req.query.checkinId)
+	.then(function(checkin) {
+
+		res.json(checkin);
+
+	});
+
 };
