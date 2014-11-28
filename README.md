@@ -13,3 +13,11 @@ Wish You Were Here!
 
 - yo angular-fullstack:endpoint message
 - yo angular-fullstack:route myroute
+
+## Endpoints
+
+Note that all of these are pending some refactoring.
+
+- /api/checkin POST
+- /api/checkin/checkinById GET
+- /api/locations GET
