@@ -6,6 +6,12 @@
 			<h2>Dashboard</h2>
 			<p>{{ countries }}</p>
 			<button class="btn btn-default">View List</button>
+
+			<div id="container" style="position: relative; width: 500px; height: 300px;"></div>
+			<script>
+			    var map = new Datamap({element: document.getElementById('container')});
+			</script>
+			
 			<hr>
 			<h2>Trips</h2>
 			<p>You've been on x trips (including the Mongol Rally, Okinawa Drive, Hawaii Exploration, Everest Base Camp, Trek to Machu Picchu). You've starred 26 other trips / expeditions.</p>
