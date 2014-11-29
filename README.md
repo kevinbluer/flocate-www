@@ -21,3 +21,7 @@ Note that all of these are pending some refactoring.
 - /api/checkin POST
 - /api/checkin/checkinById GET
 - /api/locations GET
+
+## Country Codes
+
+https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3

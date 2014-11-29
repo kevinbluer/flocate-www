@@ -2,11 +2,35 @@
 
 angular.module('flocateApp')
   .controller('DashboardCtrl', function ($scope, $location, $rootScope) {
-    
+
   	if (!$rootScope.user) {
   		$location.path('/signin');
   	} else {
-  		console.log($rootScope.user);
+
+  		var been = {
+            fillKey: 'MEDIUM',
+            numberOfThings: 10381
+        };
+
+	  	var places = {};
+
+	  	angular.forEach($rootScope.user.CountryListCode, function(value, key) {
+
+	  		places[value] = been;
+
+	  	});
+
+		var map = new Datamap({
+			element: document.getElementById('container'),
+			fills: {
+	            HIGH: '#afafaf',
+	            LOW: '#123456',
+	            MEDIUM: 'blue',
+	            UNKNOWN: 'rgb(0,0,0)',
+	            defaultFill: 'green'
+	        },
+			data: places
+		});
 
   		$scope.countries = "You've been to " + $rootScope.user.CountryList.length + " countries. Nice work!";
 
