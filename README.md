@@ -4,10 +4,14 @@ Wish You Were Here!
 
 ## Libraries
 
+- https://github.com/yeoman/yeoman
+- https://github.com/angular/angular.js
 - https://github.com/DaftMonk/generator-angular-fullstack
 - https://github.com/angular-ui/ui-map
 - http://angular-ui.github.io/bootstrap/
 - https://github.com/urish/angular-moment
+- https://github.com/markmarkoh/datamaps
+- https://github.com/mbostock/d3
 
 ## Reference
 
