@@ -5,13 +5,16 @@
 		<div class="row">
 			<h2>Dashboard</h2>
 			<p>{{ countries }}</p>
-			<button class="btn btn-default">View List</button>
 
 			<div id="container" style="position: relative; width: 500px; height: 300px;"></div>
 
+			<span ng-repeat="country in countryList">
+				{{ country }} + 
+			</span>
+
 			<hr>
 			<h2>Trips</h2>
-			<p>You've been on x trips (including the Mongol Rally, Okinawa Drive, Hawaii Exploration, Everest Base Camp, Trek to Machu Picchu). You've starred 26 other trips / expeditions.</p>
+			<p>You've been on x trips (including the Hong Kong Living Highlights, Mongol Rally, Okinawa Drive, Hawaii Exploration, Everest Base Camp, Trek to Machu Picchu). You've starred 26 other trips / expeditions.</p>
 			<button class="btn btn-default">Add Trip</button>
 			<a href="/add" class="btn btn-default">Add Location</a>
 			<hr>

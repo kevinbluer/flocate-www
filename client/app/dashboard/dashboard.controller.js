@@ -34,6 +34,8 @@ angular.module('flocateApp')
 
   		$scope.countries = "You've been to " + $rootScope.user.CountryList.length + " countries. Nice work!";
 
+  		$scope.countryList = $rootScope.user.CountryList;
+
   		// TODO On the dashboard list the countries with hyperlinks to their center (and enough visibility to see the entire country)
   	}
 
