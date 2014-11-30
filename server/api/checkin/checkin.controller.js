@@ -9,6 +9,9 @@ Parse.initialize("VVbJ2YjOdDJrY7sZw8fF4R1v2Wolgf3toi4o5SW0", "4zEOZdifrLJxr2exoz
 
 exports.index = function(req, res) {
 
+	// TODO store the current Parse user in session
+	// TODO this is very likely redundant given we might as well add it for the current user
+
 	var userQuery = new Parse.Query(Parse.User);
 	var user = userQuery.get(req.body.user.objectId)
 	.then(function(user) {

@@ -18,8 +18,12 @@ angular.module('flocateApp')
         'link': '/user/kevinbluer'
        },
        {
-        'title': '+',
+        'title': 'Add Location',
         'link': '/add'
+       },
+       {
+        'title': 'Add Trip',
+        'link': '/kevinbluer/trip/add'
        }];
 
        $scope.signin = {

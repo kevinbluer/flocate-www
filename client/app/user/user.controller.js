@@ -3,9 +3,7 @@
 angular.module('flocateApp')
   .controller('UserCtrl', function ($scope, $http, $stateParams) {
 
-  	console.log($stateParams);
   	// TODO - if empty show a different template (otherwise pass the appropriate parameter up to the API)
-
 
   	// TODO set the center to the last recorded spot?
     $scope.mapOptions = {

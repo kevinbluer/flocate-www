@@ -26,6 +26,7 @@ Note that all of these are pending some refactoring.
 - /api/checkin/checkinById GET
 - /api/locations GET
 
-## Country Codes
+## Country Code Resources
 
-https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
+- https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
+- https://gist.github.com/vxnick/380904
