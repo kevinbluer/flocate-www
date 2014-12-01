@@ -8,23 +8,21 @@
 
 			<div id="container" style="position: relative; width: 500px; height: 300px;"></div>
 
-<!-- 			<span ng-repeat="country in countryList">
-				{{ country }} + 
-			</span> -->
-
 			<span ng-repeat="country in countryList">{{ country }}{{$last ? '' : ' + '}}</span>
 
 			<hr>
 			<h2>Trips</h2>
-			<p>You've been on x trips (including the Hong Kong Living Highlights, Mongol Rally, Okinawa Drive, Hawaii Exploration, Everest Base Camp, Trek to Machu Picchu). You've starred 26 other trips / expeditions.</p>
+			<p>You've been on {{ trips.length }} trips <span ng-repeat="trip in trips"><a href="/user/kevinbluer/trip/{{ trip.objectId }}">{{ trip.Name }}</a>{{$last ? '' : ', '}}</span>. You've starred 26 other trips / expeditions.</p>
 			<a href="/kevinbluer/trip/add" class="btn btn-default">Add Trip</a>
 			<a href="/add" class="btn btn-default">Add Location</a>
 			<hr>
 			<h2>Explorers</h2>
 			<p>You've added 10 explorers (and are following 25).</p>
 			<hr>
-			<h2>Stats</h2>
+			<h2>Travel Statistics</h2>
 			<p>First Pin | Most Recent Pin | Starred Trips | Popular Places</p>
 		</div>
 	</div>
 </div>
+
+<div ng-include="'components/footer/footer.html'"></div>

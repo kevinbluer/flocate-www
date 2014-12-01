@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('DashboardCtrl', function ($scope, $location, $rootScope) {
+  .controller('DashboardCtrl', function ($scope, $location, $rootScope, $http) {
 
   	if (!$rootScope.user) {
   		$location.path('/signin');
@@ -35,8 +35,20 @@ angular.module('flocateApp')
   		$scope.countries = "You've been to " + $rootScope.user.CountryList.length + " countries. Nice work!";
 
   		$scope.countryList = $rootScope.user.CountryList;
+  		
+  		$http.get('/api/trip/get/kevinbluer', {}).
+    		success(function(data, status, headers, config) {
 
-  		// TODO On the dashboard list the countries with hyperlinks to their center (and enough visibility to see the entire country)
+    			// TODO - relocation to trip page
+
+    			$scope.trips = data;
+
+    		}).
+    		error(function(data, status, headers, config) {
+
+    			// TODO handle the error scenarios
+
+    		});
   	}
 
   });
