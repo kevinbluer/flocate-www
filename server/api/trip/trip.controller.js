@@ -26,6 +26,7 @@ exports.add = function(req, res) {
 		// TODO - Lookup onGoogle Maps API (note that this should be passed via the front-end)
 
 		trip.set("Name", req.body.name);
+		trip.set("Description", req.body.description);
 
 		trip.save(null, {
 		  success: function(checkin) {
