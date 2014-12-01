@@ -5,7 +5,7 @@ var controller = require('./trip.controller');
 
 var router = express.Router();
 
-router.get('/', controller.index);
+router.get('/get/:username', controller.getAllByUserId);
 router.post('/add', controller.add);
 
 module.exports = router;

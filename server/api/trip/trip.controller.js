@@ -6,8 +6,23 @@ var Parse = require('parse').Parse;
 Parse.initialize("VVbJ2YjOdDJrY7sZw8fF4R1v2Wolgf3toi4o5SW0", "4zEOZdifrLJxr2exozJMGsE8SB7zmnienaMMsjTF");
 
 // Get list of trips
-exports.index = function(req, res) {
-  res.json([]);
+exports.getAllByUserId = function(req, res) {
+
+	var Trip = Parse.Object.extend("Trip");
+	var query = new Parse.Query(Trip);
+
+	query.equalTo("User", Parse.User.current());
+
+	// NOTE This is relying on Parse.User and therefore the user being logged in...
+
+	query.find({
+	  success: function(results) {
+	    res.json(results);
+	  },
+	  error: function(error) {
+	    // TODO handle the error
+	  }
+	});
 };
 
 exports.add = function(req, res) {
