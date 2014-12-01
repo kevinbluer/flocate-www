@@ -8,9 +8,11 @@
 
 			<div id="container" style="position: relative; width: 500px; height: 300px;"></div>
 
-			<span ng-repeat="country in countryList">
+<!-- 			<span ng-repeat="country in countryList">
 				{{ country }} + 
-			</span>
+			</span> -->
+
+			<span ng-repeat="country in countryList">{{ country }}{{$last ? '' : ' + '}}</span>
 
 			<hr>
 			<h2>Trips</h2>
