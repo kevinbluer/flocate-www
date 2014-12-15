@@ -1,3 +1,12 @@
+/**
+ * Using Rails-like standard naming convention for endpoints.
+ * GET     /trip              ->  index
+ * POST    /trip              ->  create
+ * GET     /trip/:id          ->  show
+ * PUT     /trip/:id          ->  update
+ * DELETE  /trip/:id          ->  destroy
+ */
+
 'use strict';
 
 var _ = require('lodash');
@@ -22,6 +31,19 @@ exports.getAllByUserId = function(req, res) {
 	  error: function(error) {
 	    // TODO handle the error
 	  }
+	});
+};
+
+exports.getTripByTripId = function(req, res) {
+
+	var Trip = Parse.Object.extend("Trip");
+	var query = new Parse.Query(Trip);
+
+	var trip = query.get(req.params.tripId)
+	.then(function(trip) {
+
+		res.json(trip);
+
 	});
 };
 

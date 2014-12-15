@@ -13,8 +13,6 @@ angular.module('flocateApp')
 	$http.get('/api/checkin/checkinById', {params: {checkinId: $stateParams.checkinId}}).
 	success(function(data, status, headers, config) {
 
-		console.log(data);
-
 		$scope.what = data.Note;
 		$scope.where = data.Doing;
 
