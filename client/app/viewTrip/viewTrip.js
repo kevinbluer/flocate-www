@@ -4,7 +4,7 @@ angular.module('flocateApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('viewTrip', {
-        url: '/viewTrip',
+        url: '/user/:username/trip/:tripId',
         templateUrl: 'app/viewTrip/viewTrip.html',
         controller: 'ViewtripCtrl'
       });

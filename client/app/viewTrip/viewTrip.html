@@ -1,3 +1,17 @@
-<div class="col-md-12">
-This is the viewTrip view.
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<h2>{ Trip Name }</h2>
+			<p>{{ what }}</p>
+  			<div ui-map="myMap" ui-options="mapOptions" class="map-view-canvas"></div>
+		</div>
+		<div class="col-md-4">
+			<h2>Trip Details</h2>
+			<p>lorem</p>
+		</div>
+	</div>
 </div>
+
+<div ng-include="'components/footer/footer.html'"></div>
