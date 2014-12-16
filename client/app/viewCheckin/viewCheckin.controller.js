@@ -26,7 +26,9 @@ angular.module('flocateApp')
 	});
 
 
-
+	$scope.toggleDD = function() {
+		$scope.status.isopen = !$scope.status.isopen;
+	};
 	 
 
 	// Ability to add (note that this should only be set if logged in)

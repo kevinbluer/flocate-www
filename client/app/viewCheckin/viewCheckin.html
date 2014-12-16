@@ -11,12 +11,12 @@
   				
   				<!-- Single button -->
 			    <div class="btn-group" dropdown is-open="status.isopen">
-			      <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle>
-			        Loading... <span class="caret"></span>
-			      </button>
+			      <a type="button" ng-click="toggleDD" class="btn btn-primary dropdown-toggle">
+			        Select Trip <span class="caret"></span>
+			      </a>
 			      <ul class="dropdown-menu" role="menu">
 			        <li ng-repeat="choice in trips">
-			          <a href>{{choice.Name}}</a>
+			          <a href="#">{{choice.Name}}</a>
 			        </li>
 			      </ul>
 			    </div>
