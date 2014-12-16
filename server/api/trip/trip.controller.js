@@ -47,6 +47,48 @@ exports.getTripByTripId = function(req, res) {
 	});
 };
 
+exports.addCheckinToTrip = function(req, res) {
+
+	console.log(req.body.checkinId);
+	console.log(req.body.tripId);
+
+	var Trip = Parse.Object.extend("Trip");
+	var query = new Parse.Query(Trip);
+
+	var trip = query.get(req.body.tripId)
+	.then(function(trip) {
+
+		var Checkin = Parse.Object.extend("Checkin");
+		var query = new Parse.Query(Checkin);
+
+		var checkin = query.get(req.body.checkinId)
+			.then(function(checkin) {
+
+				var relation = checkin.relation("Trip");
+				relation.add(trip);
+
+				checkin.save(null, {
+				  success: function(checkin) {
+				    // Execute any logic that should take place after the object is saved.
+				    console.log('redirect or summit');
+
+				    // res.json([]);
+				  },
+				  error: function(gameScore, error) {
+				    // Execute any logic that should take place if the save fails.
+				    // error is a Parse.Error with an error code and message.
+				    console.log('Failed to create new object, with error code: ' + error.message);
+
+				    // res.json([]);
+				  }
+				});
+			});
+	});
+
+	
+
+};
+
 exports.add = function(req, res) {
 
 	var userQuery = new Parse.Query(Parse.User);

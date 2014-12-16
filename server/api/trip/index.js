@@ -8,5 +8,6 @@ var router = express.Router();
 router.get('/:tripId', controller.getTripByTripId);
 router.get('/get/:username', controller.getAllByUserId);
 router.post('/add', controller.add);
+router.post('/addCheckinToTrip', controller.addCheckinToTrip);
 
 module.exports = router;

@@ -3,6 +3,8 @@
 angular.module('flocateApp')
   .controller('ViewcheckinCtrl', function ($scope, $http, $stateParams, $log) {
 
+  	$scope.checkin = {};
+
   	var mapOptions = $scope.mapOptions;
 
   	$scope.mapOptions = {
@@ -12,6 +14,8 @@ angular.module('flocateApp')
 
 	$http.get('/api/checkin/checkinById', {params: {checkinId: $stateParams.checkinId}}).
 	success(function(data, status, headers, config) {
+
+		$scope.checkin = data;
 
 		$scope.what = data.Note;
 		$scope.where = data.Doing;
@@ -30,29 +34,46 @@ angular.module('flocateApp')
 		$scope.status.isopen = !$scope.status.isopen;
 	};
 
-	$scope.setChoiceIndex = function(index) {
-		alert(index);
+	$scope.setChoiceIndex = function(tripId) {
+	
+
+		// add the current checkin to the trip (tripId)
+
+		$http.post('/api/trip/addCheckinToTrip', {tripId: tripId, checkinId: $scope.checkin.objectId}).
+			success(function(data, status, headers, config) {
+
+				// TODO - relocation to trip page
+
+				
+
+			}).
+			error(function(data, status, headers, config) {
+
+				// TODO handle the error scenarios
+
+			});
+
 	};
 	 
 
 	// Ability to add (note that this should only be set if logged in)
 
 	$http.get('/api/trip/get/kevinbluer', {}).
-    		success(function(data, status, headers, config) {
+		success(function(data, status, headers, config) {
 
-    			// TODO - relocation to trip page
+			// TODO - relocation to trip page
 
-    			$scope.status = {
-				    isopen: true
-				  };
+			$scope.status = {
+			    isopen: true
+			  };
 
-    			$scope.trips = data;
+			$scope.trips = data;
 
-    		}).
-    		error(function(data, status, headers, config) {
+		}).
+		error(function(data, status, headers, config) {
 
-    			// TODO handle the error scenarios
+			// TODO handle the error scenarios
 
-    		});
+		});
 
   });
