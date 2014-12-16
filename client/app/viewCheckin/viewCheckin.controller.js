@@ -29,6 +29,10 @@ angular.module('flocateApp')
 	$scope.toggleDD = function() {
 		$scope.status.isopen = !$scope.status.isopen;
 	};
+
+	$scope.setChoiceIndex = function(index) {
+		alert(index);
+	};
 	 
 
 	// Ability to add (note that this should only be set if logged in)
