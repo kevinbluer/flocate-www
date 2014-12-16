@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('ViewcheckinCtrl', function ($scope, $http, $stateParams) {
+  .controller('ViewcheckinCtrl', function ($scope, $http, $stateParams, $log) {
 
   	var mapOptions = $scope.mapOptions;
 
@@ -24,4 +24,29 @@ angular.module('flocateApp')
 		// TODO handle the error scenarios
 
 	});
+
+
+
+	 
+
+	// Ability to add (note that this should only be set if logged in)
+
+	$http.get('/api/trip/get/kevinbluer', {}).
+    		success(function(data, status, headers, config) {
+
+    			// TODO - relocation to trip page
+
+    			$scope.status = {
+				    isopen: true
+				  };
+
+    			$scope.trips = data;
+
+    		}).
+    		error(function(data, status, headers, config) {
+
+    			// TODO handle the error scenarios
+
+    		});
+
   });
