@@ -42,8 +42,20 @@ exports.getTripByTripId = function(req, res) {
 	var trip = query.get(req.params.tripId)
 	.then(function(trip) {
 
+		// *** move this shortly
 		res.json(trip);
 
+		// var Checkin = Parse.Object.extend("Checkin");
+		// var relation = pizza.relation('toppings');
+
+		// var checkin = query.get(trip.Checkin)
+		// .then(function(checkin) {
+
+		// 	trip.checkin = "x";
+
+			
+
+		// });
 	});
 };
 
@@ -69,8 +81,24 @@ exports.addCheckinToTrip = function(req, res) {
 
 				checkin.save(null, {
 				  success: function(checkin) {
-				    // Execute any logic that should take place after the object is saved.
-				    console.log('redirect or summit');
+
+				    var relationTrip = trip.relation("Checkin");
+					relationTrip.add(checkin);
+
+					trip.save(null, {
+					  success: function(checkin) {
+					    // Execute any logic that should take place after the object is saved.
+					    console.log('redirect or summit');
+
+					  },
+					  error: function(gameScore, error) {
+					    // Execute any logic that should take place if the save fails.
+					    // error is a Parse.Error with an error code and message.
+					    console.log('Failed to create new object, with error code: ' + error.message);
+
+					    // res.json([]);
+					  }
+					});
 
 				    // res.json([]);
 				  },

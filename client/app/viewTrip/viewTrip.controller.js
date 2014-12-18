@@ -6,6 +6,8 @@ angular.module('flocateApp')
   	$http.get('/api/trip/' + $stateParams.tripId).
 	success(function(data, status, headers, config) {
 
+		console.log(data);
+
 		$scope.name = data.Name;
 		$scope.description = data.Description;
 
