@@ -52,6 +52,28 @@ exports.index = function(req, res) {
 	});
 };
 
+exports.allCheckins = function(req, res) {
+
+	var Checkin = Parse.Object.extend("Checkin");
+	var query = new Parse.Query(Checkin);
+
+	query.equalTo("User", Parse.User.current());
+	query.descending("RecordedAt");
+	query.limit(10);
+
+	// NOTE This is relying on Parse.User and therefore the user being logged in...
+
+	query.find({
+	  success: function(results) {
+	    res.json(results);
+	  },
+	  error: function(error) {
+	    console.log(error);
+	  }
+	});
+
+}
+
 // Get a single checkin by checkin Id
 
 exports.checkinById = function(req, res) {

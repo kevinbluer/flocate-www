@@ -24,7 +24,11 @@
 		</div>
 		<div class="col-md-4">
 			<h2>Recents</h2>
-			
+			<div ng-repeat="checkin in checkins">
+				<div><strong><a href="/user/kevinbluer/{{ checkin.objectId }}">{{ checkin.Doing }}</a></strong></div>
+				<div>{{ checkin.Note }}</div>
+				<hr>
+			</div>
 		</div>
 	</div>
 </div>

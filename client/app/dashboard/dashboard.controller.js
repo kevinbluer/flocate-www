@@ -36,12 +36,12 @@ angular.module('flocateApp')
 
   		$scope.countryList = $rootScope.user.CountryList;
   		
-  		$http.get('/api/trip/get/kevinbluer', {}).
+  		$http.get('/api/checkin/allCheckins', {}).
     		success(function(data, status, headers, config) {
 
     			// TODO - relocation to trip page
 
-    			$scope.trips = data;
+    			$scope.checkins = data;
 
     		}).
     		error(function(data, status, headers, config) {
@@ -49,6 +49,23 @@ angular.module('flocateApp')
     			// TODO handle the error scenarios
 
     		});
+
+        $http.get('/api/trip/get/kevinbluer', {}).
+        success(function(data, status, headers, config) {
+
+          // TODO - relocation to trip page
+
+          $scope.trips = data;
+
+        }).
+        error(function(data, status, headers, config) {
+
+          // TODO handle the error scenarios
+
+        });
+
+
+
   	}
 
   });
