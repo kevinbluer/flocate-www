@@ -12,6 +12,8 @@ exports.index = function(req, res) {
 	// TODO store the current Parse user in session
 	// TODO this is very likely redundant given we might as well add it for the current user
 
+	console.log("yo");
+
 	var userQuery = new Parse.Query(Parse.User);
 	var user = userQuery.get(req.body.user.objectId)
 	.then(function(user) {
