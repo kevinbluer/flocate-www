@@ -8,8 +8,10 @@ angular.module('flocateApp')
 
 		console.log(data);
 
-		$scope.name = data.Name;
-		$scope.description = data.Description;
+		$scope.name = data[0].Name;
+		$scope.description = data[0].Description;
+
+		$scope.checkins = data[1];
 
 	}).
 	error(function(data, status, headers, config) {

@@ -38,24 +38,23 @@ exports.getTripByTripId = function(req, res) {
 
 	var Trip = Parse.Object.extend("Trip");
 	var query = new Parse.Query(Trip);
+	query.get(req.params.tripId, function(trip) {
 
-	var trip = query.get(req.params.tripId)
-	.then(function(trip) {
+	    var relation = trip.relation("Checkin");
+	    var query = relation.query();
+	    query.find({
+	       success : function(checkins) {
 
-		// *** move this shortly
-		res.json(trip);
+		       	var fullTrip = [trip];
+		       	fullTrip.push(checkins);
 
-		// var Checkin = Parse.Object.extend("Checkin");
-		// var relation = pizza.relation('toppings');
+		       	res.json(fullTrip);
 
-		// var checkin = query.get(trip.Checkin)
-		// .then(function(checkin) {
-
-		// 	trip.checkin = "x";
-
-			
-
-		// });
+	       },
+	       error : function(error) {
+	          alert("Error: " + error.code + " " + error.message);
+	       }
+	    });
 	});
 };
 
