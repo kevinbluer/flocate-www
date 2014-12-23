@@ -8,7 +8,11 @@
 		</div>
 		<div class="col-md-4">
 			<h2>Places</h2>
-			<p ng-repeat="checkin in checkins">{{ checkin.Doing }}</p>
+			<div ng-repeat="checkin in checkins">
+				<a href="/user/kevinbluer/{{ checkin.objectId }}"><h5>{{ checkin.Doing }}</h5></a>
+				<p>{{ checkin.Note }}</p>
+				<hr>
+			</div>
 		</div>
 	</div>
 </div>
