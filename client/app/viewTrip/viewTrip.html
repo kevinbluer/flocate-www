@@ -5,6 +5,9 @@
 		<div class="col-md-8">
 			<h2>{{ name }}</h2>
 			<p>{{ description }}</p>
+			<section id="map">
+	  			<div ui-map="myMap" ui-options="mapOptions" class="map-canvas" ui-event="{'map-tilesloaded': 'initMap()'}"></div>
+	  		</section>
 		</div>
 		<div class="col-md-4">
 			<h2>Places</h2>
