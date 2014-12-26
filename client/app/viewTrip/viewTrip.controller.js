@@ -23,11 +23,7 @@ angular.module('flocateApp')
 			$scope.description = data[0].Description;
 			$scope.checkins = data[1];
 
-			// console.log(data[1]);
-
-			// return;
-
-		 //  	checkins = JSON.parse($scope.checkins);
+		 	var bounds = new google.maps.LatLngBounds();
 
 		  	angular.forEach($scope.checkins, function(value, key) {
 
@@ -36,27 +32,35 @@ angular.module('flocateApp')
 			        position : new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"])
 			    });
 
-			    if (currentLocation == 0) {
-			    	$("#pinTitle").html(value["Doing"]);
-			    	$("#pinDesc").html(value["Note"]);
-			    	$scope.pinDate = value["RecordedAt"]["iso"];
-			    	$scope.checkinId = value.objectId;
-			    	$scope.myMap.setCenter(new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"]));
-			    }
+			    // debugger;
 
-			    currentLocation += 1;
+			    // bounds.extend(marker);
 
-		    	google.maps.event.addListener(marker, 'click', function() {
+			    // if (currentLocation == 0) {
+			    // 	$("#pinTitle").html(value["Doing"]);
+			    // 	$("#pinDesc").html(value["Note"]);
+			    // 	$scope.pinDate = value["RecordedAt"]["iso"];
+			    // 	$scope.checkinId = value.objectId;
+			    // 	$scope.myMap.setCenter(new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"]));
+			    // }
+
+			    // currentLocation += 1;
+
+		  //   	google.maps.event.addListener(marker, 'click', function() {
 				    
-				    $("#pinTitle").html(value["Doing"]);
-				    $("#pinDesc").html(value["Note"]);
-				    $scope.checkinId = value.objectId;
-				    $scope.pinDate = value["RecordedAt"]["iso"];
-				});
+				//     $("#pinTitle").html(value["Doing"]);
+				//     $("#pinDesc").html(value["Note"]);
+				//     $scope.checkinId = value.objectId;
+				//     $scope.pinDate = value["RecordedAt"]["iso"];
+				// });
 
-			    $scope.newMarker = marker;
+			    // $scope.newMarker = marker;
 
 			});
+
+		  	// debugger;
+
+			// $scope.myMap.fitBounds(bounds);
 
 
 		  }).
