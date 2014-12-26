@@ -24,17 +24,30 @@ angular.module('flocateApp')
 			$scope.checkins = data[1];
 
 		 	var bounds = new google.maps.LatLngBounds();
+		 	var placeArray = [];
 
 		 	for (var x = 0; x < $scope.checkins.length; x++ ) {
 
+		 		var latLng = new google.maps.LatLng($scope.checkins[x]["Location"]["latitude"], $scope.checkins[x]["Location"]["longitude"]);
+
 		 		var marker = new google.maps.Marker({
 			        map : $scope.myMap,
-			        position : new google.maps.LatLng($scope.checkins[x]["Location"]["latitude"], $scope.checkins[x]["Location"]["longitude"])
+			        position : latLng
 			    });
 
+
+		 		placeArray.push(latLng);
 			    bounds.extend(marker.getPosition());
 
 		 	}
+
+		 	var line = new google.maps.Polyline({
+			    path: placeArray,
+			    strokeColor: "#FF0000",
+			    strokeOpacity: 1.0,
+			    strokeWeight: 2,
+			    map: $scope.myMap
+			});
 
 		 	$scope.myMap.fitBounds(bounds);
 

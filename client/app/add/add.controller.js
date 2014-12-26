@@ -5,7 +5,7 @@ angular.module('flocateApp')
 
     $scope.mapOptions = {
       center: new google.maps.LatLng(22.32532675380104, 114.169360706689),
-      zoom: 15,
+      zoom: 3,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
@@ -30,8 +30,8 @@ angular.module('flocateApp')
 
       debugger;
 
-      $scope.lat = $params[0].latLng.k;
-      $scope.lng = $params[0].latLng.B;
+      $scope.lat = $params[0].latLng.lat();
+      $scope.lng = $params[0].latLng.lng();
 
       var marker = new google.maps.Marker({
           map : $scope.myMap,
