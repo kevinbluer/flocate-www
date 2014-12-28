@@ -21,36 +21,43 @@ angular.module('flocateApp')
   	$scope.dt = new Date();
 
     $scope.today = function() {
-	    $scope.dt = new Date();
-	};
+	     $scope.dt = new Date();
+	  };
+
+    var currentMarker;
 
     $scope.addMarker = function($event, $params) {
 
-      // TODO - remove all the other markers
+        // remove previous marker
+        if (currentMarker) {
+          currentMarker.setMap(null);
+        }
 
-      debugger;
+        $scope.lat = $params[0].latLng.lat();
+        $scope.lng = $params[0].latLng.lng();
 
-      $scope.lat = $params[0].latLng.lat();
-      $scope.lng = $params[0].latLng.lng();
+        var marker = new google.maps.Marker({
+            position : $params[0].latLng
+        });
 
-      var marker = new google.maps.Marker({
-          map : $scope.myMap,
-          position : $params[0].latLng
-      });
+        marker.setMap($scope.myMap);
 
-      google.maps.event.addListener(marker, 'click', function() {
-        // alert('yo');
-    });
+        currentMarker = marker;
 
-      $scope.newMarker = marker;
-  };
+        google.maps.event.addListener(marker, 'click', function() {
+            // alert('yo');
+        });
 
-	$scope.add = function() {
+        // $scope.newMarker = marker;
+    };
 
-		$http.post('/api/checkin', {user: $scope.user, what: $scope.what, where: $scope.where, lat: $scope.lat, lng: $scope.lng, dt: $scope.dt}).
+	  $scope.add = function() {
+
+		  $http.post('/api/checkin', {user: $scope.user, what: $scope.what, where: $scope.where, lat: $scope.lat, lng: $scope.lng, dt: $scope.dt}).
     		success(function(data, status, headers, config) {
 
     			// TODO redirect to place page
+          console.log(data);
 
     			// temp
     			$location.path('/dashboard');
@@ -62,6 +69,6 @@ angular.module('flocateApp')
 
     		});
 
-	}
+	  }
 
 });
