@@ -42,6 +42,7 @@ exports.getTripByTripId = function(req, res) {
 
 	    var relation = trip.relation("Checkin");
 	    var query = relation.query();
+	    query.ascending("RecordedAt");
 	    query.find({
 	       success : function(checkins) {
 
