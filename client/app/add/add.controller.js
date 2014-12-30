@@ -56,14 +56,13 @@ angular.module('flocateApp')
 		  $http.post('/api/checkin', {user: $scope.user, what: $scope.what, where: $scope.where, lat: $scope.lat, lng: $scope.lng, dt: $scope.dt}).
     		success(function(data, status, headers, config) {
 
-    			// TODO redirect to place page
-          console.log(data);
-
-    			// temp
-    			$location.path('/dashboard');
+    			// redirect to place page
+    			$location.path('/user/kevinbluer/' + data.objectId);
 
     		}).
     		error(function(data, status, headers, config) {
+
+          console.log(data);
 
     			// TODO handle the error scenarios
 

@@ -88,7 +88,8 @@ exports.addCheckinToTrip = function(req, res) {
 					trip.save(null, {
 					  success: function(checkin) {
 					    // Execute any logic that should take place after the object is saved.
-					    console.log('redirect or summit');
+					    // console.log('redirect or summit');
+					    res.json(trip);
 
 					  },
 					  error: function(gameScore, error) {

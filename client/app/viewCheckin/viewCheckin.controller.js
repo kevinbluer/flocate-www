@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('ViewcheckinCtrl', function ($scope, $http, $stateParams, $log) {
+  .controller('ViewcheckinCtrl', function ($scope, $http, $stateParams, $log, $location) {
 
   	$scope.checkin = {};
 
@@ -42,8 +42,8 @@ angular.module('flocateApp')
 		$http.post('/api/trip/addCheckinToTrip', {tripId: tripId, checkinId: $scope.checkin.objectId}).
 			success(function(data, status, headers, config) {
 
-				// TODO - relocation to trip page
-
+				// relocation to trip page
+				$location.path('/user/kevinbluer/trip/' + data.objectId);
 				
 
 			}).

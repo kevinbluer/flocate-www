@@ -12,8 +12,6 @@ exports.index = function(req, res) {
 	// TODO store the current Parse user in session
 	// TODO this is very likely redundant given we might as well add it for the current user
 
-	console.log("yo");
-
 	var userQuery = new Parse.Query(Parse.User);
 	var user = userQuery.get(req.body.user.objectId)
 	.then(function(user) {
@@ -38,9 +36,8 @@ exports.index = function(req, res) {
 		checkin.save(null, {
 		  success: function(checkin) {
 		    // Execute any logic that should take place after the object is saved.
-		    console.log('New object created with objectId: ' + checkin.id);
 
-		    // res.json([]);
+		    res.json(checkin);
 		  },
 		  error: function(gameScore, error) {
 		    // Execute any logic that should take place if the save fails.
