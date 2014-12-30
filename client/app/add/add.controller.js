@@ -25,6 +25,7 @@ angular.module('flocateApp')
 	  };
 
     var currentMarker;
+    var geocoder = new google.maps.Geocoder();
 
     $scope.addMarker = function($event, $params) {
 
@@ -35,6 +36,27 @@ angular.module('flocateApp')
 
         $scope.lat = $params[0].latLng.lat();
         $scope.lng = $params[0].latLng.lng();
+
+        geocoder.geocode({'latLng': $params[0].latLng}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            if (results[1]) {
+
+              $scope.where = results[1].formatted_address;
+
+              // map.setZoom(11);
+              // marker = new google.maps.Marker({
+              //     position: latlng,
+              //     map: map
+              // });
+              // infowindow.setContent();
+
+            } else {
+              alert('No results found');
+            }
+          } else {
+            alert('Geocoder failed due to: ' + status);
+          }
+        });
 
         var marker = new google.maps.Marker({
             position : $params[0].latLng
