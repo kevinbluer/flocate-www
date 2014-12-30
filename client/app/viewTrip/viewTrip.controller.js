@@ -28,17 +28,23 @@ angular.module('flocateApp')
 
 		 	for (var x = 0; x < $scope.checkins.length; x++ ) {
 
-		 		var latLng = new google.maps.LatLng($scope.checkins[x]["Location"]["latitude"], $scope.checkins[x]["Location"]["longitude"]);
+		 		var lat = $scope.checkins[x]["Location"]["latitude"];
+		 		var lng = $scope.checkins[x]["Location"]["longitude"];
+		 		var latLng = new google.maps.LatLng(lat, lng);
 
 		 		var marker = new google.maps.Marker({
 			        map : $scope.myMap,
 			        position : latLng
 			    });
 
-
 		 		placeArray.push(latLng);
 			    bounds.extend(marker.getPosition());
 
+			    if (x == $scope.checkins.length-1) {
+			    	$scope.lat = lat;
+			    	$scope.lng = lng;
+			    	$scope.date = $scope.checkins[x]["RecordedAt"].iso;
+			    }
 		 	}
 
 		 	var line = new google.maps.Polyline({
@@ -50,7 +56,6 @@ angular.module('flocateApp')
 			});
 
 		 	$scope.myMap.fitBounds(bounds);
-
 
 		  }).
 		  error(function(data, status, headers, config) {

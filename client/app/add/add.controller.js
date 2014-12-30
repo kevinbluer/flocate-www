@@ -3,9 +3,25 @@
 angular.module('flocateApp')
   .controller('AddCtrl', function ($scope, $location, $rootScope, $http) {
 
+    var lat = 51.50874245880332;
+    var lng = -0.087890625;
+    var zoom = 2;
+
+    if ($location.search().lat) {
+      lat = parseFloat($location.search().lat);
+    }
+
+    if ($location.search().lng) {
+      lng = parseFloat($location.search().lng);
+    }
+
+    if ($location.search().zoom) {
+      zoom = parseInt($location.search().zoom);
+    }
+
     $scope.mapOptions = {
-      center: new google.maps.LatLng(22.32532675380104, 114.169360706689),
-      zoom: 3,
+      center: new google.maps.LatLng(lat, lng),
+      zoom: zoom,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
@@ -18,11 +34,24 @@ angular.module('flocateApp')
   	$scope.where = '';
   	$scope.lat = '';
   	$scope.lng = '';
-  	$scope.dt = new Date();
+  	// $scope.dt = new Date();
 
-    $scope.today = function() {
-	     $scope.dt = new Date();
-	  };
+    $scope.init = function() {
+
+      if ($location.search().date) {
+        $scope.dt = new Date($location.search().date);
+      } else {
+        $scope.dt = new Date();
+      }
+    }
+
+   //  $scope.today = function() {
+	     
+   //    debugger;
+
+
+
+	  // };
 
     var currentMarker;
     var geocoder = new google.maps.Geocoder();
@@ -51,10 +80,10 @@ angular.module('flocateApp')
               // infowindow.setContent();
 
             } else {
-              alert('No results found');
+              $scope.where = "";
             }
           } else {
-            alert('Geocoder failed due to: ' + status);
+            $scope.where = "";
           }
         });
 

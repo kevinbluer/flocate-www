@@ -1,3 +1,7 @@
 .map-canvas {
 	height: 400px;
 }
+
+#stats {
+	margin-top: 20px;
+}
