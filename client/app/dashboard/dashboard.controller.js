@@ -24,10 +24,10 @@ angular.module('flocateApp')
 			element: document.getElementById('container'),
 			fills: {
 	            HIGH: '#afafaf',
-	            LOW: '#123456',
-	            MEDIUM: 'blue',
+	            LOW: '#AFE549',
+	            MEDIUM: '#417503',
 	            UNKNOWN: 'rgb(0,0,0)',
-	            defaultFill: 'green'
+	            defaultFill: '#7BBF37'
 	        },
 			data: places
 		});
