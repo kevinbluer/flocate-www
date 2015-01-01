@@ -10,9 +10,9 @@
   				<br>
   				
   				<!-- Single button -->
-			    <div class="btn-group" dropdown is-open="status.isopen">
+			    <div class="btn-group" dropdown is-open="status.isclosed">
 			      <a type="button" ng-click="toggleDD" class="btn btn-primary dropdown-toggle">
-			        Select Trip <span class="caret"></span>
+			        Add to  Trip <span class="caret"></span>
 			      </a>
 			      <ul class="dropdown-menu" role="menu">
 			        <li ng-repeat="choice in trips">
@@ -20,6 +20,7 @@
 			        </li>
 			      </ul>
 			    </div>
+			    <a class="btn btn-default" href="#"><span class="fa fa-star"></span> Star</a>
   			</div>
 		</div>
 	</div>

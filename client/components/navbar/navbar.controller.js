@@ -5,25 +5,26 @@ angular.module('flocateApp')
 
     if ($rootScope.user) {
     
-      $scope.menu = [{
-        'title': 'Home',
-        'link': '/'
-      },
+      $scope.menu = [
       {
         'title': 'Dashboard',
-        'link': '/dashboard'
+        'link': '/dashboard',
+        'icon': 'fa fa-dashboard'
        },
       {
-        'title': 'Map',
-        'link': '/user/kevinbluer'
+        'title': 'Your Map',
+        'link': '/user/kevinbluer',
+        'icon': 'fa fa-globe'
        },
        {
-        'title': 'Add Location',
-        'link': '/add'
+        'title': 'Add Pin',
+        'link': '/add',
+        'icon': 'fa fa-map-marker'
        },
        {
         'title': 'Add Trip',
-        'link': '/kevinbluer/trip/add'
+        'link': '/kevinbluer/trip/add',
+        'icon': 'fa fa-compass'
        }];
 
        $scope.signin = {
