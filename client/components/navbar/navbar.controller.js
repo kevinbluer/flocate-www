@@ -25,6 +25,10 @@ angular.module('flocateApp')
         'title': 'Add Trip',
         'link': '/kevinbluer/trip/add',
         'icon': 'fa fa-compass'
+       },
+       {
+        'link': '/settings',
+        'icon': 'fa fa-cog'
        }];
 
        $scope.signin = {
