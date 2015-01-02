@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('ViewByCountryCtrl', function ($scope) {
+  .controller('ViewByCountryCtrl', function ($scope, $http) {
 
   	// Note that the LatLng / Zoom should come from the country table
 
@@ -15,5 +15,37 @@ angular.module('flocateApp')
       zoom: 4,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
+
+
+	$http.get('/api/checkin/checkinsByCountry').
+	success(function(data, status, headers, config) {
+
+		checkins = JSON.parse(data);
+
+	  	angular.forEach(checkins, function(value, key) {
+
+		    // var marker = new google.maps.Marker({
+		    //     map : $scope.myMap,
+		    //     position : new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"])
+		    // });
+
+	  //   	google.maps.event.addListener(marker, 'click', function() {
+			    
+			//     $("#pinTitle").html(value["Doing"]);
+			//     $("#pinDesc").html(value["Note"]);
+			//     $scope.checkinId = value.objectId;
+			//     $scope.pinDate = value["RecordedAt"]["iso"];
+			// });
+
+		 //    $scope.newMarker = marker;
+
+		});
+
+	}).
+	error(function(data, status, headers, config) {
+
+		// TODO handle the error scenarios
+
+	});
 
   });
