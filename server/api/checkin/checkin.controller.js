@@ -90,3 +90,27 @@ exports.checkinById = function(req, res) {
 	});
 
 };
+
+exports.checkinsByCountry = function(req, res) {
+
+	var Checkin = Parse.Object.extend("Checkin");
+	var query = new Parse.Query(Checkin);
+
+
+	// TODO - Obviously refactor this :)
+
+	query.equalTo("Country", "China");
+	query.descending("RecordedAt");
+
+	// NOTE This is relying on Parse.User and therefore the user being logged in...
+
+	query.find({
+	  success: function(results) {
+	    res.json(results);
+	  },
+	  error: function(error) {
+	    console.log(error);
+	  }
+	});
+
+}
