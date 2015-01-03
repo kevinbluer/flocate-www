@@ -17,17 +17,21 @@ angular.module('flocateApp')
     };
 
 
-	$http.get('/api/checkin/checkinsByCountry').
+	$http.get('/api/checkin/checkinsByCountry', {}).
 	success(function(data, status, headers, config) {
 
-		checkins = JSON.parse(data);
+		// TODO - relocation to trip page
 
-	  	angular.forEach(checkins, function(value, key) {
+		// $scope.checkins = data;
 
-		    // var marker = new google.maps.Marker({
-		    //     map : $scope.myMap,
-		    //     position : new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"])
-		    // });
+		// checkins = JSON.parse(data);
+
+	  	angular.forEach(data, function(value, key) {
+
+		    var marker = new google.maps.Marker({
+		        map : $scope.myMap,
+		        position : new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"])
+		    });
 
 	  //   	google.maps.event.addListener(marker, 'click', function() {
 			    
