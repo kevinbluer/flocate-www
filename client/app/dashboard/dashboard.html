@@ -8,7 +8,7 @@
 
 			<div id="container" style="position: relative; width: 500px; height: 300px;"></div>
 
-			<span ng-repeat="country in countryList"><a href="/user/kevinbluer/country/cn">{{ country }}</a>{{$last ? '' : ' + '}}</span>
+			<span ng-repeat="country in countryList"><a href="/user/kevinbluer/country/{{ country.CountryCode }}">{{ country.CountryName }}</a>{{$last ? '' : ' + '}}</span>
 
 			<hr>
 			<h2>Trips</h2>
@@ -18,6 +18,9 @@
 			<hr>
 			<h2>Statistics</h2>
 			<p>164 Total Pins | First Pin 3,921 Days Ago | Most Recent Pin 2 Days Ago | 22 Starred Places | 42 Countries</p>
+			<hr>
+			<h2>Review The Years</h2>
+			<p>In 2015 you visited X cities within Y countries. Spent the most time in Z.
 		</div>
 		<div class="col-md-4">
 			<h2>Recent</h2>
