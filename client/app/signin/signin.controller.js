@@ -4,9 +4,11 @@ angular.module('flocateApp')
   .controller('SigninCtrl', function ($scope, $http, $rootScope, $location) {
     $scope.signin = function() {
 
-    	$http.post('/api/auth', {username: $scope.username, password: $scope.password}).
+    	$http.post('/auth/local', {username: $scope.username, password: $scope.password}).
     		success(function(data, status, headers, config) {
     			
+                debugger;
+
     			// set the user
     			$rootScope.user = data;
 
