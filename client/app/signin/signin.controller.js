@@ -1,26 +1,40 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('SigninCtrl', function ($scope, $http, $rootScope, $location) {
+  .controller('SigninCtrl', function ($scope, $http, Auth, $rootScope, $location) {
     $scope.signin = function() {
 
-    	$http.post('/auth/local', {username: $scope.username, password: $scope.password}).
-    		success(function(data, status, headers, config) {
+        // if(form.$valid) {
+            Auth.login({
+              username: $scope.username,
+              password: $scope.password
+            })
+            .then( function() {
+              // Logged in, redirect to home
+              $location.path('/dashboard');
+            })
+            .catch( function(err) {
+              $scope.errors.other = err.message;
+            });
+          //}
+
+    	// $http.post('/auth/local', {username: $scope.username, password: $scope.password}).
+    	// 	success(function(data, status, headers, config) {
     			
-                debugger;
+     //            debugger;
 
-    			// set the user
-    			$rootScope.user = data;
+    	// 		// set the user
+    	// 		$rootScope.user = data;
 
-    			// redirect to the dashboard
-    			$location.path('/dashboard');
+    	// 		// redirect to the dashboard
+    	// 		$location.path('/dashboard');
 
-    		}).
-    		error(function(data, status, headers, config) {
+    	// 	}).
+    	// 	error(function(data, status, headers, config) {
 
-    			// TODO handle the error scenarios
+    	// 		// TODO handle the error scenarios
 
-    		});
+    	// 	});
 
     }
 });

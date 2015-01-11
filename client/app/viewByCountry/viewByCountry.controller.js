@@ -20,12 +20,6 @@ angular.module('flocateApp')
 	$http.get('/api/checkin/checkinsByCountry', {}).
 	success(function(data, status, headers, config) {
 
-		// TODO - relocation to trip page
-
-		// $scope.checkins = data;
-
-		// checkins = JSON.parse(data);
-
 	  	angular.forEach(data, function(value, key) {
 
 		    var marker = new google.maps.Marker({

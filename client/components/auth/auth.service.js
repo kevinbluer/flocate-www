@@ -17,11 +17,14 @@ angular.module('flocateApp')
        * @return {Promise}
        */
       login: function(user, callback) {
+
+        debugger;
+
         var cb = callback || angular.noop;
         var deferred = $q.defer();
 
         $http.post('/auth/local', {
-          email: user.email,
+          username: user.username,
           password: user.password
         }).
         success(function(data) {
