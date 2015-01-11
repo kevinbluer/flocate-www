@@ -11,7 +11,17 @@ exports.index = function(req, res) {
  * Get my info
  */
 exports.me = function(req, res, next) {
-  var userId = req.user._id;
+  // var userId = req.user._id;
+
+
+  var Parse = require('parse').Parse;
+  Parse.initialize("VVbJ2YjOdDJrY7sZw8fF4R1v2Wolgf3toi4o5SW0", "4zEOZdifrLJxr2exozJMGsE8SB7zmnienaMMsjTF");
+
+  var currentUser = Parse.User.current();
+
+  console.log(currentUser);
+
+  res.json(currentUser);
 
   // TODO switch out to Parse
 

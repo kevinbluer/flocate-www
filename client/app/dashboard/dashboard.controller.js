@@ -1,11 +1,13 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('DashboardCtrl', function ($scope, $location, $rootScope, $http) {
+  .controller('DashboardCtrl', function ($scope, $location, Auth, User, $rootScope, $http) {
 
-  	if (!$rootScope.user) {
-  		$location.path('/signin');
-  	} else {
+  	// if (!$rootScope.user) {
+  	// 	$location.path('/signin');
+  	// } else {
+
+      var user = Auth.getCurrentUser();
 
   		var been = {
             fillKey: 'MEDIUM',
@@ -14,7 +16,7 @@ angular.module('flocateApp')
 
 	  	var places = {};
 
-	  	angular.forEach($rootScope.user.CountryListCode, function(value, key) {
+	  	angular.forEach(user.CountryListCode, function(value, key) {
 
 	  		places[value] = been;
 
@@ -32,9 +34,9 @@ angular.module('flocateApp')
 			data: places
 		});
 
-  		$scope.countries = "You've been to " + $rootScope.user.CountryList.length + " countries. Nice work!";
+  		// $scope.countries = "You've been to " + user.CountryList.length + " countries. Nice work!";
 
-  		$scope.countryList = $rootScope.user.CountryList;
+  		// $scope.countryList = user.CountryList;
   		
   		$http.get('/api/checkin/allCheckins', {}).
     		success(function(data, status, headers, config) {
@@ -66,6 +68,6 @@ angular.module('flocateApp')
 
 
 
-  	}
+  	// }
 
   });

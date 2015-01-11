@@ -6,6 +6,6 @@ var controller = require('./user.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
-router.get('/me', auth.isAuthenticated(), controller.me);
+router.get('/me', controller.me);
 
 module.exports = router;
