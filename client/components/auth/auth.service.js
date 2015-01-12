@@ -18,8 +18,6 @@ angular.module('flocateApp')
        */
       login: function(user, callback) {
 
-        debugger;
-
         var cb = callback || angular.noop;
         var deferred = $q.defer();
 
@@ -110,7 +108,7 @@ angular.module('flocateApp')
        * @return {Boolean}
        */
       isLoggedIn: function() {
-        return currentUser.hasOwnProperty('role');
+        return currentUser.hasOwnProperty('username');
       },
 
       /**

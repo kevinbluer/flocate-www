@@ -12,8 +12,6 @@ angular.module('flocateApp')
             .then( function() {
               // Logged in, redirect to home
 
-              debugger;
-
               $location.path('/dashboard');
             })
             .catch( function(err) {

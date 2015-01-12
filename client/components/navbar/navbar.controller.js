@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('NavbarCtrl', function ($scope, $location, $rootScope) {
+  .controller('NavbarCtrl', function ($scope, $location, Auth, $rootScope) {
 
-    if ($rootScope.user) {
+    if (Auth.isLoggedIn()) {
     
       $scope.menu = [
       {

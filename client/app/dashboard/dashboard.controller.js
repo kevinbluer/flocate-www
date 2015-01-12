@@ -3,40 +3,43 @@
 angular.module('flocateApp')
   .controller('DashboardCtrl', function ($scope, $location, Auth, User, $rootScope, $http) {
 
-  	// if (!$rootScope.user) {
-  	// 	$location.path('/signin');
-  	// } else {
+    debugger;
+
+  	if (!Auth.isLoggedIn()) {
+  		$location.path('/signin');
+  	} else {
 
       var user = Auth.getCurrentUser();
 
-  		var been = {
+      $scope.currentUser = user;
+
+      user.$promise.then(function(user) {
+        
+        var been = {
             fillKey: 'MEDIUM',
             numberOfThings: 10381
         };
 
-	  	var places = {};
+        var places = {};
 
-	  	angular.forEach(user.CountryListCode, function(value, key) {
+        angular.forEach(user.CountryListCode, function(value, key) {
 
-	  		places[value] = been;
+          places[value] = been;
 
-	  	});
+        });
 
-		var map = new Datamap({
-			element: document.getElementById('container'),
-			fills: {
-	            HIGH: '#afafaf',
-	            LOW: '#AFE549',
-	            MEDIUM: '#417503',
-	            UNKNOWN: 'rgb(0,0,0)',
-	            defaultFill: '#7BBF37'
-	        },
-			data: places
-		});
-
-  		// $scope.countries = "You've been to " + user.CountryList.length + " countries. Nice work!";
-
-  		// $scope.countryList = user.CountryList;
+        var map = new Datamap({
+          element: document.getElementById('container'),
+          fills: {
+                  HIGH: '#afafaf',
+                  LOW: '#AFE549',
+                  MEDIUM: '#417503',
+                  UNKNOWN: 'rgb(0,0,0)',
+                  defaultFill: '#7BBF37'
+              },
+          data: places
+        });
+      });
   		
   		$http.get('/api/checkin/allCheckins', {}).
     		success(function(data, status, headers, config) {
@@ -68,6 +71,6 @@ angular.module('flocateApp')
 
 
 
-  	// }
+  	}
 
   });
