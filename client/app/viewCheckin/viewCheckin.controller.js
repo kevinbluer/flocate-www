@@ -20,6 +20,10 @@ angular.module('flocateApp')
 		$scope.what = data.Note;
 		$scope.where = data.Doing;
 
+		if (data.Starred) {
+			$scope.starred = "btn-checked";
+		}
+
 		$scope.myMap.setCenter(new google.maps.LatLng(data.Location.latitude, data.Location.longitude));
 
 	}).
@@ -28,6 +32,12 @@ angular.module('flocateApp')
 		// TODO handle the error scenarios
 
 	});
+
+	$scope.toggleStar = function() {
+		alert("starred");
+
+		// TODO save starred status
+	}
 
 
 	$scope.toggleDD = function() {
