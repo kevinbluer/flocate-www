@@ -9,5 +9,6 @@ router.get('/checkinsByCountry', controller.checkinsByCountry);
 router.get('/checkinById', controller.checkinById);
 router.get('/allCheckins', controller.allCheckins);
 router.post('/', controller.index);
+router.post('/checkin/star', controller.index);
 
 module.exports = router;

@@ -114,3 +114,7 @@ exports.checkinsByCountry = function(req, res) {
 	});
 
 }
+
+exports.startCheckin = function(req, res) {
+	
+}
