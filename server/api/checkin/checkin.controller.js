@@ -115,6 +115,31 @@ exports.checkinsByCountry = function(req, res) {
 
 }
 
-exports.startCheckin = function(req, res) {
-	
+exports.starCheckin = function(req, res) {
+
+	var Checkin = Parse.Object.extend("Checkin");
+	var checkinQuery = new Parse.Query(Checkin);
+
+	var checkin = checkinQuery.get(req.body.checkinId)
+	.then(function(checkin) {
+
+		checkin.set("Starred", true)
+
+		checkin.save(null, {
+		  success: function(checkin) {
+		    // Execute any logic that should take place after the object is saved.
+
+		    res.json(checkin);
+		  },
+		  error: function(gameScore, error) {
+		    // Execute any logic that should take place if the save fails.
+		    // error is a Parse.Error with an error code and message.
+		    console.log('Failed to update object, with error code: ' + error.message);
+
+		    // res.json([]);
+		  }
+		});
+
+	});
+
 }

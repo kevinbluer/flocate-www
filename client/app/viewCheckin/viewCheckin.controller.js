@@ -34,9 +34,33 @@ angular.module('flocateApp')
 	});
 
 	$scope.toggleStar = function() {
-		alert("starred");
-
 		// TODO save starred status
+
+		$http.post('/api/checkin/star', {checkinId: $stateParams.checkinId}).
+			success(function(data, status, headers, config) {
+
+				// TEMP
+
+				console.log(data);
+
+				// $scope.checkin = data;
+
+				// $scope.what = data.Note;
+				// $scope.where = data.Doing;
+
+				// if (data.Starred) {
+				// 	$scope.starred = "btn-checked";
+				// }
+
+				// $scope.myMap.setCenter(new google.maps.LatLng(data.Location.latitude, data.Location.longitude));
+
+			}).
+			error(function(data, status, headers, config) {
+
+				// TODO handle the error scenarios
+
+			});
+
 	}
 
 
