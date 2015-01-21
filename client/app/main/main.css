@@ -10,6 +10,8 @@ h3 {
     border-bottom: none;
     margin-top: 56px;
     margin-bottom: 36px;
+    background-image: url('/assets/images/mongolia-blur-thin.jpg');
+    background-size: cover;
 }
 
 .hero-unit > .container > span {
