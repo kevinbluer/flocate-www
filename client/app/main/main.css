@@ -1,10 +1,15 @@
+h3 {
+    font-weight: normal;
+}
+
 .thing-form {
     margin: 20px 0;
 }
 
 #banner {
     border-bottom: none;
-    margin-top: -20px;
+    margin-top: 56px;
+    margin-bottom: 36px;
 }
 
 .hero-unit > .container > span {
@@ -31,6 +36,14 @@
     padding: 30px 0;
     margin-top: 70px;
     border-top: 1px solid #E5E5E5;
+}
+
+.featurette {
+    margin: 36px 0 36px 0;
+}
+
+.featurette-heading {
+
 }
 
 .featurette-image {
