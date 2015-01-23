@@ -1,8 +1,7 @@
 ## Flocate
 
-- Wish You Were Here!
-- Where have you been?
-- Find and Locate
+- "Wish You Were Here!"
+- "Find and Locate"
 
 ## Libraries
 

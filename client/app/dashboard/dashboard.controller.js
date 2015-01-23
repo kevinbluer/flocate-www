@@ -3,13 +3,15 @@
 angular.module('flocateApp')
   .controller('DashboardCtrl', function ($scope, $location, Auth, User, $rootScope, $http) {
 
-    debugger;
+    // NOTE - likely reason for the redirect back to the signin is because of the async nature of getting the user
 
   	if (!Auth.isLoggedIn()) {
   		$location.path('/signin');
   	} else {
 
       var user = Auth.getCurrentUser();
+      
+      debugger;
 
       $scope.currentUser = user;
 
