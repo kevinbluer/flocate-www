@@ -112,7 +112,6 @@ exports.checkinsByCountry = function(req, res) {
 	    console.log(error);
 	  }
 	});
-
 }
 
 exports.starCheckin = function(req, res) {
@@ -141,5 +140,8 @@ exports.starCheckin = function(req, res) {
 		});
 
 	});
+}
 
+exports.getStarredCheckins = function(req, res) {
+	//
 }

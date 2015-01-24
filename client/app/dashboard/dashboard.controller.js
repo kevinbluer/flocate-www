@@ -10,8 +10,6 @@ angular.module('flocateApp')
   	} else {
 
       var user = Auth.getCurrentUser();
-      
-      debugger;
 
       $scope.currentUser = user;
 

@@ -2,14 +2,10 @@
 
 var _ = require('lodash');
 
-// Get list of users
 exports.index = function(req, res) {
   res.json([]);
 };
 
-/**
- * Get my info
- */
 exports.me = function(req, res, next) {
 
   // TODO - Put in error handling
