@@ -25,10 +25,6 @@ angular.module('flocateApp')
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-  	if (!$rootScope.user) {
-  		$location.path('/signin');
-  	}
-
   	$scope.user = $rootScope.user;
   	$scope.what = '';
   	$scope.where = '';
