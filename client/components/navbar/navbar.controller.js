@@ -63,4 +63,16 @@ angular.module('flocateApp')
     $scope.isActive = function(route) {
       return route === $location.path();
     };
+
+    $scope.signInOut = function() {
+
+      // TODO refactor
+
+      if (this.signin.title == "Sign In") {
+        $location.path('/login');
+      } else {
+        Auth.logout();
+        $location.path('/login');
+      }
+    }
   });
