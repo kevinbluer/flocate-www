@@ -6,6 +6,7 @@ angular.module('flocateApp')
       .state('settings', {
         url: '/settings',
         templateUrl: 'app/settings/settings.html',
-        controller: 'SettingsCtrl'
+        controller: 'SettingsCtrl',
+        authenticate: true
       });
   });

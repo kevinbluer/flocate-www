@@ -6,6 +6,7 @@ angular.module('flocateApp')
       .state('addTrip', {
         url: '/:username/trip/add',
         templateUrl: 'app/addTrip/addTrip.html',
-        controller: 'AddtripCtrl'
+        controller: 'AddtripCtrl',
+        authenticate: true
       });
   });

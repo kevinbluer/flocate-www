@@ -3,74 +3,64 @@
 angular.module('flocateApp')
   .controller('DashboardCtrl', function ($scope, $location, Auth, User, $rootScope, $http) {
 
-    // NOTE - likely reason for the redirect back to the signin is because of the async nature of getting the user
+    var user = Auth.getCurrentUser();
 
-  	if (!Auth.isLoggedIn()) {
-  		$location.path('/signin');
-  	} else {
+    $scope.currentUser = user;
 
-      var user = Auth.getCurrentUser();
+    user.$promise.then(function(user) {
+      
+      var been = {
+          fillKey: 'MEDIUM',
+          numberOfThings: 10381
+      };
 
-      $scope.currentUser = user;
+      var places = {};
 
-      user.$promise.then(function(user) {
-        
-        var been = {
-            fillKey: 'MEDIUM',
-            numberOfThings: 10381
-        };
+      angular.forEach(user.CountryListCode, function(value, key) {
 
-        var places = {};
+        places[value] = been;
 
-        angular.forEach(user.CountryListCode, function(value, key) {
-
-          places[value] = been;
-
-        });
-
-        var map = new Datamap({
-          element: document.getElementById('container'),
-          fills: {
-                  HIGH: '#afafaf',
-                  LOW: '#AFE549',
-                  MEDIUM: '#417503',
-                  UNKNOWN: 'rgb(0,0,0)',
-                  defaultFill: '#7BBF37'
-              },
-          data: places
-        });
       });
-  		
-  		$http.get('/api/checkin/allCheckins', {}).
-    		success(function(data, status, headers, config) {
 
-    			// TODO - relocation to trip page
+      var map = new Datamap({
+        element: document.getElementById('container'),
+        fills: {
+                HIGH: '#afafaf',
+                LOW: '#AFE549',
+                MEDIUM: '#417503',
+                UNKNOWN: 'rgb(0,0,0)',
+                defaultFill: '#7BBF37'
+            },
+        data: places
+      });
+    });
+		
+		$http.get('/api/checkin/allCheckins', {}).
+  		success(function(data, status, headers, config) {
 
-    			$scope.checkins = data;
+  			// TODO - relocation to trip page
 
-    		}).
-    		error(function(data, status, headers, config) {
+  			$scope.checkins = data;
 
-    			// TODO handle the error scenarios
+  		}).
+  		error(function(data, status, headers, config) {
 
-    		});
+  			// TODO handle the error scenarios
 
-        $http.get('/api/trip/get/kevinbluer', {}).
-        success(function(data, status, headers, config) {
+  		});
 
-          // TODO - relocation to trip page
+      $http.get('/api/trip/get/kevinbluer', {}).
+      success(function(data, status, headers, config) {
 
-          $scope.trips = data;
+        // TODO - relocation to trip page
 
-        }).
-        error(function(data, status, headers, config) {
+        $scope.trips = data;
 
-          // TODO handle the error scenarios
+      }).
+      error(function(data, status, headers, config) {
 
-        });
+        // TODO handle the error scenarios
 
-
-
-  	}
+      });
 
   });

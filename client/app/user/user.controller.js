@@ -3,7 +3,12 @@
 angular.module('flocateApp')
   .controller('UserCtrl', function ($scope, $http, $stateParams) {
 
-  	// TODO - if empty show a different template (otherwise pass the appropriate parameter up to the API)
+  	if ($stateParams.username == "") {
+  		// TODO - if empty show a different template (otherwise pass the appropriate parameter up to the API)
+  		
+  	} else {
+
+  	}
 
   	// TODO set the center to the last recorded spot?
     $scope.mapOptions = {

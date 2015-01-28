@@ -6,6 +6,7 @@ angular.module('flocateApp')
       .state('add', {
         url: '/add',
         templateUrl: 'app/add/add.html',
-        controller: 'AddCtrl'
+        controller: 'AddCtrl',
+        authenticate: true
       });
   });
