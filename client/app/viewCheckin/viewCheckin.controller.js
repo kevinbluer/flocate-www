@@ -3,6 +3,8 @@
 angular.module('flocateApp')
   .controller('ViewcheckinCtrl', function ($scope, $http, $stateParams, $log, $location) {
 
+  	$scope.moment = moment;
+
   	$scope.checkin = {};
 
   	var mapOptions = $scope.mapOptions;
@@ -19,6 +21,7 @@ angular.module('flocateApp')
 
 		$scope.what = data.Note;
 		$scope.where = data.Doing;
+		$scope.when = moment(data.RecordedAt.iso).fromNow();
 
 		if (data.Starred) {
 			$scope.starred = "btn-checked";
