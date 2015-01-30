@@ -69,10 +69,10 @@ angular.module('flocateApp')
       // TODO refactor
 
       if (this.signin.title == "Sign In") {
-        $location.path('/login');
+        $location.path('/signin');
       } else {
         Auth.logout();
-        $location.path('/login');
+        $location.path('/signin');
       }
     }
   });
