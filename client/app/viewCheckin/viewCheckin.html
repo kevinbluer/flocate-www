@@ -3,25 +3,33 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h2>{{ where }}</h2>
-			<p>{{ what }}</p>
+			<div class="row">
+				<div class="col-md-12">
+					<h2>{{ where }}</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<p>{{ what }}</p>
+				</div>
+				<div class="col-md-6">
+					<div class="pull-right">
+					    <div class="btn-group" dropdown is-open="status.isclosed">
+					      <a type="button" ng-click="toggleDD" class="btn btn-primary dropdown-toggle">
+					        Add to  Trip <span class="caret"></span>
+					      </a>
+					      <ul class="dropdown-menu" role="menu">
+					        <li ng-repeat="choice in trips">
+					          <a ng-click="setChoiceIndex(choice.objectId)" href="#">{{choice.Name}}</a>
+					        </li>
+					      </ul>
+					    </div>
+					    <a class="btn btn-default {{ starred }}" href="#" ng-click="toggleStar()"><span class="fa fa-star"></span> Star</a>
+		  			</div>
+				</div>
+			</div>
+			
   			<div ui-map="myMap" ui-options="mapOptions" class="map-view-canvas"></div>
-  			<div>
-  				<br>
-  				
-  				<!-- Single button -->
-			    <div class="btn-group" dropdown is-open="status.isclosed">
-			      <a type="button" ng-click="toggleDD" class="btn btn-primary dropdown-toggle">
-			        Add to  Trip <span class="caret"></span>
-			      </a>
-			      <ul class="dropdown-menu" role="menu">
-			        <li ng-repeat="choice in trips">
-			          <a ng-click="setChoiceIndex(choice.objectId)" href="#">{{choice.Name}}</a>
-			        </li>
-			      </ul>
-			    </div>
-			    <a class="btn btn-default {{ starred }}" href="#" ng-click="toggleStar()"><span class="fa fa-star"></span> Star</a>
-  			</div>
 		</div>
 	</div>
 </div>
