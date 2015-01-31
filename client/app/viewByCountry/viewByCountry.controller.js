@@ -27,15 +27,15 @@ angular.module('flocateApp')
 		        position : new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"])
 		    });
 
-	  //   	google.maps.event.addListener(marker, 'click', function() {
+	    	google.maps.event.addListener(marker, 'click', function() {
 			    
-			//     $("#pinTitle").html(value["Doing"]);
-			//     $("#pinDesc").html(value["Note"]);
-			//     $scope.checkinId = value.objectId;
-			//     $scope.pinDate = value["RecordedAt"]["iso"];
-			// });
+			    $("#pinTitle").html(value["Doing"]);
+			    $("#pinDesc").html(value["Note"]);
+			    $scope.checkinId = value.objectId;
+			    $scope.pinDate = value["RecordedAt"]["iso"];
+			});
 
-		 //    $scope.newMarker = marker;
+		    $scope.newMarker = marker;
 
 		});
 
