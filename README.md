@@ -26,6 +26,7 @@ Note that all of these are pending some refactoring.
 - /api/checkin POST
 - /api/checkin/checkinById GET
 - /api/locations GET
+- /api/locations/getCountryDetails GET (passing a country "CountryCode3")
 
 ## Country Code Resources
 

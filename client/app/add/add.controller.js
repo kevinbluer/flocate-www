@@ -66,6 +66,10 @@ angular.module('flocateApp')
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[1]) {
 
+              debugger;
+
+              console.log(results[1]);
+
               $scope.where = results[1].formatted_address;
 
               // map.setZoom(11);
@@ -99,6 +103,8 @@ angular.module('flocateApp')
     };
 
 	  $scope.add = function() {
+
+      // TODO grab the entire location object
 
 		  $http.post('/api/checkin', {user: $scope.user, what: $scope.what, where: $scope.where, lat: $scope.lat, lng: $scope.lng, dt: $scope.dt}).
     		success(function(data, status, headers, config) {
