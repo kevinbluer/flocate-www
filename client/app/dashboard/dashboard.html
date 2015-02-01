@@ -28,8 +28,19 @@
 			<hr>
 			<h2>Recent</h2>
 			<div ng-repeat="checkin in checkins">
-				<div><strong><a href="/user/kevinbluer/{{ checkin.objectId }}">{{ checkin.Doing }}</a></strong></div>
-				<div>{{ checkin.Note }}</div>
+				<div class="row">
+					<div class="col-md-8">
+						<strong><a href="/user/kevinbluer/{{ checkin.objectId }}">{{ checkin.Doing }}</a></strong>
+					</div>
+					<div class="col-md-4">
+						{{ moment(checkin.RecordedAt.iso).fromNow() }}
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div>{{ checkin.Note }}</div>
+					</div>
+				</div>
 				<hr>
 			</div>
 		</div>

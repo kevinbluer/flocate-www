@@ -38,8 +38,7 @@ angular.module('flocateApp')
 		$http.get('/api/checkin/allCheckins', {}).
   		success(function(data, status, headers, config) {
 
-  			// TODO - relocation to trip page
-
+        $scope.moment = moment;
   			$scope.checkins = data;
 
   		}).
@@ -52,8 +51,7 @@ angular.module('flocateApp')
       $http.get('/api/trip/get/kevinbluer', {}).
       success(function(data, status, headers, config) {
 
-        // TODO - relocation to trip page
-
+        $scope.moment = moment;
         $scope.trips = data;
 
       }).
