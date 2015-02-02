@@ -60,10 +60,9 @@ angular.module('flocateApp')
 	};
 
 	$scope.setChoiceIndex = function(tripId) {
-	
 
 		// add the current checkin to the trip (tripId)
-
+		
 		$http.post('/api/trip/addCheckinToTrip', {tripId: tripId, checkinId: $scope.checkin.objectId}).
 			success(function(data, status, headers, config) {
 

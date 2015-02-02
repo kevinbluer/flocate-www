@@ -6,6 +6,6 @@ var controller = require('./locations.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
-router.get('/getCountryDetails', controller.getCountryDetails);
+router.post('/getCountryDetails', controller.getCountryDetails);
 
 module.exports = router;

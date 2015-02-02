@@ -50,6 +50,8 @@ exports.index = function(req, res) {
 
 exports.getCountryDetails = function(req, res) {
 
+	console.log(req.body);
+
 	var Parse = require('parse').Parse;
 	Parse.initialize("VVbJ2YjOdDJrY7sZw8fF4R1v2Wolgf3toi4o5SW0", "4zEOZdifrLJxr2exozJMGsE8SB7zmnienaMMsjTF");
 
@@ -57,6 +59,8 @@ exports.getCountryDetails = function(req, res) {
 	query.equalTo("CountryCode3", req.body.CountryCode3);
 	query.find({
 	  success: function(country) {
+
+	  	console.log(country);
 
 	  	res.json(country);
 
