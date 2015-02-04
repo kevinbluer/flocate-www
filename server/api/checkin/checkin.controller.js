@@ -13,7 +13,7 @@ exports.index = function(req, res) {
 	// TODO this is very likely redundant given we might as well add it for the current user
 
 	var userQuery = new Parse.Query(Parse.User);
-	var user = userQuery.get(req.body.user.objectId)
+	var user = userQuery.get(Parse.User.current().id)
 	.then(function(user) {
 
 		var Checkin = Parse.Object.extend("Checkin");

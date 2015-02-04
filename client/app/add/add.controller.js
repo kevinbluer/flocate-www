@@ -66,8 +66,6 @@ angular.module('flocateApp')
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[1]) {
 
-              debugger;
-
               console.log(results[1]);
 
               $scope.where = results[1].formatted_address;
