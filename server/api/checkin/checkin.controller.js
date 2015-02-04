@@ -5,13 +5,9 @@ var _ = require('lodash');
 var Parse = require('parse').Parse;
 Parse.initialize("VVbJ2YjOdDJrY7sZw8fF4R1v2Wolgf3toi4o5SW0", "4zEOZdifrLJxr2exozJMGsE8SB7zmnienaMMsjTF");
 
-// Get list of checkins for a given user
-
 exports.index = function(req, res) {
 
-	// TODO store the current Parse user in session
-	// TODO this is very likely redundant given we might as well add it for the current user
-
+	// note that we need to query the user to get a pointer (as opposed to the object itself)
 	var userQuery = new Parse.Query(Parse.User);
 	var user = userQuery.get(Parse.User.current().id)
 	.then(function(user) {
@@ -23,6 +19,9 @@ exports.index = function(req, res) {
 		relation.add(user);
 
 		// TODO - Lookup onGoogle Maps API (note that this should be passed via the front-end)
+		// TODO - Once retrieved, log the country ISO codes to the user "countries visited" array
+		// TODO - Also add correctly to the fields below
+		// https://www.npmjs.com/package/node-geocoder ???
 
 		checkin.set("Note", req.body.what);
 		checkin.set("Doing", req.body.where);
@@ -43,13 +42,14 @@ exports.index = function(req, res) {
 		    // Execute any logic that should take place if the save fails.
 		    // error is a Parse.Error with an error code and message.
 		    console.log('Failed to create new object, with error code: ' + error.message);
-
-		    // res.json([]);
 		  }
 		});
 
 	});
 };
+
+
+// get list of checkins for a given user
 
 exports.allCheckins = function(req, res) {
 
@@ -73,7 +73,7 @@ exports.allCheckins = function(req, res) {
 
 }
 
-// Get a single checkin by checkin Id
+// get a single checkin from a given checkinId
 
 exports.checkinById = function(req, res) {
 
@@ -91,18 +91,17 @@ exports.checkinById = function(req, res) {
 
 };
 
+// get a all checks for a user based on a country
+
 exports.checkinsByCountry = function(req, res) {
 
 	var Checkin = Parse.Object.extend("Checkin");
 	var query = new Parse.Query(Checkin);
 
-
 	// TODO - Obviously refactor this :)
 
 	query.equalTo("Country", "China");
 	query.descending("RecordedAt");
-
-	// NOTE This is relying on Parse.User and therefore the user being logged in...
 
 	query.find({
 	  success: function(results) {
