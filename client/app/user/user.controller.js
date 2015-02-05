@@ -1,14 +1,20 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('UserCtrl', function ($scope, $http, $stateParams) {
+  .controller('UserCtrl', function ($scope, $http, $stateParams, Auth) {
 
   	if ($stateParams.username == "") {
-  		// TODO - if empty show a different template (otherwise pass the appropriate parameter up to the API)
   		
+  		// TODO - if empty show a different template (otherwise pass the appropriate parameter up to the API)
+  		// TODO - also consider showing something differently if logged in or not (e.g. public profile)
+
   	} else {
 
   	}
+
+  	var user = Auth.getCurrentUser();
+
+    $scope.currentUser = user;
 
   	// TODO set the center to the last recorded spot?
     $scope.mapOptions = {
