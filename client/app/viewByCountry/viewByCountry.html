@@ -4,6 +4,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h2>{{ countryName }}</h2>
+			<p><span ng-repeat="country in currentUser.CountryList"><a href="/user/kevinbluer/country/{{ country.CountryCode }}">{{ country.CountryName }}</a>{{$last ? '' : ' + '}}</span></p>
   			<div ui-map="myMap" ui-options="mapOptions" class="map-view-canvas"></div>
 		</div>
 	</div>

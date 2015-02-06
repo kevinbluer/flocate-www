@@ -1,7 +1,11 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('ViewByCountryCtrl', function ($scope, $http, $stateParams) {
+  .controller('ViewByCountryCtrl', function ($scope, $http, $stateParams, Auth) {
+
+  	var user = Auth.getCurrentUser();
+
+    $scope.currentUser = user;
 
   	// TODO - cap the zoom level on view?
   	// TODO - include the trips that span China too (e.g. backbacking through China with Stokesy)
