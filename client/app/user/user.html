@@ -3,19 +3,20 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h1>Your Map</h1>
-			<p><span ng-repeat="country in currentUser.CountryList"><a href="/user/kevinbluer/country/{{ country.CountryCode }}">{{ country.CountryName }}</a>{{$last ? '' : ' + '}}</span></p>
+			<h2>You + World</h2>
+			<p><a href="/user/kevinbluer"><span class="label label-success">World</span></a> <span ng-repeat="country in currentUser.CountryList"><a href="/user/kevinbluer/country/{{ country.CountryCode }}"><span class="label label-default">{{ country.CountryName }}</span></a>{{$last ? '' : ' '}}</span></p>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-9">
+		<div class="col-md-12">
 			<section id="map">
 			  <div ui-map="myMap" ui-options="mapOptions" class="map-canvas" ui-event="{'map-tilesloaded': 'initMap()'}"></div>
 			  <!-- 'map-click': 'addMarker($event, $params)'} -->
 			  <div ui-map-marker="newMarker" ui-event="{'map-click': 'openMarkerInfo(newMarker)'}"></div>
 			</section>
 		</div>
-		<div class="col-md-3">
+	</div>
+	<div class="col-md-12">
 			 <h2 id="pinTitle"></h2>
 			 <h4 id="pinDesc"></h4>
 			 <p>{{ pinDate }}</p>
@@ -26,7 +27,6 @@
 			 <button ng-click="next()" class="btn btn-default">Next</button>
 			 <a href="/user/kevinbluer/{{ checkinId }}" class="btn btn-default">View</a>
 		</div>
-	</div>
 </div>
 
 <div ng-include="'components/footer/footer.html'"></div>

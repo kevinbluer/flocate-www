@@ -4,8 +4,9 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h2>{{ countryName }}</h2>
-			<p><span ng-repeat="country in currentUser.CountryList"><a href="/user/kevinbluer/country/{{ country.CountryCode }}"><span class="label label-default">{{ country.CountryName }}</span></a>{{$last ? '' : ' '}}</span></p>
+			<p><a href="/user/kevinbluer"><span class="label label-success">World</span></a> <span ng-repeat="country in currentUser.CountryList"><a href="/user/kevinbluer/country/{{ country.CountryCode }}"><span class="label label-default">{{ country.CountryName }}</span></a>{{$last ? '' : ' '}}</span></p>
   			<div ui-map="myMap" ui-options="mapOptions" class="map-view-canvas"></div>
+  			<h2>225 days ago ... 30 days ago</h2>
 		</div>
 	</div>
 </div>

@@ -8,8 +8,7 @@ angular.module('flocateApp')
   	var user = Auth.getCurrentUser();
 
     $scope.currentUser = user;
-
-  	// TODO - cap the zoom level on view?
+    
   	// TODO - include the trips that span the country too (e.g. backbacking through China with Stokesy)
 
   	// lookup based on country code
@@ -30,10 +29,12 @@ angular.module('flocateApp')
 			$scope.myMap.setZoom(data[0].ZoomLevel);
 
 			// get the checkins
-			$http.get('/api/checkin/checkinsByCountry', { CountryCode3: data[0].CountryCode3 }).
+			$http.post('/api/checkin/checkinsByCountry', { CountryCode3: data[0].CountryCode3 }).
 			success(function(data, status, headers, config) {
 
 			  	angular.forEach(data, function(value, key) {
+
+			  		console.log(value);
 
 			  		// lay a marker
 				    var marker = new google.maps.Marker({
