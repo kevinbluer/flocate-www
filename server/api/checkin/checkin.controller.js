@@ -98,8 +98,6 @@ exports.checkinsByCountry = function(req, res) {
 	var Checkin = Parse.Object.extend("Checkin");
 	var query = new Parse.Query(Checkin);
 
-	// TODO - Obviously refactor this :)
-
 	query.equalTo("Country", "China");
 	query.descending("RecordedAt");
 
