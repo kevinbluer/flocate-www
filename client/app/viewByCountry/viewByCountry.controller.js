@@ -3,6 +3,8 @@
 angular.module('flocateApp')
   .controller('ViewByCountryCtrl', function ($scope, $http, $stateParams, Auth) {
 
+  	$scope.countryName = "Loading...";
+
   	var user = Auth.getCurrentUser();
 
     $scope.currentUser = user;
@@ -20,7 +22,7 @@ angular.module('flocateApp')
   	$http.post('/api/locations/getCountryDetails', {"CountryCode3": $stateParams.countryCode}).
   		success(function(data, status, headers, config) {
 
-  			$scope.countryName = data[0].CountryName;
+  			$scope.countryName = "You in " + data[0].CountryName;
 
   			console.log(data[0]);
 
