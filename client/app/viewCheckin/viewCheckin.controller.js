@@ -3,6 +3,8 @@
 angular.module('flocateApp')
   .controller('ViewcheckinCtrl', function ($scope, $http, $stateParams, $log, $location) {
 
+  	$scope.where = "Loading...";
+
   	$scope.moment = moment;
 
   	$scope.checkin = {};

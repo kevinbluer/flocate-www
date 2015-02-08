@@ -7,14 +7,15 @@
 				<div class="col-md-12">
 					<h2>{{ where }}</h2>
 				</div>
-			</div>
-			<div class="row">
 				<div class="col-md-6">
-					<h3>{{ what }}</h3>
-					<h4>{{ when }}</h4>
+					<a href="/user/kevinbluer"><span class="label label-success">World</span></a> <a href="/user/kevinbluer"><span class="label label-default">Hong Kong</span></a> {{ what }}
 				</div>
+			</div>
+  			<div ui-map="myMap" ui-options="mapOptions" class="map-view-canvas"></div>
+  			<h2>{{ when }} (You've added X pins in Hong Kong)</h2>
+  			<div class="row">
 				<div class="col-md-6">
-					<div class="pull-right">
+					<div class="pull-left">
 					    <div class="btn-group" dropdown is-open="status.isclosed">
 					      <a type="button" ng-click="toggleDD" class="btn btn-primary dropdown-toggle">
 					        Add to  Trip <span class="caret"></span>
@@ -29,8 +30,6 @@
 		  			</div>
 				</div>
 			</div>
-			
-  			<div ui-map="myMap" ui-options="mapOptions" class="map-view-canvas"></div>
 		</div>
 	</div>
 </div>
