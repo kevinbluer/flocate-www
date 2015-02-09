@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('ViewByCountryCtrl', function ($scope, $http, $location, $stateParams, Auth) {
+  .controller('ViewByCountryCtrl', function ($scope, $http, $location, $stateParams, moment, Auth) {
 
   	$scope.countryName = "Loading...";
 
@@ -31,6 +31,10 @@ angular.module('flocateApp')
 			// get the checkins
 			$http.post('/api/checkin/checkinsByCountry', { CountryCode3: data[0].CountryCode3 }).
 			success(function(data, status, headers, config) {
+
+				// fromDate
+				$scope.fromDate = moment(data[0]["RecordedAt"].iso).format("MMM Do YYYY");
+				$scope.fromNow = moment(data[0]["RecordedAt"].iso).fromNow();
 
 			  	angular.forEach(data, function(value, key) {
 

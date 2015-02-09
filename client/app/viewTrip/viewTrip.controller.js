@@ -3,6 +3,8 @@
 angular.module('flocateApp')
   .controller('ViewtripCtrl', function($scope, $http, $stateParams) {
 
+  	$scope.name = "Loading...";
+
   	$scope.mapOptions = {
       center: new google.maps.LatLng(22.32532675380104, 114.169360706689),
       zoom: 1,
