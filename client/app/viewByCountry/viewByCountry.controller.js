@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('ViewByCountryCtrl', function ($scope, $http, $stateParams, Auth) {
+  .controller('ViewByCountryCtrl', function ($scope, $http, $location, $stateParams, Auth) {
 
   	$scope.countryName = "Loading...";
 
   	var user = Auth.getCurrentUser();
 
     $scope.currentUser = user;
-    
+
   	// TODO - include the trips that span the country too (e.g. backbacking through China with Stokesy)
 
   	// lookup based on country code
@@ -34,13 +34,16 @@ angular.module('flocateApp')
 
 			  	angular.forEach(data, function(value, key) {
 
-			  		console.log(value);
-
 			  		// lay a marker
 				    var marker = new google.maps.Marker({
 				        map : $scope.myMap,
 				        position : new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"])
 				    });
+
+				    google.maps.event.addListener(marker, 'click', function() {
+				    
+              			$location.path('/user/' + user.username + '/' + value.objectId);
+					});
 
 				    $scope.newMarker = marker;
 
