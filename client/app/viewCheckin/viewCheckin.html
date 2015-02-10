@@ -7,8 +7,13 @@
 				<div class="col-md-12">
 					<h2>{{ where }}</h2>
 				</div>
-				<div class="col-md-6">
-					<a href="/user/kevinbluer"><span class="label label-success">World</span></a> <a href="/user/kevinbluer/country/{{ checkin.CountryCode3 }}"><span class="label label-default">{{ checkin.Country }}</span></a> {{ what }}
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+					  
+					  <li><a href="/user/kevinbluer"><span class="glyphicon glyphicon-globe"></span> World</a></li>
+					  <li><a href="/user/kevinbluer/country/{{ checkin.CountryCode3 }}"><span class="glyphicon glyphicon-flag"></span> {{ checkin.Country }}</a></li>
+					  <li class="active"><span class="glyphicon glyphicon-pushpin"></span> {{ what }}</li>
+					</ol>
 				</div>
 			</div>
   			<div ui-map="myMap" ui-options="mapOptions" class="map-view-canvas"></div>
