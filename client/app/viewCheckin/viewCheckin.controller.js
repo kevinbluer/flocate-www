@@ -29,6 +29,14 @@ angular.module('flocateApp')
 			$scope.starred = "btn-checked";
 		}
 
+		// lay a marker
+	    var marker = new google.maps.Marker({
+	        map : $scope.myMap,
+	        position : new google.maps.LatLng(data["Location"]["latitude"], data["Location"]["longitude"])
+	    });
+
+	    $scope.newMarker = marker;
+
 		$scope.myMap.setCenter(new google.maps.LatLng(data.Location.latitude, data.Location.longitude));
 
 	}).
