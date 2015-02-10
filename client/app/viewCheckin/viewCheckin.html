@@ -8,7 +8,7 @@
 					<h2>{{ where }}</h2>
 				</div>
 				<div class="col-md-6">
-					<a href="/user/kevinbluer"><span class="label label-success">World</span></a> <a href="/user/kevinbluer"><span class="label label-default">Hong Kong</span></a> {{ what }}
+					<a href="/user/kevinbluer"><span class="label label-success">World</span></a> <a href="/user/kevinbluer/country/{{ checkin.CountryCode3 }}"><span class="label label-default">{{ checkin.Country }}</span></a> {{ what }}
 				</div>
 			</div>
   			<div ui-map="myMap" ui-options="mapOptions" class="map-view-canvas"></div>
