@@ -99,7 +99,7 @@ exports.checkinsByCountry = function(req, res) {
 	var query = new Parse.Query(Checkin);
 
 	query.equalTo("CountryCode3", req.body.CountryCode3);
-	query.descending("RecordedAt");
+	query.ascending("RecordedAt");
 
 	query.find({
 	  success: function(results) {

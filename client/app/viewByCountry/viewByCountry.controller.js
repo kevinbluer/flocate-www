@@ -41,8 +41,6 @@ angular.module('flocateApp')
 				$scope.toDate = moment(data[days]["RecordedAt"].iso).format("MMM Do YYYY");
 				$scope.toNow = moment(data[days]["RecordedAt"].iso).fromNow();
 
-				alert(data.length);
-
 			  	angular.forEach(data, function(value, key) {
 
 			  		// lay a marker
