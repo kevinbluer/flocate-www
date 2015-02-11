@@ -19,7 +19,7 @@ angular.module('flocateApp')
   	// TODO set the center to the last recorded spot?
     $scope.mapOptions = {
       center: new google.maps.LatLng(22.32532675380104, 114.169360706689),
-      zoom: 5,
+      zoom: 2,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
