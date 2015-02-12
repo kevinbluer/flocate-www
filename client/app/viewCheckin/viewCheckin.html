@@ -17,10 +17,21 @@
 				</div>
 			</div>
   			<div ui-map="myMap" ui-options="mapOptions" class="map-view-canvas"></div>
-  			<h2>{{ when }} (You've added X pins in Hong Kong)</h2>
+  			<h2>{{ when }}</h2>
   			<div class="row">
 				<div class="col-md-6">
 					<div class="pull-left">
+						<div class="btn-group" dropdown is-open="status.isclosed">
+					      <a type="button" class="btn btn-primary dropdown-toggle">
+					        People You Were There With <span class="caret"></span>
+					      </a>
+					      <ul class="dropdown-menu" role="menu">
+					        <li>Wife</li>
+					        <li>Mum</li>
+					        <li>Brother</li>
+					        <li>Etc</li>
+					      </ul>
+					    </div>
 					    <div class="btn-group" dropdown is-open="status.isclosed">
 					      <a type="button" ng-click="toggleDD" class="btn btn-primary dropdown-toggle">
 					        Add to  Trip <span class="caret"></span>
