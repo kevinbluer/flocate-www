@@ -27,6 +27,7 @@ angular.module('flocateApp')
         'icon': 'fa fa-compass'
        },
        {
+        'title': 'Settings',
         'link': '/settings',
         'icon': 'fa fa-cog'
        }];
