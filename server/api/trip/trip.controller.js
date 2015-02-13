@@ -139,9 +139,8 @@ exports.add = function(req, res) {
 		trip.save(null, {
 		  success: function(checkin) {
 		    // Execute any logic that should take place after the object is saved.
-		    console.log('New object created with objectId: ' + trip.id);
-
-		    // res.json([]);
+		    res.json(checkin);
+		    
 		  },
 		  error: function(gameScore, error) {
 		    // Execute any logic that should take place if the save fails.
