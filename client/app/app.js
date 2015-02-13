@@ -7,7 +7,8 @@ angular.module('flocateApp', [
   'ui.router',
   'ui.bootstrap',
   'ui.map',
-  'angularMoment'
+  'angularMoment',
+  'uiGmapgoogle-maps'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
@@ -15,6 +16,14 @@ angular.module('flocateApp', [
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
+  })
+
+  .config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyDqypMjTEvm2t6KrfewlualFrXKKkM82vk',
+        v: '3.17',
+        libraries: 'places' // Required for SearchBox.
+    });
   })
 
   .factory('authInterceptor', function ($rootScope, $q, $cookieStore, $location) {
