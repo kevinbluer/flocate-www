@@ -11,7 +11,7 @@
 			<span ng-repeat="country in currentUser.CountryList"><a href="/user/kevinbluer/country/{{ country.CountryCode }}">{{ country.CountryName }}</a>{{$last ? '' : ' + '}}</span>
 			<br>
 			<br>
-			<a href="/add" class="btn btn-default">Add Location</a>
+			<a href="/add" class="btn btn-default">Add Pin</a>
 			<hr>
 			<h2><span class="fa fa-plane"></span> Trips</h2>
 			<p>You've been on {{ trips.length }} trips <span ng-repeat="trip in trips"><a href="/user/kevinbluer/trip/{{ trip.objectId }}">{{ trip.Name }}</a>{{$last ? '' : ', '}}</span>. You've starred 26 other trips / expeditions.</p>
