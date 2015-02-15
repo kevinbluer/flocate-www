@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-8">
-			<h2>Dashboard</h2>
+			<h2><span class="fa fa-dashboard"></span> Dashboard</h2>
 			<p>You've been to {{ currentUser.CountryList.length }} countries. Nice work!</p>
 
 			<div id="container" style="position: relative; width: 500px; height: 300px;"></div>
@@ -13,21 +13,21 @@
 			<br>
 			<a href="/add" class="btn btn-default">Add Location</a>
 			<hr>
-			<h2>Trips</h2>
+			<h2><span class="fa fa-plane"></span> Trips</h2>
 			<p>You've been on {{ trips.length }} trips <span ng-repeat="trip in trips"><a href="/user/kevinbluer/trip/{{ trip.objectId }}">{{ trip.Name }}</a>{{$last ? '' : ', '}}</span>. You've starred 26 other trips / expeditions.</p>
 			<a href="/kevinbluer/trip/add" class="btn btn-default">Add Trip</a>
 			<hr>
-			<h2>Statistics</h2>
+			<h2><span class="fa fa-pie-chart"></span> Statistics</h2>
 			<p>164 Total Pins | <a href="#">First Pin 3,921 Days Ago</a> | <a href="#">Most Recent Pin 2 Days Ago</a> | <a href="/starred">{{ currentUser.StarredPlaceCount }} Starred Places</a> | {{ currentUser.CountryList.length }} Countries</p>
 			<hr>
-			<h2>Review The Years</h2>
+			<h2><span class="fa fa-globe"></span> Years in Review</h2>
 			<p>In 2015 you visited X cities within Y countries. Spent the most time in Z.
 		</div>
 		<div class="col-md-4">
-			<h2>Starred	<span class="fa fa-star"></span></h2>
+			<h2><span class="fa fa-star"></span> Starred</h2>
 
 			<hr>
-			<h2>Recent</h2>
+			<h2><span class="fa fa-calendar"></span> Recent</h2>
 			<div ng-repeat="checkin in checkins">
 				<div class="row">
 					<div class="col-md-8">
