@@ -16,6 +16,11 @@ angular.module('flocateApp')
         'link': '/user/kevinbluer',
         'icon': 'fa fa-globe'
        },
+      {
+        'title': 'Starred',
+        'link': '/starred',
+        'icon': 'fa fa-star'
+       },
        {
         'title': 'Add Pin',
         'link': '/add',
