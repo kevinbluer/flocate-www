@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-8">
 			<h2><span class="fa fa-dashboard"></span> Dashboard</h2>
-			<p>You've been to {{ currentUser.CountryList.length }} countries. Nice work!</p>
+			<h4>You've been to {{ currentUser.CountryList.length }} countries. Nice work!</h4>
 
 			<div id="container" style="position: relative; width: 500px; height: 300px;"></div>
 
@@ -31,15 +31,13 @@
 			<div ng-repeat="checkin in checkins">
 				<div class="row">
 					<div class="col-md-8">
-						<strong><a href="/user/kevinbluer/{{ checkin.objectId }}">{{ checkin.Doing }}</a></strong>
+						<strong style="font-size: 1.1em"><a href="/user/kevinbluer/{{ checkin.objectId }}">{{ checkin.Doing }}</a></strong>
+						<p>{{ moment(checkin.RecordedAt.iso).fromNow() }}</p>
+						<div>{{ checkin.Note }}</div>
+		
 					</div>
 					<div class="col-md-4">
-						{{ moment(checkin.RecordedAt.iso).fromNow() }}
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div>{{ checkin.Note }}</div>
+	  					<div ui-map="myMap" ui-options="mapOptions" class="map-canvas"></div>
 					</div>
 				</div>
 				<hr>
