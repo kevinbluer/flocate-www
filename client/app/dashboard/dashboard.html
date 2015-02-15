@@ -9,21 +9,22 @@
 			<div id="container" style="position: relative; width: 500px; height: 300px;"></div>
 
 			<span ng-repeat="country in currentUser.CountryList"><a href="/user/kevinbluer/country/{{ country.CountryCode }}">{{ country.CountryName }}</a>{{$last ? '' : ' + '}}</span>
-
+			<br>
+			<br>
+			<a href="/add" class="btn btn-default">Add Location</a>
 			<hr>
 			<h2>Trips</h2>
 			<p>You've been on {{ trips.length }} trips <span ng-repeat="trip in trips"><a href="/user/kevinbluer/trip/{{ trip.objectId }}">{{ trip.Name }}</a>{{$last ? '' : ', '}}</span>. You've starred 26 other trips / expeditions.</p>
-			<a href="/add" class="btn btn-default">Add Location</a>
 			<a href="/kevinbluer/trip/add" class="btn btn-default">Add Trip</a>
 			<hr>
 			<h2>Statistics</h2>
-			<p>164 Total Pins | First Pin 3,921 Days Ago | Most Recent Pin 2 Days Ago | {{ currentUser.StarredPlaceCount }} Starred Places | {{ currentUser.CountryList.length }} Countries</p>
+			<p>164 Total Pins | <a href="#">First Pin 3,921 Days Ago</a> | <a href="#">Most Recent Pin 2 Days Ago</a> | <a href="/starred">{{ currentUser.StarredPlaceCount }} Starred Places</a> | {{ currentUser.CountryList.length }} Countries</p>
 			<hr>
 			<h2>Review The Years</h2>
 			<p>In 2015 you visited X cities within Y countries. Spent the most time in Z.
 		</div>
 		<div class="col-md-4">
-			<h2>Starred</h2>
+			<h2>Starred	<span class="fa fa-star"></span></h2>
 
 			<hr>
 			<h2>Recent</h2>

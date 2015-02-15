@@ -13,6 +13,7 @@
 - https://github.com/urish/angular-moment
 - https://github.com/markmarkoh/datamaps
 - https://github.com/mbostock/d3
+- http://angular-ui.github.io/angular-google-maps/#!/
 
 ## Reference
 
