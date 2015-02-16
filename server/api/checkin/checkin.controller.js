@@ -2,6 +2,16 @@
 
 var _ = require('lodash');
 
+// var geocoderProvider = 'google';
+// var httpAdapter = 'https';
+// // optionnal
+// var extra = {
+//     apiKey: '', // for Mapquest, OpenCage, Google Premier
+//     formatter: null         // 'gpx', 'string', ...
+// };
+
+// var geocoder = require('node-geocoder').getGeocoder(geocoderProvider, httpAdapter, extra);
+
 var Parse = require('parse').Parse;
 Parse.initialize("VVbJ2YjOdDJrY7sZw8fF4R1v2Wolgf3toi4o5SW0", "4zEOZdifrLJxr2exozJMGsE8SB7zmnienaMMsjTF");
 
@@ -18,10 +28,11 @@ exports.index = function(req, res) {
 		var relation = checkin.relation("User");
 		relation.add(user);
 
-		// TODO - Lookup onGoogle Maps API (note that this should be passed via the front-end)
-		// TODO - Once retrieved, log the country ISO codes to the user "countries visited" array
-		// TODO - Also add correctly to the fields below
-		// https://www.npmjs.com/package/node-geocoder ???
+		// geocoder.reverse(45.767, 4.833, function(err, res) {
+		//     console.log(res);
+		// });
+
+		debugger;
 
 		checkin.set("Note", req.body.what);
 		checkin.set("Doing", req.body.where);
@@ -32,18 +43,18 @@ exports.index = function(req, res) {
 		checkin.set("Visbility", "Friends");
 		checkin.set("RecordedAt", new Date(req.body.dt));
 
-		checkin.save(null, {
-		  success: function(checkin) {
-		    // Execute any logic that should take place after the object is saved.
+		// checkin.save(null, {
+		//   success: function(checkin) {
+		//     // Execute any logic that should take place after the object is saved.
 
-		    res.json(checkin);
-		  },
-		  error: function(gameScore, error) {
-		    // Execute any logic that should take place if the save fails.
-		    // error is a Parse.Error with an error code and message.
-		    console.log('Failed to create new object, with error code: ' + error.message);
-		  }
-		});
+		//     res.json(checkin);
+		//   },
+		//   error: function(gameScore, error) {
+		//     // Execute any logic that should take place if the save fails.
+		//     // error is a Parse.Error with an error code and message.
+		//     console.log('Failed to create new object, with error code: ' + error.message);
+		//   }
+		// });
 
 	});
 };

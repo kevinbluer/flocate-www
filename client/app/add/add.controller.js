@@ -66,7 +66,53 @@ angular.module('flocateApp')
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[1]) {
 
+              
+
               console.log(results[1]);
+
+
+              // thanks @ http://stackoverflow.com/questions/6359995/get-city-from-geocoder-results
+              var arrAddress = results[1].address_components;
+              var itemRoute='';
+              var itemLocality='';
+              var itemCountry='';
+              var itemCountryShort='';
+              var itemPc='';
+              var itemSnumber='';
+
+              // iterate through address_component array
+              $.each(arrAddress, function (i, address_component) {
+                  console.log('address_component:'+i);
+
+                  if (address_component.types[0] == "route"){
+                      console.log(i+": route:"+address_component.long_name);
+                      itemRoute = address_component.long_name;
+                  }
+
+                  if (address_component.types[0] == "locality"){
+                      console.log("town:"+address_component.long_name);
+                      itemLocality = address_component.long_name;
+                  }
+
+                  if (address_component.types[0] == "country"){ 
+                      console.log("country:"+address_component.short_name); 
+                      itemCountry = address_component.long_name;
+                      itemCountryShort = address_component.short_name;
+                  }
+
+                  if (address_component.types[0] == "postal_code_prefix"){ 
+                      console.log("pc:"+address_component.long_name);  
+                      itemPc = address_component.long_name;
+                  }
+
+                  if (address_component.types[0] == "street_number"){ 
+                      console.log("street_number:"+address_component.long_name);  
+                      itemSnumber = address_component.long_name;
+                  }
+                  //return false; // break the loop   
+              });
+
+              debugger;          
 
               $scope.where = results[1].formatted_address;
 
