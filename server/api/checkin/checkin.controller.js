@@ -32,29 +32,28 @@ exports.index = function(req, res) {
 		//     console.log(res);
 		// });
 
-		debugger;
-
 		checkin.set("Note", req.body.what);
 		checkin.set("Doing", req.body.where);
 		checkin.set("City", "Angkor Wat");
-		checkin.set("Country", "Cambodia");
+		checkin.set("Country", req.body.countryLong);
+		checkin.set("CountryCode2", req.body.countryShort);
 		checkin.set("Address", "Angkor Wat, Cambodia");
 		checkin.set("Location", new Parse.GeoPoint(parseFloat(req.body.lat), parseFloat(req.body.lng)));
 		checkin.set("Visbility", "Friends");
 		checkin.set("RecordedAt", new Date(req.body.dt));
 
-		// checkin.save(null, {
-		//   success: function(checkin) {
-		//     // Execute any logic that should take place after the object is saved.
+		checkin.save(null, {
+		  success: function(checkin) {
+		    // Execute any logic that should take place after the object is saved.
 
-		//     res.json(checkin);
-		//   },
-		//   error: function(gameScore, error) {
-		//     // Execute any logic that should take place if the save fails.
-		//     // error is a Parse.Error with an error code and message.
-		//     console.log('Failed to create new object, with error code: ' + error.message);
-		//   }
-		// });
+		    res.json(checkin);
+		  },
+		  error: function(gameScore, error) {
+		    // Execute any logic that should take place if the save fails.
+		    // error is a Parse.Error with an error code and message.
+		    console.log('Failed to create new object, with error code: ' + error.message);
+		  }
+		});
 
 	});
 };

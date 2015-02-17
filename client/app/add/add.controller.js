@@ -6,6 +6,15 @@ angular.module('flocateApp')
     var lat = 51.50874245880332;
     var lng = -0.087890625;
     var zoom = 2;
+    var currentMarker;
+    var geocoder = new google.maps.Geocoder();
+    $scope.user = $rootScope.user;
+    $scope.what = '';
+    $scope.where = '';
+    $scope.lat = '';
+    $scope.lng = '';
+    $scope.countryShort = '';
+    $scope.countryLong = '';
 
     if ($location.search().lat) {
       lat = parseFloat($location.search().lat);
@@ -25,13 +34,6 @@ angular.module('flocateApp')
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-  	$scope.user = $rootScope.user;
-  	$scope.what = '';
-  	$scope.where = '';
-  	$scope.lat = '';
-  	$scope.lng = '';
-  	// $scope.dt = new Date();
-
     $scope.init = function() {
 
       if ($location.search().date) {
@@ -40,17 +42,6 @@ angular.module('flocateApp')
         $scope.dt = new Date();
       }
     }
-
-   //  $scope.today = function() {
-	     
-   //    debugger;
-
-
-
-	  // };
-
-    var currentMarker;
-    var geocoder = new google.maps.Geocoder();
 
     $scope.addMarker = function($event, $params) {
 
@@ -65,11 +56,6 @@ angular.module('flocateApp')
         geocoder.geocode({'latLng': $params[0].latLng}, function(results, status) {
           if (status == google.maps.GeocoderStatus.OK) {
             if (results[1]) {
-
-              
-
-              console.log(results[1]);
-
 
               // thanks @ http://stackoverflow.com/questions/6359995/get-city-from-geocoder-results
               var arrAddress = results[1].address_components;
@@ -97,7 +83,8 @@ angular.module('flocateApp')
                   if (address_component.types[0] == "country"){ 
                       console.log("country:"+address_component.short_name); 
                       itemCountry = address_component.long_name;
-                      itemCountryShort = address_component.short_name;
+                      $scope.countryLong = address_component.long_name;
+                      $scope.countryShort = address_component.short_name;
                   }
 
                   if (address_component.types[0] == "postal_code_prefix"){ 
@@ -111,8 +98,6 @@ angular.module('flocateApp')
                   }
                   //return false; // break the loop   
               });
-
-              debugger;          
 
               $scope.where = results[1].formatted_address;
 
@@ -142,15 +127,22 @@ angular.module('flocateApp')
         google.maps.event.addListener(marker, 'click', function() {
             // alert('yo');
         });
-
-        // $scope.newMarker = marker;
     };
 
 	  $scope.add = function() {
 
-      // TODO grab the entire location object
+      // TODO grab the entire location object?
 
-		  $http.post('/api/checkin', {user: $scope.user, what: $scope.what, where: $scope.where, lat: $scope.lat, lng: $scope.lng, dt: $scope.dt}).
+		  $http.post('/api/checkin', {
+          user: $scope.user, 
+          what: $scope.what, 
+          where: $scope.where, 
+          lat: $scope.lat, 
+          lng: $scope.lng, 
+          countryShort: $scope.countryShort, 
+          countryLong: $scope.countryLong, 
+          dt: $scope.dt
+        }).
     		success(function(data, status, headers, config) {
 
     			// redirect to place page
@@ -158,7 +150,7 @@ angular.module('flocateApp')
 
     		}).
     		error(function(data, status, headers, config) {
-
+          
           console.log(data);
 
     			// TODO handle the error scenarios
