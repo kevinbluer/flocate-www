@@ -47,7 +47,9 @@ exports.index = function(req, res) {
 			userCountryList.push({"CountryCode": req.body.countryShort,"CountryName": req.body.countryLong});
 		}
 
-		console.log(userCountryList);
+		var currentUser = Parse.User.current();
+		currentUser.set("CountryList", userCountryList);
+		currentUser.save();
 
 		checkin.set("Note", req.body.what);
 		checkin.set("Doing", req.body.where);
