@@ -32,6 +32,23 @@ exports.index = function(req, res) {
 		//     console.log(res);
 		// });
 
+		var userCountryList = user.attributes.CountryList;
+		var alreadyVisited = false;
+
+		for (var v = 0; v < userCountryList.length; v++) {
+
+			if (userCountryList[v].CountryCode == req.body.countryShort) {
+				console.log("yoyoyo");
+				alreadyVisited = true;
+			}
+		}
+
+		if (!alreadyVisited) {
+			userCountryList.push({"CountryCode": req.body.countryShort,"CountryName": req.body.countryLong});
+		}
+
+		console.log(userCountryList);
+
 		checkin.set("Note", req.body.what);
 		checkin.set("Doing", req.body.where);
 		checkin.set("City", "Angkor Wat");

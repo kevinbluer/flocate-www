@@ -31,5 +31,6 @@ Note that all of these are pending some refactoring.
 
 ## Country Code Resources
 
+- https://en.wikipedia.org/wiki/ISO_3166-2
 - https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
 - https://gist.github.com/vxnick/380904
