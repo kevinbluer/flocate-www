@@ -18,7 +18,7 @@ angular.module('flocateApp')
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-  	$http.post('/api/locations/getCountryDetails', {"CountryCode3": $stateParams.countryCode}).
+  	$http.post('/api/locations/getCountryDetails', {"CountryCode2": $stateParams.countryCode}).
   		success(function(data, status, headers, config) {
 
   			// set the page title
@@ -29,7 +29,7 @@ angular.module('flocateApp')
 			$scope.myMap.setZoom(data[0].ZoomLevel);
 
 			// get the checkins
-			$http.post('/api/checkin/checkinsByCountry', { CountryCode3: data[0].CountryCode3 }).
+			$http.post('/api/checkin/checkinsByCountry', { CountryCode2: data[0].CountryCode2 }).
 			success(function(data, status, headers, config) {
 
 				// fromDate
