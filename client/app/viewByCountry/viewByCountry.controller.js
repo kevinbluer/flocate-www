@@ -43,15 +43,35 @@ angular.module('flocateApp')
 
 			  	angular.forEach(data, function(value, key) {
 
+			  		var map = $scope.myMap;
+
 			  		// lay a marker
 				    var marker = new google.maps.Marker({
-				        map : $scope.myMap,
+				        map : map,
 				        position : new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"])
 				    });
 
+				    // debugger;
+
+				    var contentString = '<div id="content">'+
+				      '<div id="siteNotice">'+
+				      '</div>'+
+				      '<h3 id="firstHeading" class="firstHeading">' + value.Note + '</h3>'+
+				      '<div id="bodyContent">'+
+				      '<p><b>Uluru</b>'+
+				      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+				      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
+				      '(last visited June 22, 2009).</p>'+
+				      '</div>'+
+				      '</div>';
+
+				    var infowindow = new google.maps.InfoWindow({
+					    content: contentString
+					});
+
 				    google.maps.event.addListener(marker, 'click', function() {
-				    
-              			$location.path('/user/' + user.username + '/' + value.objectId);
+				    	infowindow.open(map,marker);
+              			// $location.path('/user/' + user.username + '/' + value.objectId);
 					});
 
 				    $scope.newMarker = marker;
