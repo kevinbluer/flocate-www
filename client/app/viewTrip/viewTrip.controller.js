@@ -24,6 +24,7 @@ angular.module('flocateApp')
 		  	$scope.name = data[0].Name;
 			$scope.description = data[0].Description;
 			$scope.checkins = data[1];
+			$scope.id = $stateParams.tripId;
 
 		 	var bounds = new google.maps.LatLngBounds();
 		 	var placeArray = [];
@@ -68,3 +69,26 @@ angular.module('flocateApp')
 	// };
 
   });
+
+angular.module('flocateApp')
+  .controller('EditTripCtrl', function($scope, $http, $stateParams) {
+
+  		$http.get('/api/trip/' + $stateParams.tripId).
+		  success(function(data, status, headers, config) {
+
+		  	$scope.name = data[0].Name;
+			$scope.description = data[0].Description;
+			$scope.id = $stateParams.tripId;
+
+		  }).
+		  error(function(data, status, headers, config) {
+		  	console.log(data);
+		  });
+
+		$scope.edit = function() {
+			alert("yo");
+		}
+
+  });
+
+

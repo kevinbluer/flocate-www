@@ -1,0 +1,17 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h2>Trip Settings</h2>
+			<p>Edit the trip's details below.</p>
+			<input ng-model="name" type="text" class="form-control" placeholder="Trip Name" required>
+			<br>
+			<textarea ng-model="description" class="form-control" placeholder="Trip Description" required></textarea>
+			<br>
+			<button ng-click="edit()" class="btn btn-default">Update Trip Details</button> <button ng-click="delete()" class="btn btn-danger pull-right">Delete Trip</button> 
+		</div>
+	</div>
+</div>
+
+<div ng-include="'components/footer/footer.html'"></div>
