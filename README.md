@@ -2,6 +2,7 @@
 
 - "Wish You Were Here!"
 - "Find and Locate"
+- "A tool for explorers"
 
 ## Libraries
 
