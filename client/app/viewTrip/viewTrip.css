@@ -2,6 +2,10 @@
 	height: 400px;
 }
 
+.map-thumb {
+	border: solid 1px #E0E0E0;
+}
+
 #stats {
 	margin-top: 20px;
 }
