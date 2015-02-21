@@ -22,7 +22,7 @@ angular.module('flocateApp')
   		success(function(data, status, headers, config) {
 
   			// set the page title
-  			$scope.countryName = "You + " + data[0].CountryName;
+  			$scope.countryName = data[0].CountryName;
 
   			// set the map
 			$scope.myMap.setCenter(new google.maps.LatLng(data[0].CountryCenterPoint.latitude, data[0].CountryCenterPoint.longitude));
@@ -56,11 +56,11 @@ angular.module('flocateApp')
 				    var contentString = '<div id="content">'+
 				      '<div id="siteNotice">'+
 				      '</div>'+
-				      '<h3 id="firstHeading" class="firstHeading">' + value.Note + '</h3>'+
-				      '<p>' + value.Doing + '</p>'+
+				      '<h3 id="firstHeading" class="firstHeading">' + value.Doing + '</h3>'+
+				      '<p>' + value.Note + '</p>'+
 				      '<div id="bodyContent">'+
 				      '<p><b>' + moment(value.RecordedAt.iso).fromNow() + '</b>'+
-				      '<a class="btn btn-default" style="width: 100%" href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+				      '<a class="btn btn-default" style="width: 100%" href="/user/' + user.username + '/' + value.objectId + '">'+
 				      'View Pin</a>'+
 				      '</div>'+
 				      '</div>';
@@ -71,7 +71,6 @@ angular.module('flocateApp')
 
 				    google.maps.event.addListener(marker, 'click', function() {
 				    	infowindow.open(map,marker);
-              			// $location.path('/user/' + user.username + '/' + value.objectId);
 					});
 
 				    $scope.newMarker = marker;

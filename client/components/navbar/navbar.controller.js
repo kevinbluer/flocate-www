@@ -5,6 +5,8 @@ angular.module('flocateApp')
 
     if (Auth.isLoggedIn()) {
     
+      var username = Auth.getCurrentUser().username;
+
       $scope.menu = [
       {
         'title': 'Dashboard',
@@ -13,12 +15,12 @@ angular.module('flocateApp')
        },
       {
         'title': 'Your Map',
-        'link': '/user/kevinbluer',
+        'link': '/user/' + username,
         'icon': 'fa fa-globe'
        },
       {
         'title': 'Starred',
-        'link': '/starred',
+        'link': '/' + username + '/starred',
         'icon': 'fa fa-star'
        },
        {
@@ -28,7 +30,7 @@ angular.module('flocateApp')
        },
        {
         'title': 'Add Trip',
-        'link': '/kevinbluer/trip/add',
+        'link': '/' + username + '/trip/add',
         'icon': 'fa fa-compass'
        },
        {

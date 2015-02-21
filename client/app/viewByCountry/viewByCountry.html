@@ -3,20 +3,20 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h2>{{ countryName }}</h2>
+			<h2>You + {{ countryName }}</h2>
 			<p><a href="/user/kevinbluer"><span class="label label-success">World</span></a> <span ng-repeat="country in currentUser.CountryList"><a href="/user/{{ currentUser.username }}/country/{{ country.CountryCode }}"><span class="label label-default">{{ country.CountryName }}</span></a>{{$last ? '' : ' '}}</span></p>
   			<div ui-map="myMap" ui-options="mapOptions" class="map-view-canvas">
   			</div>
 
-			<hr>
-
-			<div style="width: 100%;" class="clearfix">
+			<div style="width: 100%; margin-top: 10px;" class="clearfix">
 				<h3 class="pull-left">{{ fromDate }} <span style="font-size: 16px; color: #666;">{{ fromNow }}</span></h3>
 				<h3 class="pull-right"><span style="font-size: 16px; color: #666;">{{ toNow }}</span> {{ toDate }}</h3>
 			</div>
 
 			<div style="width: 100%; border-bottom: solid 1px #666; border-left: solid 3px #666; border-right: solid 3px #666; height: 10px;" class="clearfix">
 			</div>
+
+			<h4>Other people who've explored {{ countryName }}...</h4>
 		</div>
 	</div>
 </div>
