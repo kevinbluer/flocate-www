@@ -57,11 +57,11 @@ angular.module('flocateApp')
 				      '<div id="siteNotice">'+
 				      '</div>'+
 				      '<h3 id="firstHeading" class="firstHeading">' + value.Note + '</h3>'+
+				      '<p>' + value.Doing + '</p>'+
 				      '<div id="bodyContent">'+
-				      '<p><b>Uluru</b>'+
-				      '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-				      'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-				      '(last visited June 22, 2009).</p>'+
+				      '<p><b>' + moment(value.RecordedAt.iso).fromNow() + '</b>'+
+				      '<a class="btn btn-default" style="width: 100%" href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
+				      'View Pin</a>'+
 				      '</div>'+
 				      '</div>';
 
