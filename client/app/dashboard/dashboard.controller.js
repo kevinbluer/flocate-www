@@ -5,6 +5,8 @@ angular.module('flocateApp')
 
     var user = Auth.getCurrentUser();
 
+    debugger;
+
     $scope.currentUser = user;
 
     user.$promise.then(function(user) {
@@ -15,12 +17,6 @@ angular.module('flocateApp')
       };
 
       var places = {};
-
-      // angular.forEach(user.CountryListCode, function(value, key) {
-
-      //   places[value] = been;
-
-      // });
 
       var map = new Datamap({
         element: document.getElementById('container'),
@@ -34,6 +30,13 @@ angular.module('flocateApp')
         data: places
       });
     });
+
+    // generate random slogan
+    var slogans = ["Nice work!", "Go you!", "Keep it up!", "The more you see, the more you know!", "Explorer Extraordinaire!"];
+    var rand = Math.random();
+    rand *= slogans.length;
+    rand = Math.floor(rand);
+    $scope.caption = slogans[rand];
 		
 		$http.get('/api/checkin/allCheckins', {}).
   		success(function(data, status, headers, config) {
