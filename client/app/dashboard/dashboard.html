@@ -24,7 +24,7 @@
 			<p>In 2015 you visited X cities within Y countries. Spent the most time in Z.
 		</div>
 		<div class="col-md-4">
-			<h2><span class="fa fa-star"></span> Starred</h2>
+			<h2><span class="fa fa-star"></span> <a href="/{{ currentUser.username }}/starred">Starred</a></h2>
 
 			<hr>
 			<h2><span class="fa fa-calendar"></span> Recent</h2>
@@ -37,7 +37,7 @@
 		
 					</div>
 					<div class="col-md-4">
-	  					<div ui-map="myMap" ui-options="mapOptions" class="map-thumb"></div>
+	  					<div ui-map="myMap" ui-options="{center: {lat: -34.397, lng: 150.644}, zoom: 15, mapTypeId: google.maps.MapTypeId.ROADMAP }" class="map-thumb"></div>
 					</div>
 				</div>
 				<hr>
