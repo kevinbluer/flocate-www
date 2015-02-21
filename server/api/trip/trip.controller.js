@@ -59,6 +59,35 @@ exports.getTripByTripId = function(req, res) {
 	});
 };
 
+exports.updateTripByTripId = function(req, res) {
+
+	var Trip = Parse.Object.extend("Trip");
+	var query = new Parse.Query(Trip);
+	query.get(req.params.tripId, function(trip) {
+
+	    trip.set("Name", req.body.name);
+	    trip.set("Description", req.body.description);
+	    trip.set("ContinuousTrip", req.body.continuousTrip);
+
+		trip.save(null, {
+		  success: function(trip) {
+		    // Execute any logic that should take place after the object is saved.
+
+		    res.json(trip);
+		  },
+		  error: function(trip, error) {
+		    // Execute any logic that should take place if the save fails.
+		    // error is a Parse.Error with an error code and message.
+		    console.log('Failed to update object, with error code: ' + error.message);
+
+		    // res.json([]);
+		  }
+		});
+
+	    res.json({});
+	});
+};
+
 exports.addCheckinToTrip = function(req, res) {
 
 	console.log(req.body.checkinId);
@@ -135,12 +164,13 @@ exports.add = function(req, res) {
 
 		trip.set("Name", req.body.name);
 		trip.set("Description", req.body.description);
+		trip.set("ContinuousTrip", true);
 
 		trip.save(null, {
 		  success: function(checkin) {
 		    // Execute any logic that should take place after the object is saved.
 		    res.json(checkin);
-		    
+
 		  },
 		  error: function(gameScore, error) {
 		    // Execute any logic that should take place if the save fails.

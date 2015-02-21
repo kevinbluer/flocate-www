@@ -4,9 +4,6 @@ angular.module('flocateApp')
   .controller('DashboardCtrl', function ($scope, $location, Auth, User, $rootScope, $http) {
 
     var user = Auth.getCurrentUser();
-
-    debugger;
-
     $scope.currentUser = user;
 
     user.$promise.then(function(user) {

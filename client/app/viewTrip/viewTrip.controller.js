@@ -50,13 +50,17 @@ angular.module('flocateApp')
 			    }
 		 	}
 
-		 	var line = new google.maps.Polyline({
-			    path: placeArray,
-			    strokeColor: "#FF0000",
-			    strokeOpacity: 1.0,
-			    strokeWeight: 2,
-			    map: $scope.myMap
-			});
+		 	if (data[0].ContinuousTrip) {
+
+			 	var line = new google.maps.Polyline({
+				    path: placeArray,
+				    strokeColor: "#FF0000",
+				    strokeOpacity: 1.0,
+				    strokeWeight: 2,
+				    map: $scope.myMap
+				});
+
+			}
 
 		 	$scope.myMap.fitBounds(bounds);
 
@@ -71,7 +75,7 @@ angular.module('flocateApp')
   });
 
 angular.module('flocateApp')
-  .controller('EditTripCtrl', function($scope, $http, $stateParams) {
+  .controller('EditTripCtrl', function($scope, $http, $state, $stateParams) {
 
   		$http.get('/api/trip/' + $stateParams.tripId).
 		  success(function(data, status, headers, config) {
@@ -79,14 +83,24 @@ angular.module('flocateApp')
 		  	$scope.name = data[0].Name;
 			$scope.description = data[0].Description;
 			$scope.id = $stateParams.tripId;
+			$scope.continuousTrip = data[0].ContinuousTrip;
 
 		  }).
 		  error(function(data, status, headers, config) {
 		  	console.log(data);
 		  });
 
-		$scope.edit = function() {
-			alert("yo");
+		$scope.save = function() {
+
+			$http.post('/api/trip/' + $stateParams.tripId, {name: $scope.name, description: $scope.description, continuousTrip: $scope.continuousTrip} ).
+			  success(function(data, status, headers, config) {
+
+				$state.go('viewTrip', { tripId: $stateParams.tripId, username: $stateParams.username })			  	
+
+			  }).
+			  error(function(data, status, headers, config) {
+			  	console.log(data);
+			  });
 		}
 
   });
