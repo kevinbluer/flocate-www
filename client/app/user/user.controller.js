@@ -125,7 +125,3 @@ angular.module('flocateApp')
 	};
 
   });
-
-function onGoogleReady() {
-  	// angular.bootstrap(document.getElementById("map"), ['ui-map']);
-}
