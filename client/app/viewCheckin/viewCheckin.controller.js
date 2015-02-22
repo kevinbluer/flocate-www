@@ -51,9 +51,14 @@ angular.module('flocateApp')
 		$http.post('/api/checkin/star', {checkinId: $stateParams.checkinId}).
 			success(function(data, status, headers, config) {
 
-				// TEMP
-
-				console.log(data);
+				if (data.Starred) {
+					debugger;
+					$("#star").addClass("starred");
+				} else {
+					debugger;
+					
+					$("#star").removeClass("starred");
+				}
 
 			}).
 			error(function(data, status, headers, config) {
