@@ -13,6 +13,15 @@ angular.module('flocateApp')
   	}
 
   	var user = Auth.getCurrentUser();
+  	$scope.title = "...";
+
+  	// TODO - get logged out user details (e.g. name and public information)
+
+  	if (user.username) {
+  		$scope.title = "You";
+  	} else {
+  		$scope.title = "XYZ";
+  	}
 
     $scope.currentUser = user;
 
