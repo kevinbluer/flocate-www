@@ -10,8 +10,8 @@
 				<div class="col-md-12">
 					<ol class="breadcrumb">
 					  
-					  <li><a href="/user/kevinbluer"><span class="glyphicon glyphicon-globe"></span> World</a></li>
-					  <li><a href="/user/kevinbluer/country/{{ checkin.CountryCode2 }}"><span class="glyphicon glyphicon-flag"></span> {{ checkin.Country }}</a></li>
+					  <li><a href="/user/{{ user.username }}"><span class="glyphicon glyphicon-globe"></span> World</a></li>
+					  <li><a href="/user/{{ user.username }}/country/{{ checkin.CountryCode2 }}"><span class="glyphicon glyphicon-flag"></span> {{ checkin.Country }}</a></li>
 					  <li class="active"><span class="glyphicon glyphicon-pushpin"></span> {{ what }}</li>
 					</ol>
 				</div>
@@ -28,12 +28,12 @@
 					      </a>
 					      <ul class="dropdown-menu" role="menu">
 					        <li ng-repeat="choice in trips">
-					          <a ng-click="setChoiceIndex(choice.objectId)" href="#">{{choice.Name}}</a>
+					          <a ng-click="setChoiceIndex(choice.objectId)" href="#">{{ choice.Name }}</a>
 					        </li>
 					      </ul>
 					    </div>
 					    <a class="btn btn-default {{ starred }}" href="#" ng-click="toggleStar()" id="star"><span class="fa fa-star"></span> Star</a>
-					    <a class="btn btn-default {{ starred }}" href="#" href="#"><span class="fa fa-edit"></span> Edit</a>
+					    <a class="btn btn-default" href="/user/{{ user.username }}/{{ checkin.objectId }}/edit"><span class="fa fa-edit"></span> Edit</a>
 
 		  			</div>
 				</div>

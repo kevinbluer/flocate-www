@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('ViewcheckinCtrl', function ($scope, $http, $stateParams, $log, $location) {
+  .controller('ViewCheckinCtrl', function ($scope, $http, $stateParams, $log, $location, Auth) {
 
   	$scope.where = "Loading...";
 
@@ -15,6 +15,12 @@ angular.module('flocateApp')
       zoom: 18,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
+
+//     debugger;
+
+    if (Auth.getCurrentUser()) {
+    	$scope.user = Auth.getCurrentUser();
+    }
 
 	$http.get('/api/checkin/checkinById', {params: {checkinId: $stateParams.checkinId}}).
 	success(function(data, status, headers, config) {
@@ -56,7 +62,7 @@ angular.module('flocateApp')
 					$("#star").addClass("starred");
 				} else {
 					debugger;
-					
+
 					$("#star").removeClass("starred");
 				}
 
@@ -114,5 +120,11 @@ angular.module('flocateApp')
 			// TODO handle the error scenarios
 
 		});
+
+  })
+
+  .controller('EditCheckinCtrl', function ($scope, $http, $stateParams, $log, $location, Auth) {
+
+  	
 
   });

@@ -6,6 +6,14 @@ angular.module('flocateApp')
       .state('viewCheckin', {
         url: '/user/:username/:checkinId',
         templateUrl: 'app/viewCheckin/viewCheckin.html',
-        controller: 'ViewcheckinCtrl'
+        controller: 'ViewCheckinCtrl'
       });
-  });
+  })
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('editCheckin', {
+        url: '/user/:username/:checkinId/edit',
+        templateUrl: 'app/viewCheckin/editCheckin.html',
+        controller: 'EditCheckinCtrl'
+      });
+  })
