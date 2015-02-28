@@ -9,7 +9,7 @@ angular.module('flocateApp')
 
   	$scope.mapOptions = {
       center: new google.maps.LatLng(22.32532675380104, 114.169360706689),
-      zoom: 1,
+      zoom: 2,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
@@ -27,6 +27,10 @@ angular.module('flocateApp')
 			$scope.description = data[0].Description;
 			$scope.checkins = data[1];
 			$scope.id = $stateParams.tripId;
+
+			if ($scope.checkins == 0) {
+				return;
+			} 
 
 		 	var bounds = new google.maps.LatLngBounds();
 		 	var placeArray = [];
