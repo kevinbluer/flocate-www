@@ -169,5 +169,22 @@ exports.starCheckin = function(req, res) {
 }
 
 exports.getStarredCheckins = function(req, res) {
-	//
+
+	// TODO get the checkins based on the stateParam instead
+
+	var Checkin = Parse.Object.extend("Checkin");
+	var query = new Parse.Query(Checkin);
+
+	query.equalTo("User", Parse.User.current());
+	query.equalTo("Starred", true);
+	query.ascending("RecordedAt");
+
+	query.find({
+	  success: function(results) {
+	    res.json(results);
+	  },
+	  error: function(error) {
+	    console.log(error);
+	  }
+	});
 }

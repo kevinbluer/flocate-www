@@ -61,4 +61,17 @@ angular.module('flocateApp')
 
       });
 
+      $http.get('/api/checkin/getStarredCheckins', {}).
+      success(function(data, status, headers, config) {
+
+        $scope.moment = moment;
+        $scope.starred = data;
+
+      }).
+      error(function(data, status, headers, config) {
+
+        // TODO handle the error scenarios
+
+      });
+
   });
