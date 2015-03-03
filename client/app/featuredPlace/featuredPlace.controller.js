@@ -1,6 +1,12 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('FeaturedPlaceCtrl', function ($scope) {
+  .controller('FeaturedPlaceAogashimaCtrl', function ($scope) {
+    $scope.message = 'Hello';
+  });
+
+
+angular.module('flocateApp')
+  .controller('FeaturedPlaceManausCtrl', function ($scope) {
     $scope.message = 'Hello';
   });
