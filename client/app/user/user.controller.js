@@ -1,6 +1,13 @@
 'use strict';
 
 angular.module('flocateApp')
+  .controller('UserPublicCtrl', function ($scope, $http, $stateParams) {
+
+
+
+});
+
+angular.module('flocateApp')
   .controller('UserCtrl', function ($scope, $http, $stateParams, Auth) {
 
   	if ($stateParams.username == "") {
