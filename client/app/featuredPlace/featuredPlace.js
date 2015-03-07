@@ -17,4 +17,13 @@ angular.module('flocateApp')
         templateUrl: 'app/featuredPlace/featured-manaus.html',
         controller: 'FeaturedPlaceManausCtrl'
       });
+  })
+
+  .config(function ($stateProvider) {
+    $stateProvider
+      .state('featuredPlaceHonduras', {
+        url: '/featured/honduras',
+        templateUrl: 'app/featuredPlace/featured-honduras.html',
+        controller: 'FeaturedPlaceHondurasCtrl'
+      });
   });
