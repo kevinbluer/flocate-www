@@ -60,6 +60,11 @@ angular.module('flocateApp')
         'link': '/signin'
        };
 
+       $scope.register = {
+        'title': "Register",
+        'link': '/register'
+       };
+
     }
 
     $scope.isCollapsed = true;
