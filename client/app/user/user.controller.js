@@ -14,6 +14,18 @@ angular.module('flocateApp')
 	});
 
 
+	// TODO get public user details
+
+	$http.get('/api/users/' + $stateParams.username).
+	success(function(data, status, headers, config) {
+		console.log(data);
+
+	}).
+	error(function(data, status, headers, config) {
+		console.log(data);
+
+	});
+
 });
 
 angular.module('flocateApp')
