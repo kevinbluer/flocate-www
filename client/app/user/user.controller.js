@@ -3,6 +3,15 @@
 angular.module('flocateApp')
   .controller('UserPublicCtrl', function ($scope, $http, $stateParams) {
 
+	$http.get('/api/locations').
+	success(function(data, status, headers, config) {
+		console.log(data);
+
+	}).
+	error(function(data, status, headers, config) {
+		console.log(data);
+
+	});
 
 
 });
