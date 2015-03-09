@@ -22,7 +22,10 @@ exports.user = function(req, res, next) {
   query.find({
     success: function(user) {
       
-      res.json(user);
+      // TODO sanitize (e.g. only send appropriate stuff)
+      // TODO validate valid user
+
+      res.json(user[0]);
 
     }
   });

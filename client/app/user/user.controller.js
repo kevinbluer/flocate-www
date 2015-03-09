@@ -18,7 +18,7 @@ angular.module('flocateApp')
 
 	$http.get('/api/users/' + $stateParams.username).
 	success(function(data, status, headers, config) {
-		console.log(data);
+		$scope.usersName = data.firstName + " " + data.lastName;
 
 	}).
 	error(function(data, status, headers, config) {
