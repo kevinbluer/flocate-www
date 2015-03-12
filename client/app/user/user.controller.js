@@ -5,11 +5,11 @@ angular.module('flocateApp')
 
 	$http.get('/api/locations').
 	success(function(data, status, headers, config) {
-		console.log(data);
+		// console.log(data);
 
 	}).
 	error(function(data, status, headers, config) {
-		console.log(data);
+		// console.log(data);
 
 	});
 
@@ -17,10 +17,28 @@ angular.module('flocateApp')
 	// TODO get public user details
 
 	$http.get('/api/users/' + $stateParams.username).
-	success(function(data, status, headers, config) {
-		$scope.usersName = data.firstName + " " + data.lastName;
-		$scope.currentUser = data.CountryList;
+	success(function(user, status, headers, config) {
+		$scope.usersName = user.firstName + " " + user.lastName;
+		$scope.currentUser = user.CountryList;
 
+		var been = {
+		  fillKey: 'MEDIUM',
+		  numberOfThings: 10381
+		};
+
+		var places = {};
+
+		var map = new Datamap({
+		element: document.getElementById('container'),
+		fills: {
+		        HIGH: '#afafaf',
+		        LOW: '#AFE549',
+		        MEDIUM: '#417503',
+		        UNKNOWN: 'rgb(0,0,0)',
+		        defaultFill: '#7BBF37'
+		    },
+		data: places
+		});
 
 	}).
 	error(function(data, status, headers, config) {
