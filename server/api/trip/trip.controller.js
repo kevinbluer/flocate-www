@@ -36,27 +36,27 @@ exports.getAllByUserId = function(req, res) {
 
 exports.getTripByTripId = function(req, res) {
 
-	// var Trip = Parse.Object.extend("Trip");
-	// var query = new Parse.Query(Trip);
-	// query.get(req.params.tripId, function(trip) {
+	var Trip = Parse.Object.extend("Trip");
+	var query = new Parse.Query(Trip);
+	query.get(req.params.tripId, function(trip) {
 
-	//     var relation = trip.relation("Checkin");
-	//     var query = relation.query();
-	//     query.ascending("RecordedAt");
-	//     query.find({
-	//        success : function(checkins) {
+	    var relation = trip.relation("Checkin");
+	    var query = relation.query();
+	    query.ascending("RecordedAt");
+	    query.find({
+	       success : function(checkins) {
 
-	// 	       	var fullTrip = [trip];
-	// 	       	fullTrip.push(checkins);
+		       	var fullTrip = [trip];
+		       	fullTrip.push(checkins);
 
-	// 	       	res.json(fullTrip);
+		       	res.json(fullTrip);
 
-	//        },
-	//        error : function(error) {
-	//           alert("Error: " + error.code + " " + error.message);
-	//        }
-	//     });
-	// });
+	       },
+	       error : function(error) {
+	          alert("Error: " + error.code + " " + error.message);
+	       }
+	    });
+	});
 };
 
 exports.updateTripByTripId = function(req, res) {
