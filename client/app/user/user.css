@@ -3,3 +3,9 @@
 	border: solid 1px #E0E0E0;
 	height: 200px;
 }
+
+.map {
+  position: relative;
+  width: 750px;
+  height: 500px;
+}

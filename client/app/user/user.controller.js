@@ -30,6 +30,7 @@ angular.module('flocateApp')
 
 		var map = new Datamap({
 		element: document.getElementById('container'),
+		projection: 'mercator',
 		fills: {
 		        HIGH: '#afafaf',
 		        LOW: '#AFE549',
