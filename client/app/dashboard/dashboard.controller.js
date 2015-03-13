@@ -15,6 +15,12 @@ angular.module('flocateApp')
 
       var places = {};
 
+      // angular.forEach(user.CountryListCode, function(value, key) {
+
+      //   places[value] = been;
+
+      // });
+
       var map = new Datamap({
         element: document.getElementById('container'),
         fills: {

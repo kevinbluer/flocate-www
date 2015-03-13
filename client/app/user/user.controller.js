@@ -28,6 +28,10 @@ angular.module('flocateApp')
 
 		var places = {};
 
+		for (var x = 0; x < user.CountryList.length; x++) {
+			places[user.CountryList[x].CountryCode] = { fillKey: "HIGH" }
+		}
+
 		var map = new Datamap({
 		element: document.getElementById('container'),
 		projection: 'mercator',
