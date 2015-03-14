@@ -9,3 +9,20 @@
   width: 750px;
   height: 500px;
 }
+
+.thumb {
+	margin-bottom: 20px;
+	position: relative;
+}
+
+.thumb .details {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 100;
+}
+
+.map-thumb {
+	opacity: 0.6;
+	height: 100px;
+}

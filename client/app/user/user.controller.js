@@ -7,7 +7,7 @@ angular.module('flocateApp')
 	success(function(data, status, headers, config) {
 		$scope.places = data;
 
-		$moment = moment;
+		$scope.moment = moment;
 	}).
 	error(function(data, status, headers, config) {
 		// console.log(data);
