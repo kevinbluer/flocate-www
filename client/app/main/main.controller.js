@@ -2,5 +2,8 @@
 
 angular.module('flocateApp')
   .controller('MainCtrl', function ($scope, $http) {
-    $scope.awesomeThings = [];
+  });
+
+angular.module('flocateApp')
+  .controller('AboutCtrl', function ($scope, $http) {
   });

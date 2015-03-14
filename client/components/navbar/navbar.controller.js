@@ -53,6 +53,10 @@ angular.module('flocateApp')
       {
         'title': 'Explore',
         'link': '/featured'
+       },
+      {
+        'title': 'About',
+        'link': '/about'
        }];
 
        $scope.signin = {
