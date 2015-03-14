@@ -5,8 +5,9 @@ angular.module('flocateApp')
 
 	$http.get('/api/locations').
 	success(function(data, status, headers, config) {
-		// console.log(data);
+		$scope.places = data;
 
+		$moment = moment;
 	}).
 	error(function(data, status, headers, config) {
 		// console.log(data);
