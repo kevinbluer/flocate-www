@@ -3,11 +3,10 @@
 angular.module('flocateApp')
   .controller('UserPublicCtrl', function ($scope, $http, $stateParams) {
 
-	$http.get('/api/locations').
+	$http.get('/api/locations/kevinbluer/4').
 	success(function(data, status, headers, config) {
+		$scope.moment = moment;		
 		$scope.places = data;
-
-		$scope.moment = moment;
 	}).
 	error(function(data, status, headers, config) {
 		// console.log(data);
@@ -27,10 +26,10 @@ angular.module('flocateApp')
 		  numberOfThings: 10381
 		};
 
-		var places = {};
+		var visited = {};
 
 		for (var x = 0; x < user.CountryList.length; x++) {
-			places[user.CountryList[x].CountryCode] = { fillKey: "HIGH" }
+			visited[user.CountryList[x].CountryCode] = { fillKey: "HIGH" }
 		}
 
 		var map = new Datamap({
@@ -43,7 +42,7 @@ angular.module('flocateApp')
 		        UNKNOWN: 'rgb(0,0,0)',
 		        defaultFill: '#7BBF37'
 		    },
-		data: places
+		data: visited
 		});
 
 	}).
