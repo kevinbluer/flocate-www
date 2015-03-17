@@ -13,7 +13,6 @@ angular.module('flocateApp')
 
 	});
 
-
 	// TODO get public user details
 
 	$http.get('/api/users/' + $stateParams.username).
