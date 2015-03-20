@@ -55,8 +55,8 @@ angular.module('flocateApp')
         'link': '/featured'
        },
       {
-        'title': 'About',
-        'link': '/about'
+        'title': 'Popular Maps',
+        'link': '/maps'
        }];
 
        $scope.signin = {

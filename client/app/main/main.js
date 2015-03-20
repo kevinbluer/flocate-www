@@ -11,9 +11,9 @@ angular.module('flocateApp')
   })
   .config(function ($stateProvider) {
     $stateProvider
-      .state('about', {
-        url: '/about',
-        templateUrl: 'app/main/about.html',
+      .state('maps', {
+        url: '/maps',
+        templateUrl: 'app/main/maps.html',
         controller: 'AboutCtrl'
       });
   });
