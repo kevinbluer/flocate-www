@@ -12,7 +12,6 @@ angular.module('flocateApp')
 	}).
 	error(function(data, status, headers, config) {
 		// console.log(data);
-
 	});
 
 	// TODO get public user details

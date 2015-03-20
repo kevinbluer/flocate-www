@@ -16,10 +16,16 @@ angular.module('flocateApp')
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-//     debugger;
+    function isEmpty(obj) {
+	    for (var i in obj) if (obj.hasOwnProperty(i)) return false;
+	    return true;
+	};
 
-    if (Auth.getCurrentUser()) {
+    if (!isEmpty(Auth.getCurrentUser())) {
     	$scope.user = Auth.getCurrentUser();
+    	$scope.loggedIn = true;
+    } else {
+    	$scope.loggedIn = false;
     }
 
 	$http.get('/api/checkin/checkinById', {params: {checkinId: $stateParams.checkinId}}).
