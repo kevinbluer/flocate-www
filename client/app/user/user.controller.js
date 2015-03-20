@@ -3,6 +3,8 @@
 angular.module('flocateApp')
   .controller('UserPublicCtrl', function ($scope, $http, $stateParams) {
 
+  	$scope.username = $stateParams.username;
+
 	$http.get('/api/locations/kevinbluer/4').
 	success(function(data, status, headers, config) {
 		$scope.moment = moment;		
