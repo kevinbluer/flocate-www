@@ -55,7 +55,7 @@ angular.module('flocateApp')
         'link': '/featured'
        },
       {
-        'title': 'Popular Maps',
+        'title': 'Maps',
         'link': '/maps'
        }];
 
