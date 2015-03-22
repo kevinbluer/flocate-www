@@ -85,6 +85,7 @@ angular.module('flocateApp')
                       itemCountry = address_component.long_name;
                       $scope.countryLong = address_component.long_name;
                       $scope.countryShort = address_component.short_name;
+                      debugger;
                   }
 
                   if (address_component.types[0] == "postal_code_prefix"){ 

@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "Flocate": {
+            "applicationId": "VVbJ2YjOdDJrY7sZw8fF4R1v2Wolgf3toi4o5SW0", 
+            "masterKey": "707kN4NWbM2xakug4rEH4kMusGXe6oQfNXTOJM8u"
+        }, 
+        "_default": {
+            "link": "Flocate"
+        }
+    }
+}
