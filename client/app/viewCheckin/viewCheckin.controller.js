@@ -131,6 +131,36 @@ angular.module('flocateApp')
 
   .controller('EditCheckinCtrl', function ($scope, $http, $stateParams, $log, $location, Auth) {
 
-  	
+  	$http.get('/api/checkin/checkinById', {params: {checkinId: $stateParams.checkinId}}).
+	success(function(data, status, headers, config) {
+
+		debugger;
+
+		// $scope.checkin = data;
+
+		// $scope.what = data.Note;
+		// $scope.where = data.Doing;
+		// $scope.when = moment(data.RecordedAt.iso).fromNow();
+
+		// if (data.Starred) {
+		// 	$scope.starred = "btn-checked";
+		// }
+
+		// // lay a marker
+	 //    var marker = new google.maps.Marker({
+	 //        map : $scope.myMap,
+	 //        position : new google.maps.LatLng(data["Location"]["latitude"], data["Location"]["longitude"])
+	 //    });
+
+	 //    $scope.newMarker = marker;
+
+		// $scope.myMap.setCenter(new google.maps.LatLng(data.Location.latitude, data.Location.longitude));
+
+	}).
+	error(function(data, status, headers, config) {
+
+		// TODO handle the error scenarios
+
+	});
 
   });
