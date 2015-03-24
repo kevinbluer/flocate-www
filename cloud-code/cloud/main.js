@@ -1,7 +1,13 @@
 
-// Use Parse.Cloud.define to define as many cloud functions as you want.
-// For example:
-Parse.Cloud.define("hello", function(request, response) {
-  response.success("Hello world!");
-});
+Parse.Cloud.afterSave("_User", function(request) {
 
+	console.log("x");
+
+	// does the user already exist
+	if (request.object.existed()) {
+		
+		console.log("y");
+
+	}
+
+});
