@@ -38,7 +38,6 @@ exports.index = function(req, res) {
 		for (var v = 0; v < userCountryList.length; v++) {
 
 			if (userCountryList[v].CountryCode == req.body.countryShort) {
-				console.log("yoyoyo");
 				alreadyVisited = true;
 			}
 		}
@@ -56,7 +55,7 @@ exports.index = function(req, res) {
 		checkin.set("City", "Angkor Wat");
 		checkin.set("Country", req.body.countryLong);
 		checkin.set("CountryCode2", req.body.countryShort);
-		checkin.set("Address", "Angkor Wat, Cambodia");
+		checkin.set("Address", req.body.where);
 		checkin.set("Location", new Parse.GeoPoint(parseFloat(req.body.lat), parseFloat(req.body.lng)));
 		checkin.set("Visbility", "Friends");
 		checkin.set("RecordedAt", new Date(req.body.dt));

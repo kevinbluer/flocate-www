@@ -25,10 +25,28 @@ Parse.Cloud.afterSave("Checkin", function(request) {
 		query.first({
 			success: function(country) {
 			  
-				var lastCountry = {CountryCode2: country.get("CountryCode2"), CountryCode3: country.get("CountryCode3") };
+				var lastCountry = {CountryCode2: country.get("CountryCode2"), CountryCode3: country.get("CountryCode3"), CountryName: country.get("CountryName")};
 
 				var user = Parse.User.current();
 				user.set("LastCountry", lastCountry);
+
+				// var userCountryList = user.attributes.CountryList;
+				// var alreadyVisited = false;
+
+				// for (var v = 0; v < userCountryList.length; v++) {
+
+				// 	if (userCountryList[v].CountryCode == req.body.countryShort) {
+				// 		alreadyVisited = true;
+				// 	}
+				// }
+
+				// if (!alreadyVisited) {
+				// 	userCountryList.push({"CountryCode": req.body.countryShort,"CountryName": req.body.countryLong});
+				// }
+
+				user.set("CountryList", lastCountry);
+
+				// TODO set the CountryList (as long as it's not already present)
 
 				user.save(null, {
 				  success: function(user) {
