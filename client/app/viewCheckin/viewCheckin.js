@@ -9,11 +9,13 @@ angular.module('flocateApp')
         controller: 'ViewCheckinCtrl'
       });
   })
+
   .config(function ($stateProvider) {
     $stateProvider
       .state('editCheckin', {
         url: '/user/:username/:checkinId/edit',
         templateUrl: 'app/viewCheckin/editCheckin.html',
-        controller: 'EditCheckinCtrl'
+        controller: 'EditCheckinCtrl',
+        authenticate: true
       });
   })
