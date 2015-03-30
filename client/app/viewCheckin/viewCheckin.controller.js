@@ -135,6 +135,8 @@ angular.module('flocateApp')
 	success(function(data, status, headers, config) {
 
 		$scope.checkin = data;
+		$scope.note = data.Note;
+		$scope.doing = data.Doing;
 
 		// $scope.what = data.Note;
 		// $scope.where = data.Doing;
