@@ -14,7 +14,7 @@ Parse.Cloud.afterSave("_User", function(request) {
 
 Parse.Cloud.afterSave("Checkin", function(request) {
 
-	// TODO do the lookup to the Country class and store both country code lengths
+	// do the lookup to the Country class and store both country code lengths
 
 	var countryCode = request.object.get("CountryCode2");
 
@@ -30,23 +30,22 @@ Parse.Cloud.afterSave("Checkin", function(request) {
 				var user = Parse.User.current();
 				user.set("LastCountry", lastCountry);
 
-				// var userCountryList = user.attributes.CountryList;
-				// var alreadyVisited = false;
+				var userCountryList = user.attributes.CountryList;
+				var alreadyVisited = false;
 
-				// for (var v = 0; v < userCountryList.length; v++) {
+				for (var v = 0; v < userCountryList.length; v++) {
 
-				// 	if (userCountryList[v].CountryCode == req.body.countryShort) {
-				// 		alreadyVisited = true;
-				// 	}
-				// }
+					if (userCountryList[v].CountryCode2 == country.get("CountryCode2")) {
+						alreadyVisited = true;
+					}
+				}
 
-				// if (!alreadyVisited) {
-				// 	userCountryList.push({"CountryCode": req.body.countryShort,"CountryName": req.body.countryLong});
-				// }
+				if (!alreadyVisited) {
+					userCountryList.push({CountryCode2: country.get("CountryCode2"), CountryCode3: country.get("CountryCode3"), CountryName: country.get("CountryName")});
+				}
 
-				user.set("CountryList", lastCountry);
-
-				// TODO set the CountryList (as long as it's not already present)
+				user.set("CountryList", userCountryList);
+				user.set("LastCountry", lastCountry);
 
 				user.save(null, {
 				  success: function(user) {
