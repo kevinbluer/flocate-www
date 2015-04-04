@@ -94,12 +94,10 @@ angular.module('flocateApp')
   	$scope.initMap = function() {
 
   		// load the pins from parse
-  		$http.get('/api/locations').
+  		$http.get('/api/locations/kevinbluer').
 		  success(function(data, status, headers, config) {
 
-		  	checkins = JSON.parse(data);
-
-		  	angular.forEach(checkins, function(value, key) {
+		  	angular.forEach(data, function(value, key) {
 
 			    var marker = new google.maps.Marker({
 			        map : $scope.myMap,
