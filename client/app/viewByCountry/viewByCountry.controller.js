@@ -18,7 +18,7 @@ angular.module('flocateApp')
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-  	$http.post('/api/locations/getCountryDetails', {"CountryCode2": $stateParams.countryCode}).
+  	$http.post('/api/locations/getCountryDetails', {"CountryCode3": $stateParams.countryCode}).
   		success(function(data, status, headers, config) {
 
   			// set the page title
