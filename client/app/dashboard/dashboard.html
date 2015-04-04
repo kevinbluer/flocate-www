@@ -26,7 +26,7 @@
 		<div class="col-md-4">
 			<h2><span class="fa fa-star"></span> <a href="/{{ currentUser.username }}/starred">Starred</a></h2>
 				<div ng-repeat="star in starred">
-					{{ star.Note }}
+					<a href="/user/{{ star.username }}/{{ star.objectId }}">{{ star.Note }}</a>
 				</div>
 			<hr>
 			<h2><span class="fa fa-calendar"></span> Recent</h2>
