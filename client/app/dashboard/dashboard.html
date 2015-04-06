@@ -12,8 +12,10 @@
 			<br>
 			<hr>
 			<h2><span class="fa fa-plane"></span> Trips</h2>
-			<p>You've been on {{ trips.length }} trips <span ng-repeat="trip in trips"><a href="/user/{{ currentUser.username }}/trip/{{ trip.objectId }}">{{ trip.Name }}</a>{{$last ? '' : ', '}}</span>. You've starred 26 other trips / expeditions.</p>
-			<a href="/{{ currentUser.username }}/trip/add" class="btn btn-default">Add Trip</a>
+			<p>You've been on {{ trips.length }} trips! You've starred 26 other trips / expeditions.</p>
+
+			<span ng-repeat="trip in trips"><a href="/user/{{ currentUser.username }}/trip/{{ trip.objectId }}" style="font-size: 18px; line-height: 36px;" class="label label-success">{{ trip.Name }}</a>{{$last ? '' : ' '}}</span>
+			
 			<hr>
 			<h2><span class="fa fa-pie-chart"></span> Statistics</h2>
 			<p>164 Total Pins | <a href="#">First Pin 3,921 Days Ago</a> | <a href="#">Most Recent Pin 2 Days Ago</a> | <a href="/starred">{{ currentUser.StarredPlaceCount }} Starred Places</a> | {{ currentUser.CountryList.length }} Countries</p>
