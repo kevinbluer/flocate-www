@@ -174,6 +174,10 @@ exports.getStarredCheckins = function(req, res) {
 	var Checkin = Parse.Object.extend("Checkin");
 	var query = new Parse.Query(Checkin);
 
+	if (req.params.count != undefined) {
+		query.limit(5);
+	}
+
 	query.equalTo("User", Parse.User.current());
 	query.equalTo("Starred", true);
 	query.ascending("RecordedAt");

@@ -67,7 +67,7 @@ angular.module('flocateApp')
 
       });
 
-      $http.get('/api/checkin/getStarredCheckins', {}).
+      $http.get('/api/checkin/getStarredCheckins/5', {}).
       success(function(data, status, headers, config) {
 
         $scope.moment = moment;
