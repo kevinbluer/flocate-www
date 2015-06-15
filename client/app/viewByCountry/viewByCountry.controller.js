@@ -29,7 +29,7 @@ angular.module('flocateApp')
 			$scope.myMap.setZoom(data[0].ZoomLevel);
 
 			// get the checkins
-			$http.post('/api/checkin/checkinsByCountry', { CountryCode2: data[0].CountryCode2 }).
+			$http.post('/api/checkin/' + user.username + '/checkinsByCountry', { CountryCode2: data[0].CountryCode2 }).
 			success(function(data, status, headers, config) {
 
 				// fromDate

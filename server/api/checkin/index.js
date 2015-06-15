@@ -5,7 +5,7 @@ var controller = require('./checkin.controller');
 
 var router = express.Router();
 
-router.post('/checkinsByCountry', controller.checkinsByCountry);
+router.post('/:username/checkinsByCountry', controller.checkinsByCountry);
 router.get('/getStarredCheckins', controller.getStarredCheckins);
 router.get('/getStarredCheckins/:count', controller.getStarredCheckins);
 router.get('/checkinById', controller.checkinById);
