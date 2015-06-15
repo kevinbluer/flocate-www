@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<h2>You + {{ countryName }}</h2>
-			<p><a href="/user/kevinbluer"><span class="label label-success">World</span></a> <span ng-repeat="country in currentUser.CountryList"><a href="/user/{{ currentUser.username }}/country/{{ country.CountryCode3 }}"><span class="label label-default">{{ country.CountryName }}</span></a>{{$last ? '' : ' '}}</span></p>
+			<p><a href="/user/{{ currentUser.username }}"><span class="label label-success">World</span></a> <span ng-repeat="country in currentUser.CountryList"><a href="/user/{{ currentUser.username }}/country/{{ country.CountryCode3 }}"><span class="label label-default">{{ country.CountryName }}</span></a>{{$last ? '' : ' '}}</span></p>
   			<div ui-map="myMap" ui-options="mapOptions" class="map-view-canvas">
   			</div>
 
