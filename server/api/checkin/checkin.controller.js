@@ -76,6 +76,35 @@ exports.index = function(req, res) {
 	});
 };
 
+// update details of an existing checkin
+exports.update = function(req, res) {
+
+	var Checkin = Parse.Object.extend("Checkin");
+	var checkinQuery = new Parse.Query(Checkin);
+
+	var checkin = checkinQuery.get(req.body.id)
+	.then(function(checkin) {
+
+		checkin.set("Note", req.body.what);
+		checkin.set("Doing", req.body.where);
+		checkin.save(null, {
+			success: function(checkin) {
+		    // Execute any logic that should take place after the object is saved.
+
+		    res.json(checkin);
+		  },
+		  error: function(gameScore, error) {
+
+		  	res.json();
+		    // Execute any logic that should take place if the save fails.
+		    // error is a Parse.Error with an error code and message.
+		    console.log('Failed to create new object, with error code: ' + error.message);
+		  }
+		});
+
+	});
+
+}
 
 // get list of checkins for a given user
 

@@ -138,23 +138,28 @@ angular.module('flocateApp')
 		$scope.note = data.Note;
 		$scope.doing = data.Doing;
 
-		// $scope.what = data.Note;
-		// $scope.where = data.Doing;
-		// $scope.when = moment(data.RecordedAt.iso).fromNow();
+		$scope.save = function() {
 
-		// if (data.Starred) {
-		// 	$scope.starred = "btn-checked";
-		// }
+			$http.post('/api/checkin/update', {
+				id: $stateParams.checkinId,
+				what: $scope.note, 
+				where: $scope.doing
+	        }).
+    		success(function(data, status, headers, config) {
 
-		// // lay a marker
-	 //    var marker = new google.maps.Marker({
-	 //        map : $scope.myMap,
-	 //        position : new google.maps.LatLng(data["Location"]["latitude"], data["Location"]["longitude"])
-	 //    });
+    			// redirect back to place page
+    			$location.path('/user/kevinbluer/' + $stateParams.checkinId);
 
-	 //    $scope.newMarker = marker;
+    		}).
+    		error(function(data, status, headers, config) {
+          
+          		console.log(data);
 
-		// $scope.myMap.setCenter(new google.maps.LatLng(data.Location.latitude, data.Location.longitude));
+    			// TODO handle the error scenarios
+
+    		});
+
+		}
 
 	}).
 	error(function(data, status, headers, config) {
