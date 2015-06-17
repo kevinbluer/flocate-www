@@ -5,7 +5,7 @@ angular.module('flocateApp')
     $stateProvider
       .state('main', {
         url: '/',
-        templateUrl: 'app/main/main.html',
+        templateUrl: 'app/home/main.html',
         controller: 'MainCtrl'
       });
   })
@@ -13,7 +13,7 @@ angular.module('flocateApp')
     $stateProvider
       .state('maps', {
         url: '/maps',
-        templateUrl: 'app/main/maps.html',
+        templateUrl: 'app/home/maps.html',
         controller: 'AboutCtrl'
       });
   });
