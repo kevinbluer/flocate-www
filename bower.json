@@ -21,7 +21,8 @@
     "datamaps": "~0.3.4",
     "topojson": "~1.6.18",
     "Hover": "~2.0.0",
-    "angular-google-maps": "~2.0.12"
+    "angular-google-maps": "~2.0.12",
+    "parse": "~1.4.2"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
