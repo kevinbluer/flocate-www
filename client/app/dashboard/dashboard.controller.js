@@ -42,11 +42,11 @@ angular.module('flocateApp')
 
     // get the most recent places
     var Checkin = Parse.Object.extend("Checkin");
-    var query = new Parse.Query(Checkin);
-    query.equalTo("User", Parse.User.current());
-    query.descending("RecordedAt");
-    query.limit(3);
-    query.find({
+    var queryCheckins = new Parse.Query(Checkin);
+    queryCheckins.equalTo("User", Parse.User.current());
+    queryCheckins.descending("RecordedAt");
+    queryCheckins.limit(3);
+    queryCheckins.find({
       success: function(results) {
 
           $scope.$apply(function() {
@@ -59,6 +59,7 @@ angular.module('flocateApp')
         }
     });
 
+    // get the user's trips
     var Trip = Parse.Object.extend("Trip");
     var queryTrip = new Parse.Query(Trip);
     queryTrip.equalTo("User", Parse.User.current());
@@ -74,45 +75,25 @@ angular.module('flocateApp')
         error: function(error) {
           
         }
-    });    
+    });
 
-		// $http.get('/api/checkin/allCheckins', {}).
-  // 		success(function(data, status, headers, config) {
+    var Checkin = Parse.Object.extend("Checkin");
+    var queryStarred = new Parse.Query(Checkin);
+    queryStarred.equalTo("User", Parse.User.current());
+    queryStarred.descending("RecordedAt");
+    queryStarred.equalTo("Starred", true);  
+    queryStarred.limit(3);
+    queryStarred.find({
+      success: function(results) {
 
-  //       $scope.moment = moment;
-  // 			$scope.checkins = data;
-
-  // 		}).
-  // 		error(function(data, status, headers, config) {
-
-  // 			// TODO handle the error scenarios
-
-  // 		});
-
-  //     $http.get('/api/trip/get/kevinbluer', {}).
-  //     success(function(data, status, headers, config) {
-
-  //       $scope.moment = moment;
-  //       $scope.trips = data;
-
-  //     }).
-  //     error(function(data, status, headers, config) {
-
-  //       // TODO handle the error scenarios
-
-  //     });
-
-  //     $http.get('/api/checkin/getStarredCheckins/5', {}).
-  //     success(function(data, status, headers, config) {
-
-  //       $scope.moment = moment;
-  //       $scope.starred = data;
-
-  //     }).
-  //     error(function(data, status, headers, config) {
-
-  //       // TODO handle the error scenarios
-
-  //     });
+          $scope.$apply(function() {
+            $scope.moment = moment;
+            $scope.starred = results;
+          });
+        },
+        error: function(error) {
+          
+        }
+    });
 
   });
