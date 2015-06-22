@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('SettingsCtrl', function ($scope) {
+  .controller('SettingsCtrl', function ($scope, Modal) {
 
   	var user = Parse.User.current();
 
@@ -20,8 +20,14 @@ angular.module('flocateApp')
   		user.set("lastName", lastname);
   		user.set("email", email);
   		user.set("location", location);
-  		user.save();
-
+  		user.save(null, {
+			success: function() {
+				alert("Settings Updated :)");
+		  },
+		  	error: function(user, error) {
+		    	alert("Unable to save! Please try again.");
+		  }
+		});
   	}
 
   });

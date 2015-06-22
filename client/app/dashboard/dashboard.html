@@ -16,7 +16,7 @@
 			<span ng-repeat="country in user.get('CountryList')"><a class="label label-success" href="/user/{{ user.getUsername() }}/country/{{ country.CountryCode3 }}">{{ country.CountryName }}</a>{{$last ? '' : ' '}}</span>
 			<br>
 			<hr>
-			<h2><span class="fa fa-plane"></span> Trips</h2>
+			<h2><span class="fa fa-plane"></span> Trips & Maps</h2>
 			<p>You've been on {{ trips.length }} trips! You've starred 26 other trips / expeditions.</p>
 
 			<span ng-repeat="trip in trips"><a href="/user/{{ user.getUsername() }}/trip/{{ trip.id }}" class="label label-success">{{ trip.get("Name") }}</a>{{$last ? '' : ' '}}</span>
@@ -25,7 +25,7 @@
 			<h2><span class="fa fa-pie-chart"></span> Statistics</h2>
 			<p>164 Total Pins | <a href="#">First Pin 3,921 Days Ago</a> | <a href="#">Most Recent Pin 2 Days Ago</a> | <a href="/starred">{{ currentUser.StarredPlaceCount }} Starred Places</a> | {{ currentUser.CountryList.length }} Countries</p>
 			<hr>
-			<h2><span class="fa fa-globe"></span> Years in Review</h2>
+			<h2><span class="fa fa-globe"></span> Past Year in Review</h2>
 			<p>In 2015 you visited X cities within Y countries. Spent the most time in Z.
 		</div>
 
