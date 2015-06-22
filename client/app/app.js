@@ -54,12 +54,13 @@ angular.module('flocateApp', [
     };
   })
   
-.run(function($rootScope, $location, Auth) {
+.run(function($rootScope, $location) {
   $rootScope.$on('$stateChangeStart', function (event, next) {
-      Auth.isLoggedInAsync(function(loggedIn) {
-        if (next.authenticate && !loggedIn) {
+
+      var currentUser = Parse.User.current();
+      if (!currentUser) {
           $location.path('/login');
-        }
-      });
+      }
+      
     });
 });
