@@ -59,6 +59,23 @@ angular.module('flocateApp')
         }
     });
 
+    var Trip = Parse.Object.extend("Trip");
+    var queryTrip = new Parse.Query(Trip);
+    queryTrip.equalTo("User", Parse.User.current());
+    queryTrip.descending("updatedAt");
+    queryTrip.find({
+      success: function(results) {
+
+          $scope.$apply(function() {
+            $scope.moment = moment;
+            $scope.trips = results;
+          });
+        },
+        error: function(error) {
+          
+        }
+    });    
+
 		// $http.get('/api/checkin/allCheckins', {}).
   // 		success(function(data, status, headers, config) {
 

@@ -19,7 +19,7 @@
 			<h2><span class="fa fa-plane"></span> Trips</h2>
 			<p>You've been on {{ trips.length }} trips! You've starred 26 other trips / expeditions.</p>
 
-			<span ng-repeat="trip in trips"><a href="/user/{{ user.getUsername() }}/trip/{{ trip.objectId }}" class="label label-success">{{ trip.Name }}</a>{{$last ? '' : ' '}}</span>
+			<span ng-repeat="trip in trips"><a href="/user/{{ user.getUsername() }}/trip/{{ trip.id }}" class="label label-success">{{ trip.get("Name") }}</a>{{$last ? '' : ' '}}</span>
 			
 			<hr>
 			<h2><span class="fa fa-pie-chart"></span> Statistics</h2>
