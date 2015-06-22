@@ -1,5 +1,7 @@
 'use strict';
 
+Parse.initialize("VVbJ2YjOdDJrY7sZw8fF4R1v2Wolgf3toi4o5SW0", "4zEOZdifrLJxr2exozJMGsE8SB7zmnienaMMsjTF");
+
 angular.module('flocateApp', [
   'ngCookies',
   'ngResource',
