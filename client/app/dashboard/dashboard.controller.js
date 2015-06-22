@@ -1,38 +1,40 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('DashboardCtrl', function ($scope, $location, Auth, User, $rootScope, $http) {
+  .controller('DashboardCtrl', function ($scope, $location, Auth, $rootScope, $http) {
 
-    var user = Auth.getCurrentUser();
-    $scope.currentUser = user;
+    debugger;
 
-    user.$promise.then(function(user) {
+    // var user = Auth.getCurrentUser();
+    // $scope.currentUser = user;
+
+    // user.$promise.then(function(user) {
       
-      var been = {
-          fillKey: 'MEDIUM',
-          numberOfThings: 10381
-      };
+    //   var been = {
+    //       fillKey: 'MEDIUM',
+    //       numberOfThings: 10381
+    //   };
 
-      var places = {};
+    //   var places = {};
 
-      // angular.forEach(user.CountryListCode, function(value, key) {
+    //   // angular.forEach(user.CountryListCode, function(value, key) {
 
-      //   places[value] = been;
+    //   //   places[value] = been;
 
-      // });
+    //   // });
 
-      var map = new Datamap({
-        element: document.getElementById('container'),
-        fills: {
-                HIGH: '#afafaf',
-                LOW: '#AFE549',
-                MEDIUM: '#417503',
-                UNKNOWN: 'rgb(0,0,0)',
-                defaultFill: '#7BBF37'
-            },
-        data: places
-      });
-    });
+    //   var map = new Datamap({
+    //     element: document.getElementById('container'),
+    //     fills: {
+    //             HIGH: '#afafaf',
+    //             LOW: '#AFE549',
+    //             MEDIUM: '#417503',
+    //             UNKNOWN: 'rgb(0,0,0)',
+    //             defaultFill: '#7BBF37'
+    //         },
+    //     data: places
+    //   });
+    // });
 
     // generate random slogan
     var slogans = ["Nice work!", "Go you!", "Keep it up!", "The more you see, the more you know!", "Explorer Extraordinaire!"];

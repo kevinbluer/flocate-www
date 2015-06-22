@@ -15,6 +15,8 @@ angular.module('flocateApp')
           },
           error: function(user, error) {
 
+            // TODO - Properly handle this error
+
           }
         });
 
