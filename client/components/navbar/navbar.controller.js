@@ -4,8 +4,6 @@ angular.module('flocateApp')
   .controller('NavbarCtrl', function ($scope, $location, $rootScope) {
 
     if (Parse.User.current()) {
-    
-      debugger;
 
       var username = Parse.User.current().getUsername();
 
@@ -86,7 +84,7 @@ angular.module('flocateApp')
       if (this.signin.title == "Sign In") {
         $location.path('/signin');
       } else {
-        Auth.logout();
+        Parse.User.logOut();
         $location.path('/signin');
       }
     }
