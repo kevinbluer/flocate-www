@@ -59,8 +59,8 @@ angular.module('flocateApp', [
 
       var currentUser = Parse.User.current();
       if (!currentUser) {
-          $location.path('/login');
+          $location.path('/signin');
       }
-      
+
     });
 });
