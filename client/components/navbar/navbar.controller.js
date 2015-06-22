@@ -1,11 +1,13 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth, $rootScope) {
+  .controller('NavbarCtrl', function ($scope, $location, $rootScope) {
 
-    if (Auth.isLoggedIn()) {
+    if (Parse.User.current()) {
     
-      var username = Auth.getCurrentUser().username;
+      debugger;
+
+      var username = Parse.User.current().getUsername();
 
       $scope.menu = [
       {
