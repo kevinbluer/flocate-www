@@ -1,40 +1,34 @@
 'use strict';
 
 angular.module('flocateApp')
-  .controller('DashboardCtrl', function ($scope, $location, Auth, $rootScope, $http) {
+  .controller('DashboardCtrl', function ($scope, $location, $http) {
 
-    debugger;
+    // get the current parse user
+    var user = Parse.User.current();
 
-    // var user = Auth.getCurrentUser();
-    // $scope.currentUser = user;
+    // build out the choropleth
+    var been = {
+        fillKey: 'MEDIUM',
+        numberOfThings: 10381
+    };
 
-    // user.$promise.then(function(user) {
-      
-    //   var been = {
-    //       fillKey: 'MEDIUM',
-    //       numberOfThings: 10381
-    //   };
+    var places = {};
 
-    //   var places = {};
+    angular.forEach(user.get("CountryList"), function(value, key) {
+      places[value.CountryCode3] = been;
+    });
 
-    //   // angular.forEach(user.CountryListCode, function(value, key) {
-
-    //   //   places[value] = been;
-
-    //   // });
-
-    //   var map = new Datamap({
-    //     element: document.getElementById('container'),
-    //     fills: {
-    //             HIGH: '#afafaf',
-    //             LOW: '#AFE549',
-    //             MEDIUM: '#417503',
-    //             UNKNOWN: 'rgb(0,0,0)',
-    //             defaultFill: '#7BBF37'
-    //         },
-    //     data: places
-    //   });
-    // });
+    var map = new Datamap({
+      element: document.getElementById('container'),
+      fills: {
+              HIGH: '#afafaf',
+              LOW: '#AFE549',
+              MEDIUM: '#417503',
+              UNKNOWN: 'rgb(0,0,0)',
+              defaultFill: '#7BBF37'
+          },
+      data: places
+    });
 
     // generate random slogan
     var slogans = ["Nice work!", "Go you!", "Keep it up!", "The more you see, the more you know!", "Explorer Extraordinaire!"];

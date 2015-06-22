@@ -6,7 +6,11 @@
 			<h2><span class="fa fa-dashboard"></span> Dashboard</h2>
 			<h4>You've been to {{ currentUser.CountryList.length }} countries. {{ caption }}</h4>
 
-			<div id="container" style="position: relative; width: 500px; height: 300px;"></div>
+			<div class="row">
+				<div class="col-md-12">
+					<div id="container" style="width: 100%; height: 360px;"></div>
+				</div>
+			</div>
 
 			<span ng-repeat="country in currentUser.CountryList"><a style="font-size: 18px; line-height: 36px;" class="label label-success" href="/user/{{ currentUser.username }}/country/{{ country.CountryCode3 }}">{{ country.CountryName }}</a>{{$last ? '' : ' '}}</span>
 			<br>
