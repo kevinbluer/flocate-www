@@ -30,50 +30,72 @@ angular.module('flocateApp')
       data: places
     });
 
+    // pass the user through to the view
+    $scope.user = user;
+
     // generate random slogan
-    var slogans = ["Nice work!", "Go you!", "Keep it up!", "The more you see, the more you know!", "Explorer Extraordinaire!"];
+    var slogans = ["Nice work", "Go you", "Keep it up", "The more you see, the more you know", "Explorer Extraordinaire"];
     var rand = Math.random();
     rand *= slogans.length;
     rand = Math.floor(rand);
     $scope.caption = slogans[rand];
-		
-		$http.get('/api/checkin/allCheckins', {}).
-  		success(function(data, status, headers, config) {
 
-        $scope.moment = moment;
-  			$scope.checkins = data;
+    // get the most recent places
+    var Checkin = Parse.Object.extend("Checkin");
+    var query = new Parse.Query(Checkin);
+    query.equalTo("User", Parse.User.current());
+    query.descending("RecordedAt");
+    query.limit(3);
+    query.find({
+      success: function(results) {
 
-  		}).
-  		error(function(data, status, headers, config) {
+          $scope.$apply(function() {
+            $scope.moment = moment;
+            $scope.checkins = results;
+          });
+        },
+        error: function(error) {
+          
+        }
+    });
 
-  			// TODO handle the error scenarios
+		// $http.get('/api/checkin/allCheckins', {}).
+  // 		success(function(data, status, headers, config) {
 
-  		});
+  //       $scope.moment = moment;
+  // 			$scope.checkins = data;
 
-      $http.get('/api/trip/get/kevinbluer', {}).
-      success(function(data, status, headers, config) {
+  // 		}).
+  // 		error(function(data, status, headers, config) {
 
-        $scope.moment = moment;
-        $scope.trips = data;
+  // 			// TODO handle the error scenarios
 
-      }).
-      error(function(data, status, headers, config) {
+  // 		});
 
-        // TODO handle the error scenarios
+  //     $http.get('/api/trip/get/kevinbluer', {}).
+  //     success(function(data, status, headers, config) {
 
-      });
+  //       $scope.moment = moment;
+  //       $scope.trips = data;
 
-      $http.get('/api/checkin/getStarredCheckins/5', {}).
-      success(function(data, status, headers, config) {
+  //     }).
+  //     error(function(data, status, headers, config) {
 
-        $scope.moment = moment;
-        $scope.starred = data;
+  //       // TODO handle the error scenarios
 
-      }).
-      error(function(data, status, headers, config) {
+  //     });
 
-        // TODO handle the error scenarios
+  //     $http.get('/api/checkin/getStarredCheckins/5', {}).
+  //     success(function(data, status, headers, config) {
 
-      });
+  //       $scope.moment = moment;
+  //       $scope.starred = data;
+
+  //     }).
+  //     error(function(data, status, headers, config) {
+
+  //       // TODO handle the error scenarios
+
+  //     });
 
   });
