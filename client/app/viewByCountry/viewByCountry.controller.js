@@ -5,9 +5,8 @@ angular.module('flocateApp')
 
   	$scope.countryName = "Loading...";
 
-  	var user = Auth.getCurrentUser();
-
-    $scope.currentUser = user;
+  	// var user = Auth.getCurrentUser();
+    // $scope.currentUser = user;
 
   	// TODO - include the trips that span the country too (e.g. backbacking through China with Stokesy)
 
@@ -18,83 +17,84 @@ angular.module('flocateApp')
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-  	$http.post('/api/locations/getCountryDetails', {"CountryCode3": $stateParams.countryCode}).
-  		success(function(data, status, headers, config) {
+	var query = new Parse.Query("Countries");
+	query.equalTo("CountryCode3", $stateParams.countryCode);
+	query.first({
+	  success: function(country) {
 
-  			// set the page title
-  			$scope.countryName = data[0].CountryName;
+	  	// country metadata
+	  	$scope.countryName = country.get("CountryName");
+		$scope.myMap.setCenter(new google.maps.LatLng(country.get("CountryCenterPoint").latitude, country.get("CountryCenterPoint").longitude));
+		$scope.myMap.setZoom(country.get("ZoomLevel"));
 
-  			// set the map
-			$scope.myMap.setCenter(new google.maps.LatLng(data[0].CountryCenterPoint.latitude, data[0].CountryCenterPoint.longitude));
-			$scope.myMap.setZoom(data[0].ZoomLevel);
+		var Checkin = Parse.Object.extend("Checkin");
+		var query = new Parse.Query(Checkin);
 
-			// get the checkins
-			$http.post('/api/checkin/' + user.username + '/checkinsByCountry', { CountryCode2: data[0].CountryCode2 }).
-			success(function(data, status, headers, config) {
+		query.equalTo("User", Parse.User.current());
+		query.equalTo("CountryCode3", $stateParams.countryCode);
+		query.ascending("RecordedAt");
 
-				// fromDate
-				$scope.fromDate = moment(data[0]["RecordedAt"].iso).format("MMM Do YYYY");
-				$scope.fromNow = moment(data[0]["RecordedAt"].iso).fromNow();
+		// get the checkins
+		query.find({
+		  success: function(checkins) {
 
-				if (data.length > 1) {
+		  	angular.forEach(checkins, function(value, key) {
 
-					// toDate
-					var days = data.length - 1;
-					$scope.toDate = moment(data[days]["RecordedAt"].iso).format("MMM Do YYYY");
-					$scope.toNow = moment(data[days]["RecordedAt"].iso).fromNow();
+		  		// establish the from date
+		  		$scope.fromDate = moment(checkins[0].get("RecordedAt")).format("MMM Do YYYY");
+				$scope.fromNow = moment(checkins[0].get("RecordedAt")).fromNow();
 
+				// establish the to date
+				if (checkins.length > 1) {
+					var days = checkins.length - 1;
+					$scope.toDate = moment(checkins[days].get("RecordedAt")).format("MMM Do YYYY");
+					$scope.toNow = moment(checkins[days].get("RecordedAt")).fromNow();
 				}
 
-				$scope.checkins = data;
+		  		// create a new marker
+			    var marker = new google.maps.Marker({
+			        map : $scope.myMap,
+			        position : new google.maps.LatLng(value.get("Location").latitude, value.get("Location").longitude)
+			    });
 
-			  	angular.forEach(data, function(value, key) {
+			    // build the market content
+			    var contentString = '<div id="content">'+
+			      '<div id="siteNotice">'+
+			      '</div>'+
+			      '<h3 id="firstHeading" class="firstHeading">' + value.get("Doing") + '</h3>'+
+			      '<p>' + value.get("Note") + '</p>'+
+			      '<div id="bodyContent">'+
+			      '<p><b>' + moment(value.get("RecordedAt")).fromNow() + '</b>'+
+			      '<a class="btn btn-default" style="width: 100%" href="/user/' + Parse.User.current().get("username") + '/' + value.id + '">'+
+			      'View Pin</a>'+
+			      '</div>'+
+			      '</div>';
 
-			  		var map = $scope.myMap;
-
-			  		// lay a marker
-				    var marker = new google.maps.Marker({
-				        map : map,
-				        position : new google.maps.LatLng(value["Location"]["latitude"], value["Location"]["longitude"])
-				    });
-
-				    // debugger;
-
-				    var contentString = '<div id="content">'+
-				      '<div id="siteNotice">'+
-				      '</div>'+
-				      '<h3 id="firstHeading" class="firstHeading">' + value.Doing + '</h3>'+
-				      '<p>' + value.Note + '</p>'+
-				      '<div id="bodyContent">'+
-				      '<p><b>' + moment(value.RecordedAt.iso).fromNow() + '</b>'+
-				      '<a class="btn btn-default" style="width: 100%" href="/user/' + user.username + '/' + value.objectId + '">'+
-				      'View Pin</a>'+
-				      '</div>'+
-				      '</div>';
-
-				    var infowindow = new google.maps.InfoWindow({
-					    content: contentString
-					});
-
-				    google.maps.event.addListener(marker, 'click', function() {
-				    	infowindow.open(map,marker);
-					});
-
-				    $scope.newMarker = marker;
-
+			    // create a new infowindow and add the content
+			    var infowindow = new google.maps.InfoWindow({
+				    content: contentString
 				});
 
-			}).
-			error(function(data, status, headers, config) {
+			    // add the click event
+			    google.maps.event.addListener(marker, 'click', function() {
+			    	infowindow.open($scope.myMap, marker);
+				});
 
-				// TODO handle the error scenarios
+			    // add the marker
+			    $scope.newMarker = marker;
 
 			});
 
-  		}).
-  		error(function(data, status, headers, config) {
+		  },
+		  error: function(error) {
+		    console.log(error);
+		  }
+		});
 
-		// TODO handle the error scenarios
-
+	  },
+	  error: function(error) {
+	    console.log(error);
+	  }
 	});
 
   });
